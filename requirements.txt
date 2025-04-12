@@ -1,0 +1,3 @@
+fastapi
+uvicorn[standard] # Tambien puede cambiarse por 'ultimate' o 'standard'
+requests
