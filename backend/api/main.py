@@ -6,6 +6,8 @@ app = FastAPI()
 app.title = "La guarida del Dungeon Master"
 app.version = "0.1.0"
 
+Base.metadata.create_all(bind=engine)
+
 # Configurar CORS para permitir peticiones desde el frontend (Vue)
 app.add_middleware(
     CORSMiddleware,
