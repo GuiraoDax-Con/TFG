@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard] # Tambien puede cambiarse por 'ultimate' o 'standard'
+requests
+pydantic
+pydantic_core
+python-jose
+python-multipart
+SQLAlchemy
+typing_extensions
+uvicorn
+python-dotenv
+passlib
