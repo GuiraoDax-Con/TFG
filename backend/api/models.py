@@ -4,13 +4,6 @@ from sqlalchemy.orm import relationship
 from .database import Base
 
 # Aquí comenzará la definición de la clase User, que representa una tabla en la base de datos
-class User(Base):
-    __tablename__ = "users"  # Nombre de la tabla en la base de datos
-    
-    id = Column(Integer, primary_key=True, index=True)  # ID del usuario, clave primaria
-    username = Column(String(50), unique=True, index=True)  # Nombre de usuario, único
-    email = Column(String(100), unique=True, index=True)  # Correo electrónico, único
-    password = Column(String(500))  # Contraseña del usuario
     
     
 class Items(Base):
