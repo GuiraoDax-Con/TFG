@@ -11,7 +11,7 @@ class Items(Base):
     
     id = Column(Integer, primary_key=True, index=True)  # ID del item, clave primaria
     Name = Column(String(100))
-    Price= Column(String(20))
+    Price= Column(String(30))
     AC = Column(String(100))
     Damage = Column(String(50))
     Weight = Column(String(10))
@@ -24,6 +24,7 @@ class Monsters(Base):
     name = Column(String(100))  # Nombre del monstruo
     size = Column(String(100))  # Tamaño del monstruo
     type = Column(String(100))
+    tag= Column(String(100))
     alignment= Column(String(70))
     cr= Column(String(70))
     sourceBook=Column(String(20))
