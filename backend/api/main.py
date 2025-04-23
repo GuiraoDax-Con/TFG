@@ -1,7 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from .database import engine
+from .routes import router
 
 app = FastAPI()
+
 
 app.title = "La guarida del Dungeon Master"
 app.version = "0.1.0"
@@ -16,6 +19,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Incluir las rutas de la API
+app.include_router(router)
 
 # Ruta de prueba
 @app.get("/api/mensaje")
