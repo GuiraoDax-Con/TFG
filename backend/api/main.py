@@ -28,6 +28,6 @@ app.include_router(router)
 def leer_mensaje():
     return {"mensaje": "¡Hola desde FastAPI en La Guarida del DM!"}
 
-@app.get("/")
+@app.get("/hello_world")
 def home():
     return "Hola Mundo"
