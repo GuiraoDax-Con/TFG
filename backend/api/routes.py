@@ -6,14 +6,23 @@ from .schemas import ItemCreate, ItemResponse, MonsterCreate, MonsterResponse
 
 router = APIRouter()
 
-# Rutas para "items"
+## Rutas para "items"
 @router.get("/items", response_model=list[ItemResponse])
 def get_items(db: Session = Depends(get_db)):
     return db.query(Items).all()
 
+# Ruta para obtener un item por su ID
 @router.get("/items/{item_id}", response_model=ItemResponse)
 def get_item(item_id: int, db: Session = Depends(get_db)):
     item = db.query(Items).filter(Items.id == item_id).first()
+    if not item:
+        raise HTTPException(status_code=404, detail="Item no encontrado")
+    return item
+
+# Ruta para obtener un item por su nombre
+@router.get("/items/{item_Name}", response_model=ItemResponse)
+def get_item_by_name(item_Name: str, db: Session = Depends(get_db)):
+    item = db.query(Items).filter(Items.Name == item_Name).first()
     if not item:
         raise HTTPException(status_code=404, detail="Item no encontrado")
     return item
@@ -35,14 +44,25 @@ def delete_item(item_id: int, db: Session = Depends(get_db)):
     db.commit()
     return {"detail": "Item eliminado"}
 
-# Rutas para "monsters"
+
+
+## Rutas para "monsters"
 @router.get("/monsters", response_model=list[MonsterResponse])
 def get_monsters(db: Session = Depends(get_db)):
     return db.query(Monsters).all()
 
+# Ruta para obtener un monstruo por su ID
 @router.get("/monsters/{monster_id}", response_model=MonsterResponse)
 def get_monster(monster_id: int, db: Session = Depends(get_db)):
     monster = db.query(Monsters).filter(Monsters.id == monster_id).first()
+    if not monster:
+        raise HTTPException(status_code=404, detail="Monstruo no encontrado")
+    return monster
+
+# Ruta para obtener un monstruo por su nombre
+@router.get("/monsters/{monster_name}", response_model=MonsterResponse)
+def get_monster_by_name(monster_name: str, db: Session = Depends(get_db)):
+    monster = db.query(Monsters).filter(Monsters.name == monster_name).first()
     if not monster:
         raise HTTPException(status_code=404, detail="Monstruo no encontrado")
     return monster
