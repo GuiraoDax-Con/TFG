@@ -20,7 +20,3 @@ while ($answer -ne "y" -and $answer -ne "n") {
         Write-Host "Entrada no válida. Por favor, ejecuta el script nuevamente."
     }
 }
-
-
-
-

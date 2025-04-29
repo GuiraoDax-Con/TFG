@@ -1,7 +1,7 @@
 # Script to initialize the Vue.js project
 
 # Navigate to the project directory
-$projectPath = "../frontend/frontend"
+$projectPath = "./frontend"
 Set-Location -Path $projectPath
 
 # Install dependencies
