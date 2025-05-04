@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import get_db
-from models import Monsters
-from schemas import MonsterCreate, MonsterResponse
+from ..database import get_db
+from ..models import Monsters
+from ..schemas import MonsterCreate, MonsterResponse
 
 # Crear subrouters
 monsters_router = APIRouter(prefix="/monsters", tags=["monsters"])

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import get_db
-from models import Items
-from schemas import ItemCreate, ItemResponse
+from ..database import get_db
+from ..models import Items
+from ..schemas import ItemCreate, ItemResponse
 
 # Crear subrouters
 items_router = APIRouter(prefix="/items", tags=["items"])
