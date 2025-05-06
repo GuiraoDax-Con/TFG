@@ -1,7 +1,7 @@
 <template>
   <nav class="nav-bar">
     <div class="nav-item left">Izquierda</div>
-    <router-link to="/" class="logo-container">
+    <router-link to="/" class="logo-container-navbar">
       <img :src="logoSrc" alt="Logo de la página" />
     </router-link>
     <div class="nav-item right">Derecha</div>

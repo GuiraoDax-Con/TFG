@@ -3,8 +3,8 @@
     <Navbar />
 
     <main class="main-content">
-      <div class="logo-container">
-        <img :src="logoSrc" alt="Logo de la Guarida del Dungeon Master" class="main-logo" />
+      <div class="logo-container-home">
+        <img :src="logoSrc" alt="Logo de la Guarida del Dungeon Master" class="main-logo-home" />
         
         <h1 class="logo-text">
           Bienvenido a la
@@ -24,7 +24,7 @@
 </template>
   
 <script>
-  import logo from '@/assets/log.png'; // Importa la imagen
+  import logo from '@/assets/logo.png'; // Importa la imagen
   import Navbar from "@/components/modules/NavbarModule.vue"; // Importa el componente Navbar
 
   export default {

@@ -15,17 +15,17 @@
     width: 100%; /* Asegura que el contenido principal ocupe todo el ancho */
 }
 
-.logo-container {
+.logo-container-home {
     text-align: center;
     margin-bottom: 10px;
     display: flex; /* Añadimos flexbox para controlar la disposición de los elementos */
     flex-direction: column; /* Colocamos los elementos en columna, uno encima del otro */
-    /*justify-content: center;  Centramos verticalmente los elementos dentro del contenedor */
-    /*align-items: center;  Centramos horizontalmente los elementos dentro del contenedor */
+    justify-content: center; /* Centramos verticalmente los elementos dentro del contenedor */
+    align-items: center; /* Centramos horizontalmente los elementos dentro del contenedor */
     width: 100%;
 }
 
-.main-logo{
+.main-logo-home{
     width: 300px; /* Aumenta el tamaño del logo */
     height: auto;
     margin-bottom: 20px;
