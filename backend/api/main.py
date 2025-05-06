@@ -17,7 +17,7 @@ app.include_router(monsters_routers.monsters_router, prefix="/monsters")
 # Configurar CORS para permitir peticiones desde el frontend (Vue)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],  # frontend Vue por defecto
+    allow_origins=["http://localhost:8081"],  # frontend Vue por defecto
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
