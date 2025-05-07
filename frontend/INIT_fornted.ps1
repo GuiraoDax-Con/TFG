@@ -10,7 +10,7 @@ npm install
 
 # Start the development server
 Write-Host "Starting the development server..."
-npm run serve
+npm run dev
 
 # Notify the user
 Write-Host "Vue.js project has been started successfully."

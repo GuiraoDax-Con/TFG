@@ -1,3 +1,4 @@
+//HomeComponent.vue
 <template>
   <div class="home-page">
     <Navbar />
