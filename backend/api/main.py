@@ -1,18 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .database import engine
-from .routes import items_routes, monsters_routers
+from .database import engine,Base
+from .routers import items, monsters
 
 app = FastAPI()
 
-
-app.title = "La guarida del Dungeon Master"
-app.version = "0.1.0"
-
-# Incluir subrouters
-app.include_router(items_routes.items_router, prefix="/items")
-app.include_router(monsters_routers.monsters_router, prefix="/monsters")
-
+Base.metadata.create_all(bind=engine)  # Crear las tablas en la base de datos
 
 # Configurar CORS para permitir peticiones desde el frontend (Vue)
 app.add_middleware(
@@ -23,12 +16,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.title = "La guarida del Dungeon Master"
+app.version = "0.1.0"
 
-# Ruta de prueba
-@app.get("/api/mensaje")
-def leer_mensaje():
-    return {"mensaje": "¡Hola desde FastAPI en La Guarida del DM!"}
+# Incluir subrouters
+app.include_router(items.router)
+app.include_router(monsters.router)
 
-@app.get("/hello_world")
-def home():
-    return "Hola Mundo"
+
+
+
+@app.get("/")
+def health_check():
+    return 'Todo correcto!'
+

@@ -5,15 +5,15 @@ from ..models import Monsters
 from ..schemas import MonsterCreate, MonsterResponse
 
 # Crear subrouters
-monsters_router = APIRouter(prefix="/monsters", tags=["monsters"])
+router = APIRouter()
 
 ## Rutas para "monsters"
-@monsters_router.get("/monsters", response_model=list[MonsterResponse])
+@router.get("/monsters", response_model=list[MonsterResponse])
 def get_monsters(db: Session = Depends(get_db)):
     return db.query(Monsters).all()
 
 # Ruta para obtener un monstruo por su ID
-@monsters_router.get("/monsters/{monster_id}", response_model=MonsterResponse)
+@router.get("/monsters/{monster_id}", response_model=MonsterResponse)
 def get_monster(monster_id: int, db: Session = Depends(get_db)):
     monster = db.query(Monsters).filter(Monsters.id == monster_id).first()
     if not monster:
@@ -21,14 +21,14 @@ def get_monster(monster_id: int, db: Session = Depends(get_db)):
     return monster
 
 # Ruta para obtener un monstruo por su nombre
-@monsters_router.get("/monsters/{monster_name}", response_model=MonsterResponse)
+@router.get("/monsters/{monster_name}", response_model=MonsterResponse)
 def get_monster_by_name(monster_name: str, db: Session = Depends(get_db)):
     monster = db.query(Monsters).filter(Monsters.name == monster_name).first()
     if not monster:
         raise HTTPException(status_code=404, detail="Monstruo no encontrado")
     return monster
 
-@monsters_router.post("/monsters", response_model=MonsterResponse)
+@router.post("/monsters", response_model=MonsterResponse)
 def create_monster(monster: MonsterCreate, db: Session = Depends(get_db)):
     db_monster = Monsters(**monster.dict())  # Convertir el modelo de Pydantic a un diccionario
     db.add(db_monster)
@@ -36,7 +36,7 @@ def create_monster(monster: MonsterCreate, db: Session = Depends(get_db)):
     db.refresh(db_monster)
     return db_monster
 
-@monsters_router.delete("/monsters/{monster_id}")
+@router.delete("/monsters/{monster_id}")
 def delete_monster(monster_id: int, db: Session = Depends(get_db)):
     monster = db.query(Monsters).filter(Monsters.id == monster_id).first()
     if not monster:

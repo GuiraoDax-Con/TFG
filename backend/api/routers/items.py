@@ -5,15 +5,15 @@ from ..models import Items
 from ..schemas import ItemCreate, ItemResponse
 
 # Crear subrouters
-items_router = APIRouter(prefix="/items", tags=["items"])
+router = APIRouter()
 
 ## Rutas para "items"
-@items_router.get("/items", response_model=list[ItemResponse])
+@router.get("/items", response_model=list[ItemResponse])
 def get_items(db: Session = Depends(get_db)):
     return db.query(Items).all()
 
 # Ruta para obtener un item por su ID
-@items_router.get("/items/{item_id}", response_model=ItemResponse)
+@router.get("/items/{item_id}", response_model=ItemResponse)
 def get_item(item_id: int, db: Session = Depends(get_db)):
     item = db.query(Items).filter(Items.id == item_id).first()
     if not item:
@@ -21,14 +21,14 @@ def get_item(item_id: int, db: Session = Depends(get_db)):
     return item
 
 # Ruta para obtener un item por su nombre
-@items_router.get("/items/{item_Name}", response_model=ItemResponse)
+@router.get("/items/{item_Name}", response_model=ItemResponse)
 def get_item_by_name(item_Name: str, db: Session = Depends(get_db)):
     item = db.query(Items).filter(Items.Name == item_Name).first()
     if not item:
         raise HTTPException(status_code=404, detail="Item no encontrado")
     return item
 
-@items_router.post("/", response_model=ItemResponse)
+@router.post("/", response_model=ItemResponse)
 def create_item(item: ItemCreate, db: Session = Depends(get_db)):
     db_item = Items(**item.dict())
     db.add(db_item)
