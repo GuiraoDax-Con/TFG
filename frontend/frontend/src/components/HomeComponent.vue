@@ -1,3 +1,4 @@
+//HomeComponent.vue
 <template>
   <div class="home-page">
     <Navbar />
@@ -20,10 +21,8 @@
         <button class="button calcular-xp-button" @click="calcularXP">Calcular XP</button>
       </div>
     </main>
-
-    <footer>
-      <FooterModule />
-    </footer>
+    
+    <FooterModule />
   </div>
 </template>
   
@@ -46,10 +45,12 @@
     methods: {
       goToTienda() {
         console.log('Ir a la tienda');
+        alert('Ir a la tienda');
         // Aquí iría la lógica para navegar a la tienda
       },
       calcularXP() {
         console.log('Calcular XP');
+        alert('Calcular XP');
         // Aquí iría la lógica para calcular la XP
       },
     },
