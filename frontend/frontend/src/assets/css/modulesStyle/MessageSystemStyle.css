@@ -1,0 +1,115 @@
+.message-system {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 10000; /* Ensure it is above other elements */
+    pointer-events: auto;
+}
+
+.message-position {
+    top: 20px;
+    align-items: flex-start;
+}
+
+.message-position-top-right {
+    right: 20px;
+    align-items: flex-end;
+}
+
+.message-position-top-left {
+  .message-position-bottom-right {
+    bottom: 20px;
+    right: 20px;
+    align-items: flex-end;
+  }
+  
+  .message-position-bottom-left {
+    bottom: 20px;
+    left: 20px;
+    align-items: flex-start;
+  }
+  
+  .message-transition-enter-from,
+  .message-transition-leave-to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .message-transition-enter-active,
+  .message-transition-leave-active {
+    transition: all 0.3s ease;
+  }
+  
+  .message-transition-enter-to,
+  .message-transition-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .message {
+    background-color: white;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    position: relative;
+    pointer-events: all;
+  }
+  
+  .message-content {
+    flex: 1;
+  }
+  
+  .message-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .message-text {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  .message-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #888;
+    padding: 0;
+    line-height: 1;
+  }
+  
+  .message-close:hover {
+    color: #333;
+  }
+  
+  .message.info {
+    background-color: #e0f7fa;
+    color: #0c5460;
+  }
+  
+  .message.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+}
