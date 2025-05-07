@@ -20,8 +20,7 @@
         name: 'FooterModule',
         data() {
             return {
-                logoSrc: logo, // Ruta de la imagen del logo
-                ciervaLogoSrc: IES_Cierva_logo // Ruta de la imagen del logo del IES Cierva
+                year: new Date().getFullYear(),
             };
         },
     };
