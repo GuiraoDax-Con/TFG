@@ -1,13 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeComponent from '@/components/HomeComponent.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeComponent.vue,
+    component: HomeComponent,
   },
-  // Puedes agregar más rutas aquí
 ];
 
 const router = createRouter({
