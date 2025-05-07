@@ -9,7 +9,7 @@
 </template>
   
 <script>
-  import logo from '@/assets/logo.png';
+  import logo from '@/assets/images/logo.png';
   
   export default {
     name: 'NavBar',

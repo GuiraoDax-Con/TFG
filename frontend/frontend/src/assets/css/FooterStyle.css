@@ -1,0 +1,47 @@
+.footer-bar {
+    background-color: #00aaff;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 20px;
+    width: 100%; /* Establece el ancho al 100% del contenedor padre */
+}
+
+.footer-item {
+    padding: 10px;
+    flex-shrink: 0; /* Evita que los items se reduzcan */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-left, .footer-right {
+    /* Estilos específicos para los elementos izquierdo y derecho */
+    font-weight: bold;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Permite que el logo ocupe el espacio restante */
+}
+
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 100px;
+}
+
+.footer-logo-container img {
+    height: 50px;
+    max-width: 100%;
+    margin: 0 auto;
+}

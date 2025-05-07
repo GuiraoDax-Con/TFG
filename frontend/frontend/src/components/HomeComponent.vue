@@ -20,17 +20,23 @@
         <button class="button calcular-xp-button" @click="calcularXP">Calcular XP</button>
       </div>
     </main>
+
+    <footer>
+      <FooterModule />
+    </footer>
   </div>
 </template>
   
 <script>
-  import logo from '@/assets/logo.png'; // Importa la imagen
+  import logo from '@/assets/images/logo.png'; // Importa la imagen
   import Navbar from "@/components/modules/NavbarModule.vue"; // Importa el componente Navbar
+  import FooterModule from "@/components/modules/FooterModule.vue"; // Importa el componente Footer
 
   export default {
     name: 'HomePage',
     components: {
       Navbar,
+      FooterModule, // Registra el componente Footer
     },
     data() {
       return {
