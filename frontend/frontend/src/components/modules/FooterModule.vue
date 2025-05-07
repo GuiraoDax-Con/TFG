@@ -39,5 +39,5 @@
 </script>
 
 <style scoped>
-    @import '../../assets/css/FooterStyle.css';
+    @import '@/assets/css/modulesStyle/FooterStyle.css';
 </style>

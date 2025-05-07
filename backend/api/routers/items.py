@@ -21,14 +21,15 @@ def get_item(item_id: int, db: Session = Depends(get_db)):
     return item
 
 # Ruta para obtener un item por su nombre
-@router.get("/items/{item_Name}", response_model=ItemResponse)
+@router.get("/items/name/{item_Name}", response_model=ItemResponse)
 def get_item_by_name(item_Name: str, db: Session = Depends(get_db)):
     item = db.query(Items).filter(Items.Name == item_Name).first()
     if not item:
         raise HTTPException(status_code=404, detail="Item no encontrado")
     return item
 
-@router.post("/", response_model=ItemResponse)
+# Ruta para crear un nuevo item
+@router.post("/items", response_model=ItemResponse)
 def create_item(item: ItemCreate, db: Session = Depends(get_db)):
     db_item = Items(**item.dict())
     db.add(db_item)

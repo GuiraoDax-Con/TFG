@@ -10,7 +10,7 @@ Base.metadata.create_all(bind=engine)  # Crear las tablas en la base de datos
 # Configurar CORS para permitir peticiones desde el frontend (Vue)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8081"],  # frontend Vue por defecto
+    allow_origins=["http://localhost:5173"],  # frontend Vue por defecto
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
