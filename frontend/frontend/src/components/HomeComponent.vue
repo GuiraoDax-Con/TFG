@@ -1,8 +1,6 @@
 //HomeComponent.vue
 <template>
   <div class="home-page">
-    <Navbar />
-
     <main class="main-content">
       <div class="logo-container-home">
         <img :src="logoSrc" alt="Logo de la Guarida del Dungeon Master" class="main-logo-home" />
@@ -26,14 +24,9 @@
   
 <script>
   import logo from '@/assets/images/logo.png'; // Importa la imagen
-  import Navbar from "@/components/modules/NavbarModule.vue"; // Importa el componente Navbar
-
 
   export default {
     name: 'HomePage',
-    components: {
-      Navbar,
-    },
     data() {
       return {
         logoSrc: logo // Asigna la ruta importada a la propiedad data

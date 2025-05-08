@@ -1,16 +1,21 @@
 .nav-bar {
     background-color: #005f99;
-    
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 7px 0px;
+    padding: 7px 20px; /* Espaciado interno */
     width: 100%; /* Establece el ancho al 100% del contenedor padre */
 }
 
 .nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
     padding: 10px;
-    flex-shrink: 0; /* Evita que los items se reduzcan */
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #ffcc00; /* Cambia el color al pasar el cursor */
 }
 
 .left, .right {
@@ -21,13 +26,17 @@
 .logo-container-navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    max-width: 100px;
+    justify-content: flex-start; /* Alinea el ícono a la izquierda */
+    margin-right: 20px; /* Espaciado entre el ícono y los enlaces */
 }
 
 .logo-container-navbar img {
     height: 50px;
     max-width: 100%;
-    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaciado entre los enlaces */
 }
