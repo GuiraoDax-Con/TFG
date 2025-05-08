@@ -1,7 +1,7 @@
 //HomeComponent.vue
 <template>
   <div class="home-page">
-    <Navbar />
+   
 
     <main class="main-content">
       <div class="logo-container-home">
@@ -28,13 +28,11 @@
   
 <script>
   import logo from '@/assets/images/logo.png'; // Importa la imagen
-  import Navbar from "@/components/modules/NavbarModule.vue"; // Importa el componente Navbar
   import FooterModule from "@/components/modules/FooterModule.vue"; // Importa el componente Footer
 
   export default {
     name: 'HomePage',
     components: {
-      Navbar,
       FooterModule, // Registra el componente Footer
     },
     data() {
