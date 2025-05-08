@@ -2,7 +2,7 @@
     background-color: #005f99;
     display: flex;
     align-items: center;
-    padding: 7px 20px; /* Espaciado interno */
+    padding: 7px 0px; /* Espaciado interno */
     width: 100%; /* Establece el ancho al 100% del contenedor padre */
 }
 
