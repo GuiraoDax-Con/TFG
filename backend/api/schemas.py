@@ -10,6 +10,7 @@ class ItemBase(BaseModel):
     Weight: Optional[str] = None
     Type: Optional[str] = None
     Properties: Optional[str] = None
+    img: Optional[str] = None  # Nueva columna para la URL o ruta de la imagen
 
 class ItemCreate(ItemBase):
     pass
@@ -29,6 +30,7 @@ class MonsterBase(BaseModel):
     alignment: Optional[str] = None
     cr: Optional[str] = None
     sourceBook: Optional[str] = None
+    img: Optional[str] = None  # Nueva columna para la URL o ruta de la imagen
 
 class MonsterCreate(MonsterBase):
     pass
