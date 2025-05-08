@@ -58,5 +58,5 @@
 </script>
 
 <style scoped>
-    @import '../assets/css/HomeStyle.css';
+    @import '@/assets/css/HomeStyle.css';
 </style>
