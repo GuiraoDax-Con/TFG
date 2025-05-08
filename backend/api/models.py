@@ -26,7 +26,7 @@ class Monsters(Base):
     type = Column(String(100))
     tag= Column(String(100))
     alignment= Column(String(70))
-    cr= Column(String(70))
+    cr= Column(String(70)) # CR (Challenge Rating) del monstruo
     sourceBook=Column(String(20))
     
     

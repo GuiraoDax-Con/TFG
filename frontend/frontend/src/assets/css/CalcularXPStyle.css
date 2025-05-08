@@ -1,0 +1,166 @@
+.calcular-xp {
+    padding: 20px;
+    text-align: center;
+    display: flex; /* Añadimos flexbox al contenedor principal */
+    flex-direction: column; /* Cambiamos la dirección a columna */
+    min-height: 100vh; /* Aseguramos que el contenedor ocupe al menos el alto de la pantalla */
+}
+
+.tabla-monstruos {
+    margin-bottom: 20px;
+    overflow-x: auto;
+    flex-grow: 1; /* Permitimos que la tabla crezca y ocupe el espacio restante */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #404040;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #005f99;
+    /* border-radius: 8px 8px 0 0; */
+}
+
+tbody tr:hover {
+    background-color: #162fe8;
+}
+
+.xp-info {
+    display: flex;
+    justify-content: center; /* Centramos el botón horizontalmente */
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;;
+    position: sticky; /* Hacemos que el contenedor se pegue al fondo */
+    bottom: 0; /* Lo pegamos a la parte inferior */
+    background-color: transparent; /* #404040 Le damos un fondo para que no se mezcle con el contenido de la tabla */
+    padding-bottom: 20px; /* Añadimos un padding inferior para que el botón no esté pegado al borde */
+    box-shadow: 0px -2px 5px rgba(0,0,0,0.05); /* Añadimos una ligera sombra superior */
+}
+
+.xp-total-button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.xp-total-button:hover {
+    background-color: #45a049;
+}
+
+.modulo-reparto {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modulo-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jugadores-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.jugadores-input label {
+    font-size: 1rem;
+}
+
+.jugadores-input button {
+    padding: 5px 10px;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.jugadores-input button:hover {
+    background-color: #aaa;
+}
+
+.jugadores-input input {
+    width: 50px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.xp-repartido {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+.cerrar-modulo {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.cerrar-modulo:hover {
+    background-color: #d32f2f;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .xp-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .xp-total-button{
+        margin-bottom: 20px;
+    }
+}
