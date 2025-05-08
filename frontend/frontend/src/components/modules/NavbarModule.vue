@@ -22,5 +22,5 @@
 </script>
 
 <style scoped>
-  @import '../../assets/css/NavbarStyle.css';
+  @import '@/assets/css/modulesStyle/NavbarStyle.css';
 </style>
