@@ -4,7 +4,7 @@
     <router-link to="/" class="logo-container-navbar">
       <img :src="logoSrc" alt="Logo de la página" />
     </router-link>
-    <div class="nav-item right">Derecha</div>
+    <router-link to="/items" class="nav-item right">Items</router-link> <!-- Enlace a Items -->
   </nav>
 </template>
   

@@ -1,5 +1,5 @@
 /* src/assets/css/modulesStyle/FooterStyle.css */
-.footer {
+  .footer {
     background-color: #222;
     color: #fff;
     padding: 20px;
@@ -112,4 +112,3 @@
       justify-content: flex-start;
     }
   }
-  
