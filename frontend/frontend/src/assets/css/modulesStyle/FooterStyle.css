@@ -47,7 +47,10 @@
 .ies-logo {
   height: 80px;
   max-width: 100%;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+  max-width: 150px; /* Tamaño máximo de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
 }
 
 .ies-logo:hover {

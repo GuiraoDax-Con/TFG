@@ -5,7 +5,7 @@
       <div class="footer-left">
         <a href="https://moodle.iescierva.net/" target="_blank" aria-label="IES Ingeniero de la Cierva">
           <img
-            src="https://moodle.iescierva.net/pluginfile.php/1/theme_adaptable/adaptablemarkettingimages/0/logoIES_280x80.jpg"
+            src="@/assets/images/iescierva-blanco_sinfondo.png"
             alt="IES Ingeniero de la Cierva"
             class="ies-logo"
           />
@@ -48,10 +48,13 @@ import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-sv
 
 library.add(faFacebookF, faTwitter, faInstagram);
 
+import iesciervaLogo from '@/assets/images/iescierva-blanco_sinfondo.png'; // Importa la imagen del logo del IES Ingeniero de la Cierva
+
 export default {
   name: 'FooterModule',
   components: {
     'font-awesome-icon': FontAwesomeIcon,
+    iesciervaLogo,
   },
   data() {
     return {
@@ -62,5 +65,5 @@ export default {
 </script>
 
 <style scoped>
-  @import '@/assets/css/modulesStyle/FooterStyle.css';
+  @import '../../assets/css/modulesStyle/FooterStyle.css';
 </style>
