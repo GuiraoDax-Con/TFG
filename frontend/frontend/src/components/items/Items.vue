@@ -2,7 +2,8 @@
   <div class="items-page">
     <!-- Imagen centrada -->
     <div class="image-container">
-      <img src="@/assets/images/items_image.png" alt="" class="centered-image" />
+      <img src="@/assets/images/items_image.png" 
+      class="centered-image" />
     </div>
 
     <!-- Barra de búsqueda -->
@@ -18,7 +19,7 @@
         <option value="arma">Arma</option>
         <option value="armadura">Armadura</option>
       </select>
-      <button @click="fetchItems" class="search-button">Buscar</button>
+      
     </div>
 
     <!-- Botón para añadir ítems -->
