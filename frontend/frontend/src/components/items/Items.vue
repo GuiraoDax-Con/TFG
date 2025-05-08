@@ -1,5 +1,10 @@
 <template>
   <div class="items-page">
+    <!-- Imagen centrada -->
+    <div class="image-container">
+      <img src="@/assets/images/items_image.png" alt="" class="centered-image" />
+    </div>
+
     <!-- Barra de búsqueda -->
     <div class="search-bar">
       <input
@@ -15,11 +20,12 @@
       </select>
       <button @click="fetchItems" class="search-button">Buscar</button>
     </div>
-     <!-- Botón para añadir ítems -->
-     <div class="add-item-container">
+
+    <!-- Botón para añadir ítems -->
+    <div class="add-item-container">
       <router-link to="/add-item" class="add-item-button">Añadir Ítem</router-link>
     </div>
-    
+
     <!-- Tabla de ítems -->
     <table class="items-table">
       <thead>
@@ -89,5 +95,6 @@ export default {
 
 <style scoped>
 @import "../../assets/css/ItemsStyle.css";
+
 
 </style>

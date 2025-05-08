@@ -1,5 +1,8 @@
 <template>
   <div class="add-item-page">
+    <div class="image-container">
+      <img src="@/assets/images/addItems_img.png" alt="" class="centered-image" />
+    </div>
     <h1>Añadir Nuevo Ítem</h1>
     <form @submit.prevent="addItem">
       <label>
@@ -25,9 +28,12 @@
       </label>
       <label v-if="newItem.Type === 'armadura'">
         AC:
-        <input type="text" v-model="newItem.AC"
-        @input="validateNumberInput('AC')"
-        placeholder="num" />
+        <input
+          type="text"
+          v-model="newItem.AC"
+          @input="validateNumberInput('AC')"
+          placeholder="num"
+        />
       </label>
       <label v-if="newItem.Type === 'arma'">
         Daño:
@@ -35,7 +41,13 @@
       </label>
       <label>
         Peso:
-        <input type="text" v-model="newItem.Weight" required />
+        <input
+          type="text"
+          v-model="newItem.Weight"
+          required
+          @input="validateNumberInput('Weight')"
+          placeholder="num"
+        />
       </label>
       <label>
         Propiedades:
@@ -43,6 +55,7 @@
       </label>
       <button type="submit">Guardar</button>
     </form>
+    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -61,6 +74,7 @@ export default {
         Type: "",
         Properties: "",
       },
+      errorMessage: "", // Mensaje de error
     };
   },
   methods: {
@@ -85,10 +99,15 @@ export default {
           Properties: "",
         };
 
+        // Limpia el mensaje de error si la solicitud fue exitosa
+        this.errorMessage = "";
+
         // Opcional: Redirige a la página de ítems
         this.$router.push("/items");
       } catch (error) {
         console.error("Error al añadir el ítem:", error);
+        // Muestra un mensaje de error al usuario
+        this.errorMessage = "No se pudo crear el ítem. Por favor, verifica los datos e inténtalo de nuevo.";
       }
     },
   },
@@ -97,4 +116,6 @@ export default {
 
 <style scoped>
 @import '../../assets/css/AddItemsStyle.css';
+
+
 </style>

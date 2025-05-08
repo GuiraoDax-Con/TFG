@@ -1,4 +1,3 @@
-
 .add-item-page {
   max-width: 600px;
   margin: 0 auto;
@@ -35,4 +34,17 @@ form button {
 
 form button:hover {
   background-color: #004080;
+}
+
+/* Imagen centrada */
+.image-container {
+  text-align: center; /* Centra la imagen horizontalmente */
+  margin-bottom: 20px; /* Espaciado debajo de la imagen */
+}
+
+.centered-image {
+  max-width: 35%; /* Reduce el tamaño de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 15px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto visual */
 }
