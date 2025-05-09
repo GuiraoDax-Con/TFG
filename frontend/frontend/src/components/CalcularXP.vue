@@ -1,0 +1,171 @@
+<template>
+    <div class="calcular-xp">
+        <h2>Calcular XP</h2>
+
+        <div class="tabla-monstruos">
+        <table>
+            <thead>
+                <tr>
+                    <th>Seleccionar</th>
+                    <th>Nombre</th>
+                    <th>CR</th>
+                    <th>XP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="monstruo in monstruos" :key="monstruo.nombre">
+                    <td>
+                        <input
+                            type="checkbox"
+                            :checked="monstruosSeleccionados.includes(monstruo)"
+                            @change="toggleMonstruo(monstruo)"
+                        />
+                    </td>
+                    <td>{{ monstruo.nombre }}</td>
+                    <td>{{ monstruo.cr }}</td>
+                    <td>{{ calcularXP(monstruo.cr) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="xp-info">
+        <button @click="mostrarModuloReparto = true" class="xp-total-button">
+            Total: {{ XP_total }} XP
+        </button>
+
+        <div v-if="mostrarModuloReparto" class="modulo-reparto">
+            <div class="modulo-contenido">
+            <div class="jugadores-input">
+                <label for="num-jugadores">Jugadores:</label>
+                <button @click="decrementarJugadores">-</button>
+                <input
+                id="num-jugadores"
+                type="number"
+                v-model.number="numJugadores"
+                min="1"
+                />
+                <button @click="incrementarJugadores">+</button>
+            </div>
+            <hr />
+            <div class="xp-repartido">
+                XP Repartido: {{ XP_repartido }} XP
+            </div>
+                <button @click="mostrarModuloReparto = false" class="cerrar-modulo">Cerrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                monstruos: [
+                { nombre: "Goblin", cr: "1/4" },
+                    { nombre: "Orco", cr: "1/2" },
+                    { nombre: "Ogro", cr: 2 },
+                    { nombre: "Dragón Rojo Adulto", cr: 17 },
+                    { nombre: "Esqueleto", cr: "1/4" },
+                    { nombre: "Zombi", cr: "1/4" },
+                    { nombre: "Ghoul", cr: 1 },
+                    { nombre: "Espectro", cr: 13 },
+                    { nombre: "Vampiro", cr: 13 },
+                    { nombre: "Manticora", cr: 3 },
+                    { nombre: "Basilisco", cr: 3 },
+                    { nombre: "Golem de Piedra", cr: 7 },
+                    { nombre: "Golem de Acero", cr: 10 },
+                    { nombre: "Golem de Tierra", cr: 10 },
+                    { nombre: "Griffon", cr: 3 },
+                    { nombre: "Quimera", cr: 3 },
+                    { nombre: "Hidra", cr: 8 },
+                    { nombre: "Kraken", cr: 20 },
+                    { nombre: "Troll", cr: 5 },
+                    { nombre: "Gárgola", cr: 2 },
+                    { nombre: "Minotauro", cr: 3 },
+                    { nombre: "Banshee", cr: 4 },
+                    { nombre: "Múmia", cr: 5 },
+                    { nombre: "Lich", cr: 21 },
+                    { nombre: "Beholder", cr: 13 },
+                ],
+                xp_diccionary: {
+                    "1/8": 25,
+                    "1/4": 50,
+                    "1/2": 100,
+                    1: 200,
+                    2: 450,
+                    3: 700,
+                    4: 1100,
+                    5: 1800,
+                    6: 2300,
+                    7: 2900,
+                    8: 3900,
+                    9: 5000,
+                    10: 5900,
+                    11: 7200,
+                    12: 8400,
+                    13: 10000,
+                    14: 11500,
+                    15: 13000,
+                    16: 15000,
+                    17: 18000,
+                    18: 20000,
+                    19: 22000,
+                    20: 25000,
+                    21: 33000,
+                    22: 41000,
+                    23: 50000,
+                    24: 62000,
+                    25: 75000,
+                    26: 90000,
+                    27: 105000,
+                    28: 120000,
+                    29: 135000,
+                    30: 155000
+                },
+                monstruosSeleccionados: [],
+                numJugadores: 4,
+                mostrarModuloReparto: false,
+            };
+        },
+        computed: {
+            XP_total() {
+                return this.monstruosSeleccionados.reduce((total, monstruo) => {
+                    const xp = this.calcularXP(monstruo.cr);
+                    return total + xp;
+                }, 0);
+            },
+            XP_repartido() {
+                return Math.ceil(this.XP_total / this.numJugadores);
+            },
+        },
+        methods: {
+            calcularXP(cr) {
+                return this.xp_diccionary[cr] || 0;
+            },
+            toggleMonstruo(monstruo) {
+                if (this.monstruosSeleccionados.includes(monstruo)) {
+                    this.monstruosSeleccionados.splice(
+                        this.monstruosSeleccionados.indexOf(monstruo),
+                        1
+                    );
+                } else {
+                    this.monstruosSeleccionados.push(monstruo);
+                }
+            },
+            incrementarJugadores() {
+                this.numJugadores++;
+            },
+            decrementarJugadores() {
+                if (this.numJugadores > 1) {
+                    this.numJugadores--;
+                }
+            },
+        },
+    };
+</script>
+
+<style scoped>
+    @import "@/assets/css/CalcularXPStyle.css";
+</style>

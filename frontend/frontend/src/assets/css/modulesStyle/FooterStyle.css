@@ -1,114 +1,143 @@
 /* src/assets/css/modulesStyle/FooterStyle.css */
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px 0px;
+  margin-top: 50px;
+  width: 100%;
+  
+  display: flex; /* Utilizamos flexbox para la distribución en columnas */
+  justify-content: space-between; /* Espacio entre las columnas */
+  align-items: center; /* Alineación vertical centrada */
+  flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas pequeñas */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  width: 30%; /* Inicialmente, cada columna ocupa el 30% del ancho */
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex; /* Añadimos flex a las columnas para controlar su contenido */
+  flex-direction: column;
+}
+
+.footer-left {
+  align-items: flex-start;
+}
+
+.footer-center {
+  align-items: center;
+}
+
+.footer-right {
+  align-items: flex-end;
+}
+
+.ies-logo {
+  height: 80px;
+  max-width: 100%;
+  transition: transform 0.3s ease-in-out;
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+  max-width: 150px; /* Tamaño máximo de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.ies-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-nav {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #00aaff;
+}
+
+.footer-bottom {
+  font-size: 0.9rem;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.social-icons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00aaff;
+}
+
+/* Adaptación para pantallas más pequeñas (menos de 768px) */
+@media (max-width: 768px) {
   .footer {
-    background-color: #222;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    margin-top: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra los elementos horizontalmente por defecto */
+    flex-direction: column; /* Volvemos a una sola columna */
+    align-items: center; /* Centramos los elementos */
   }
-  
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra los elementos horizontalmente dentro del contenedor */
-    width: 100%;
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%; /* Cada columna ocupa el 100% del ancho */
+    text-align: center; /* Centramos el texto en pantallas pequeñas */
+    align-items: center;
   }
-  
-  .footer-top {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra los elementos horizontalmente */
-    width: 100%;
-  }
-  
-  
-  .social-icons {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center; /* Centra los iconos de redes sociales */
-  }
-  
-  .social-icons a {
-    color: white;
-    font-size: 1.5rem;
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    color: #00aaff;
-  }
-  
-  .footer-nav {
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  .footer-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .footer-nav a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-nav a:hover {
-    color: #00aaff;
-  }
-  
-  .footer-bottom {
-    font-size: 0.9rem;
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .footer-left {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
+  .social-icons{
     justify-content: center;
   }
-  
-  .ies-logo {
-    height: 80px;
-    max-width: 100%;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .ies-logo:hover {
-    transform: scale(1.05);
-  }
-  
-  @media (min-width: 768px) {
-    .footer-content {
-      align-items: flex-start; /* Alinea los elementos a la izquierda en pantallas más grandes */
-    }
-    .footer-top {
-      flex-direction: row; /* Vuelve a la disposición horizontal en pantallas más grandes */
-      justify-content: space-between; /* Distribuye el espacio entre redes sociales y texto */
-      align-items: center; /* Alinea verticalmente los elementos */
-    }
-    .footer-nav {
-      text-align: center;
-    }
-    .footer-left {
-      justify-content: flex-start;
-    }
-  }
+}
+
+/* Estilos específicos para el footer-center */
+.footer-center {
+    display: flex;
+    flex-direction: column; /* Apilamos los elementos verticalmente */
+    align-items: center; /* Centramos horizontalmente los elementos */
+}
+
+.footer-center .footer-nav {
+    order: 1; /* Aseguramos que la navegación esté primero */
+    margin-bottom: 0;
+}
+
+.footer-center .footer-bottom {
+    order: 2; /* El copyright va después de la navegación */
+}
