@@ -1,4 +1,4 @@
-/* // src/composables/useAddMonster.js
+// src/composables/useAddMonster.js
 import { ref } from "vue";
 import monstersAPI from "../services/monstersAPI.js";
 
@@ -58,4 +58,3 @@ export const useAddMonster = () => {
         guardarMonstruo
     };
 };
- */
