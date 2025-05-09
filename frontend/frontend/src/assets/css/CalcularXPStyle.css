@@ -1,15 +1,15 @@
 .calcular-xp {
     padding: 20px;
     text-align: center;
-    display: flex; /* Añadimos flexbox al contenedor principal */
-    flex-direction: column; /* Cambiamos la dirección a columna */
-    min-height: 100vh; /* Aseguramos que el contenedor ocupe al menos el alto de la pantalla */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .tabla-monstruos {
     margin-bottom: 20px;
     overflow-x: auto;
-    flex-grow: 1; /* Permitimos que la tabla crezca y ocupe el espacio restante */
+    flex-grow: 1;
 }
 
 table {
@@ -39,15 +39,14 @@ tbody tr:hover {
 
 .xp-info {
     display: flex;
-    justify-content: center; /* Centramos el botón horizontalmente */
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
-    padding-top: 20px;;
-    position: sticky; /* Hacemos que el contenedor se pegue al fondo */
-    bottom: 0; /* Lo pegamos a la parte inferior */
-    background-color: transparent; /* #404040 Le damos un fondo para que no se mezcle con el contenido de la tabla */
-    padding-bottom: 20px; /* Añadimos un padding inferior para que el botón no esté pegado al borde */
-    box-shadow: 0px -2px 5px rgba(0,0,0,0.05); /* Añadimos una ligera sombra superior */
+    position: sticky;
+    bottom: 0;
+    background-color: transparent;
+    padding-bottom: 20px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .xp-total-button {
@@ -160,7 +159,42 @@ hr {
         align-items: center;
     }
 
-    .xp-total-button{
+    .xp-total-button {
         margin-bottom: 20px;
     }
+}
+
+.cantidad-input {
+    width: 70px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Nuevos estilos para ajustar el ancho de las columnas */
+table th:nth-child(1),  /* Seleccionar */
+table td:nth-child(1) {
+    width: 10%; /* Ajusta este valor según sea necesario */
+}
+
+table th:nth-child(2),  /* Cantidad */
+table td:nth-child(2) {
+    width: 10%; /* Ajusta este valor según sea necesario */
+}
+
+table th:nth-child(3),  /* Nombre */
+table td:nth-child(3) {
+    width: 40%; /* El resto del espacio se distribuye entre las columnas de contenido */
+}
+
+table th:nth-child(4),  /* CR */
+table td:nth-child(4) {
+    width: 20%;
+}
+
+table th:nth-child(5),  /* XP */
+table td:nth-child(5) {
+    width: 20%;
 }

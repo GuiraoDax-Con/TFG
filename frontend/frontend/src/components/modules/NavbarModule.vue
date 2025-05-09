@@ -5,6 +5,7 @@
       <img :src="logoSrc" alt="Logo de la página" />
     </router-link>
     <router-link to="/items" class="nav-item right">Items</router-link> <!-- Enlace a Items -->
+    <router-link to="/calcular-xp" class="nav-item right">Calcular XP</router-link> <!-- Enlace a CalcularXP -->
   </nav>
 </template>
   
