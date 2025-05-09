@@ -1,0 +1,110 @@
+/* FiltrosCalcXP.css*/
+.busqueda-monstruos {
+    margin-bottom: 20px;
+}
+
+.busqueda-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+
+    margin-top: 10px;
+}
+
+.filtro-tamaño {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.filtro-tipo {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro-tamaño label,
+.filtro-tipo label {
+    margin-bottom: 5px;
+    font-weight: bold;
+
+    margin-top: -10px;
+}
+
+.filtro-tamaño select,
+.filtro-tipo select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 150px;
+    
+    color: #ffffff;
+    background-color: #005f99;
+}
+
+.filtros-busqueda {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 10px; /* Añade espacio entre los elementos */
+}
+
+.busqueda-monstruos {
+    margin-right: 20px;
+    margin-bottom: 0; /* Elimina el margen inferior para que esté alineado con los otros filtros en pantallas grandes */
+    flex: 1; /* Permite que la barra de búsqueda se expanda para ocupar el espacio disponible */
+    min-width: 200px; /* Establece un ancho mínimo para la barra de búsqueda */
+}
+
+.filtro-tamaño {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.filtro-tipo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.filtro-tamaño label,
+.filtro-tipo label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.filtro-tamaño select,
+.filtro-tipo select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 150px;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .filtros-busqueda {
+        flex-direction: column; /* Apila los elementos verticalmente en pantallas pequeñas */
+        align-items: flex-start; /* Alinea los elementos a la izquierda en pantallas pequeñas */
+    }
+    .busqueda-monstruos {
+        margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+        margin-bottom: 10px; /* Añade margen inferior para separar los elementos apilados */
+        flex: none; /* Evita que la barra de búsqueda se expanda demasiado en pantallas pequeñas */
+        width: 100%;
+    }
+    .filtro-tamaño, .filtro-tipo {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .filtro-tamaño select, .filtro-tipo select{
+        width: 100%;
+    }
+}
