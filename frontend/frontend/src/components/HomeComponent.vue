@@ -37,11 +37,18 @@
         console.log('Ir a la tienda');
         alert('Ir a la tienda');
         // Aquí iría la lógica para navegar a la tienda
+        //alert('Ir a la tienda');
+        // Aquí iría la lógica para calcular la XP
+        // Por ejemplo, podrías redirigir a otra página o abrir un modal
+        this.$router.push('/items');
       },
       calcularXP() {
         console.log('Calcular XP');
         alert('Calcular XP');
+        //alert('Calcular XP');
         // Aquí iría la lógica para calcular la XP
+        // Por ejemplo, podrías redirigir a otra página o abrir un modal
+        this.$router.push('/calcular-xp');
       },
     },
   };
