@@ -1,9 +1,21 @@
 .calcular-xp {
-    padding: 20px;
+    padding: 100px;
     text-align: center;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.logo-container-calculadoraxp {
+    text-align: center; /* Centra la imagen horizontalmente */
+    margin-bottom: 20px; /* Espaciado debajo de la imagen */
+}
+
+.main-logo-calculadoraxp{
+    max-width: 20%; /* Reduce el tamaño de la imagen al 50% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 15px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto visual */
 }
 
 .tabla-monstruos {

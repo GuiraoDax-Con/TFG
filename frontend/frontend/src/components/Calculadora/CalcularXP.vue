@@ -1,6 +1,12 @@
 <template>
     <div class="calcular-xp">
-        <h2>Calcular XP</h2>
+
+        <div class="logo-container-calculadoraxp">
+            <img :src="calXP_logo" alt="Escudo del Bestiario" 
+            class="main-logo-calculadoraxp" />
+        </div>
+
+        <h1>Calcular XP</h1>
 
         <div class="tabla-monstruos">
             <table>
@@ -69,6 +75,8 @@
 </template>
 
 <script>
+    import calXP_logo from "@/assets/images/calculadora-xp_imagenes/imagen_calculadora-xp.png"; // Importa la imagen
+
     export default {
         data() {
             return {
@@ -82,22 +90,22 @@
                     { nombre: "Ghoul", cr: 1, cantidad: 1 },
                     { nombre: "Espectro", cr: 13, cantidad: 1 },
                     { nombre: "Vampiro", cr: 13, cantidad: 1 },
-                    { nombre: "Manticora", cr: 3 },
-                    { nombre: "Basilisco", cr: 3 },
-                    { nombre: "Golem de Piedra", cr: 7 },
-                    { nombre: "Golem de Acero", cr: 10 },
-                    { nombre: "Golem de Tierra", cr: 10 },
-                    { nombre: "Griffon", cr: 3 },
-                    { nombre: "Quimera", cr: 3 },
-                    { nombre: "Hidra", cr: 8 },
-                    { nombre: "Kraken", cr: 20 },
-                    { nombre: "Troll", cr: 5 },
-                    { nombre: "Gárgola", cr: 2 },
-                    { nombre: "Minotauro", cr: 3 },
-                    { nombre: "Banshee", cr: 4 },
-                    { nombre: "Múmia", cr: 5 },
-                    { nombre: "Lich", cr: 21 },
-                    { nombre: "Beholder", cr: 13 },
+                    { nombre: "Manticora", cr: 3, cantidad: 1 },
+                    { nombre: "Basilisco", cr: 3, cantidad: 1 },
+                    { nombre: "Golem de Piedra", cr: 7, cantidad: 1 },
+                    { nombre: "Golem de Acero", cr: 10, cantidad: 1 },
+                    { nombre: "Golem de Tierra", cr: 10, cantidad: 1 },
+                    { nombre: "Griffon", cr: 3, cantidad: 1 },
+                    { nombre: "Quimera", cr: 3, cantidad: 1 },
+                    { nombre: "Hidra", cr: 8, cantidad: 1 },
+                    { nombre: "Kraken", cr: 20, cantidad: 1 },
+                    { nombre: "Troll", cr: 5, cantidad: 1 },
+                    { nombre: "Gárgola", cr: 2, cantidad: 1 },
+                    { nombre: "Minotauro", cr: 3, cantidad: 1 },
+                    { nombre: "Banshee", cr: 4, cantidad: 1 },
+                    { nombre: "Múmia", cr: 5, cantidad: 1 },
+                    { nombre: "Lich", cr: 21, cantidad: 1 },
+                    { nombre: "Beholder", cr: 13, cantidad: 1 },
                 ],
                 xp_diccionary: {
                     "1/8": 25,
@@ -137,6 +145,7 @@
                 monstruosSeleccionados: [],
                 numJugadores: 4,
                 mostrarModuloReparto: false,
+                calXP_logo: calXP_logo, // Asigna la ruta importada a la propiedad data
             };
         },
         computed: {

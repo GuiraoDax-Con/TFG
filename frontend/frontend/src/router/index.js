@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeComponent from '@/components/HomeComponent.vue';
 import Items from "@/components/items/items.vue"; // Ruta correcta al componente
 import AddItem from "@/components/add/AddItem.vue"; // Ruta correcta al componente
-import CalcularXP from '@/components/CalcularXP.vue'; // Ruta correcta al componente
+import CalcularXP from '@/components/Calculadora/CalcularXP.vue'; // Ruta correcta al componente
 
 const routes = [
   {
