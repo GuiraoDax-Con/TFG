@@ -28,6 +28,7 @@ def get_monster_by_name(monster_name: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Monstruo no encontrado")
     return monster
 
+# Ruta para crear un nuevo monstruo
 @router.post("/monsters", response_model=MonsterResponse)
 def create_monster(monster: MonsterCreate, db: Session = Depends(get_db)):
     db_monster = Monsters(**monster.dict())  # Convertir el modelo de Pydantic a un diccionario
@@ -36,6 +37,7 @@ def create_monster(monster: MonsterCreate, db: Session = Depends(get_db)):
     db.refresh(db_monster)
     return db_monster
 
+# Ruta para actualizar un monstruo existente
 @router.delete("/monsters/{monster_id}")
 def delete_monster(monster_id: int, db: Session = Depends(get_db)):
     monster = db.query(Monsters).filter(Monsters.id == monster_id).first()

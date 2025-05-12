@@ -17,7 +17,7 @@
 
 .logo-container-home {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
     display: flex; /* Añadimos flexbox para controlar la disposición de los elementos */
     flex-direction: column; /* Colocamos los elementos en columna, uno encima del otro */
     justify-content: center; /* Centramos verticalmente los elementos dentro del contenedor */
