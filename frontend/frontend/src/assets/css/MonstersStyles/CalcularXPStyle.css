@@ -25,12 +25,31 @@
 /*
  * Parte del boton de añadir monstruo
  */
- .add-monster-container {
+/* Estilo para el contenedor de añadir monstruos */
+.add-monster-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    padding: 0 10px;
+    justify-content: space-between; /* Espaciado entre los botones */
+    align-items: center; /* Alineación vertical */
+    margin: 0px -10px; /* Margen superior e inferior */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para un efecto visual */
+}
+
+/* Botón para añadir monstruos */
+.btn-añadir-monstruo {
+    padding: 10px 15px;
+    background-color: #4caf50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-añadir-monstruo:hover {
+    background-color: #388e3c; /* Verde más oscuro al pasar el cursor */
 }
 
 .btn-limpiar {
@@ -59,6 +78,7 @@
 .link-añadir-monstruo:hover {
     color: #1976d2;
 }
+
 
 
 
@@ -272,3 +292,5 @@ table th:nth-child(5),  /* XP */
 table td:nth-child(5) {
     width: 20%;
 }
+
+

@@ -1,0 +1,130 @@
+.add-monster-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+}
+
+.add-monster-container h2 {
+  margin-bottom: 20px;
+}
+
+.add-monster-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.add-monster-container input,
+.add-monster-container select {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.add-monster-container button {
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-monster-container button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+/**
+ * Estilo para el formulario de añadir monstruo
+ */
+/* Agrupar campo y label en fila */
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px;
+  width: 100%;
+}
+
+/* Asegura que los labels ocupen menos espacio */
+.form-group label {
+  width: 25%;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Ajusta el tamaño de los inputs/selects */
+.form-group input,
+.form-group select {
+  width: 70%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+/* Ajusta los inputs/selects */
+.form-group input,
+.form-group select {
+  width: 60%;
+}
+
+/* Ajusta el tamaño de los inputs */
+.form-group input {
+  width: 56.5%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+
+
+
+/**
+ * Logo de la parte superior de la pantalla
+ */
+.logo-container {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.add-monster-logo {
+  width: 300px;
+  height: 300px;
+  border-radius: 20%;
+  margin-bottom: 0px;
+}
+
+
+/**
+ * Estilo para la previsualización de la imagen del monstruo
+ */
+.monster-img-preview {
+  /* width: 150px;
+  height: 150px; */
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+
+/**
+ * Estilo para los mensajes de error y éxito
+ */
+.error-msg {
+  color: red;
+}
+.success-msg {
+  color: green;
+}

@@ -17,7 +17,7 @@
                     class="busqueda-input"
                 />
             </div>
-            <div class="filtro-tamaño">
+            <div class="filtro">
                 <label for="tamaño">Tamaño:</label>
                 <select id="tamaño" v-model="filtroTamaño" @change="aplicarFiltros">
                     <option value="">Todos</option>
@@ -25,10 +25,10 @@
                     <option value="Mediano">Mediano</option>
                     <option value="Grande">Grande</option>
                     <option value="Enorme">Enorme</option>
-                    <option value="Gargantuesco">Gargantuesco</option>
+                    <option value="Colosal">Colosal</option>
                 </select>
             </div>
-            <div class="filtro-tipo">
+            <div class="filtro">
                 <label for="tipo">Tipo:</label>
                 <select id="tipo" v-model="filtroTipo" @change="aplicarFiltros">
                     <option value="">Todos</option>
@@ -42,38 +42,24 @@
                     <option value="Aberración">Aberración</option>
                 </select>
             </div>
+            <div class="filtro">
+                <label for="orden">Ordenar por nombre:</label>
+                <select id="orden" v-model="ordenNombre" @change="aplicarOrden">
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
+                </select>
+            </div>
         </div>
 
         <div class="add-monster-container">
             <button @click="monstruosSeleccionados = []" class="btn-limpiar">
                 Limpiar Selección
             </button>
-            <button @click="abrirModal = true" class="btn-añadir-monstruo">
+            <button @click="addMonster" class="btn-añadir-monstruo">
                 Añadir monstruo
             </button>
         </div>
-
-        <!-- Modal -->
-        <div v-if="abrirModal" class="modal-overlay">
-            <div class="modal-content">
-                <h2>Añadir nuevo monstruo</h2>
-                <form @submit.prevent="guardarMonstruo">
-                    <input v-model="nuevoMonstruo.name" type="text" placeholder="Nombre *" required />
-                    <input v-model="nuevoMonstruo.size" type="text" placeholder="Tamaño *" required />
-                    <input v-model="nuevoMonstruo.type" type="text" placeholder="Tipo *" required />
-                    <input v-model="nuevoMonstruo.tag" type="text" placeholder="Raza" />
-                    <input v-model="nuevoMonstruo.alignment" type="text" placeholder="Alineamiento" />
-                    <input v-model="nuevoMonstruo.cr" type="text" placeholder="CR *" required />
-                    <input v-model="nuevoMonstruo.sourceBook" type="text" placeholder="Libro Origen" />
-                    <input @change="handleImageUpload" type="file" accept="image/png, image/jpeg" />
-                    <div class="modal-buttons">
-                        <button type="submit">Guardar</button>
-                        <button @click.prevent="abrirModal = false">Cancelar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Fin del Modal -->
+        
 
         <div class="tabla-monstruos">
             <table>
@@ -91,7 +77,7 @@
                 </thead>
                 
                 <tbody>
-                    <tr v-for="monstruo in monstruosFiltrados" :key="monstruo.nombre">
+                    <tr v-for="monstruo in monstruosFiltrados" :key="monstruo.id">
                         <td>
                             <input
                                 type="checkbox"
@@ -108,10 +94,10 @@
                                 class="cantidad-input"
                             />
                         </td>
-                        <td>{{ monstruo.nombre }}</td>
-                        <td>{{ monstruo.tamaño }}</td>
-                        <td>{{ monstruo.tipo }}</td>
-                        <td>{{ monstruo.raza }}</td>
+                        <td>{{ monstruo.name }}</td>
+                        <td>{{ monstruo.size }}</td>
+                        <td>{{ monstruo.type }}</td>
+                        <td>{{ monstruo.tag }}</td>
                         <td>{{ monstruo.cr }}</td>
                         <td>{{ calcularXP(monstruo.cr) * monstruo.cantidad }}</td>
                     </tr>
@@ -119,6 +105,7 @@
             </table>
         </div>
 
+        <!-- Modal que muestra el total de XP calculado -->
         <div class="xp-info">
             <button @click="mostrarModuloReparto = true" class="xp-total-button">
                 Total: {{ XP_total }} XP
@@ -150,38 +137,12 @@
 
 <script>
     import calXP_logo from "@/assets/images/calculadora-xp_imagenes/imagen_calculadora-xp.png"; // Importa la imagen
-    //import { useAddMonster } from "@/composables/useAddMonster.js";
+    import listaMosntruos from "@/services/monstersAPI.js"; // Importa la lista de monstruos desde el API
 
     export default {
         data() {
             return {
-                monstruos: [
-                    { nombre: "Goblin", cr: "1/4", cantidad: 1, tamaño: "Pequeño", tipo: "Humanoide", raza: "Goblinoide" },
-                    { nombre: "Orco", cr: "1/2", cantidad: 1, tamaño: "Mediano", tipo: "Humanoide", raza: "Orcoide" },
-                    { nombre: "Ogro", cr: 2, cantidad: 1, tamaño: "Grande", tipo: "Gigante", raza: "" },
-                    { nombre: "Dragón Rojo Adulto", cr: 17, cantidad: 1, tamaño: "Enorme", tipo: "Dragón", raza: "Dracónico" },
-                    { nombre: "Esqueleto", cr: "1/4", cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "" },
-                    { nombre: "Zombi", cr: "1/4", cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "" },
-                    { nombre: "Ghoul", cr: 1, cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "" },
-                    { nombre: "Espectro", cr: 13, cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "Incorpóreo" },
-                    { nombre: "Vampiro", cr: 13, cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "Cambiaformas" },
-                    { nombre: "Manticora", cr: 3, cantidad: 1, tamaño: "Grande", tipo: "Monstruosidad", raza: "" },
-                    { nombre: "Basilisco", cr: 3, cantidad: 1, tamaño: "Mediano", tipo: "Monstruosidad", raza: "" },
-                    { nombre: "Golem de Piedra", cr: 7, cantidad: 1, tamaño: "Grande", tipo: "Constructo", raza: "" },
-                    { nombre: "Golem de Acero", cr: 10, cantidad: 1, tamaño: "Grande", tipo: "Constructo", raza: "" },
-                    { nombre: "Golem de Tierra", cr: 10, cantidad: 1, tamaño: "Grande", tipo: "Constructo", raza: "" },
-                    { nombre: "Griffon", cr: 3, cantidad: 1, tamaño: "Grande", tipo: "Monstruosidad", raza: "" },
-                    { nombre: "Quimera", cr: 3, cantidad: 1, tamaño: "Grande", tipo: "Monstruosidad", raza: "" },
-                    { nombre: "Hidra", cr: 8, cantidad: 1, tamaño: "Enorme", tipo: "Monstruosidad", raza: "" },
-                    { nombre: "Kraken", cr: 20, cantidad: 1, tamaño: "Gargantuesco", tipo: "Monstruosidad", raza: "Acuático" },
-                    { nombre: "Troll", cr: 5, cantidad: 1, tamaño: "Grande", tipo: "Gigante", raza: "" },
-                    { nombre: "Gárgola", cr: 2, cantidad: 1, tamaño: "Mediano", tipo: "Elemental", raza: "" },
-                    { nombre: "Minotauro", cr: 3, cantidad: 1, tamaño: "Grande", tipo: "Monstruosidad", raza: "" },
-                    { nombre: "Banshee", cr: 4, cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "" },
-                    { nombre: "Múmia", cr: 5, cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "" },
-                    { nombre: "Lich", cr: 21, cantidad: 1, tamaño: "Mediano", tipo: "No Muerto", raza: "" },
-                    { nombre: "Beholder", cr: 13, cantidad: 1, tamaño: "Grande", tipo: "Aberración", raza: "" },
-                ],
+                monstruos: [],
                 xp_diccionary: {
                     "1/8": 25,
                     "1/4": 50,
@@ -224,6 +185,7 @@
                 busqueda: '', // Agregamos la propiedad para la búsqueda
                 filtroTamaño: '',
                 filtroTipo: '',
+                ordenNombre: "asc", // Nuevo: Controla el orden de los nombres
             };
         },
         computed: {
@@ -233,15 +195,22 @@
 
                 const busquedaMinuscula = this.busqueda.toLowerCase();
                 filtrados = filtrados.filter(monstruo =>
-                    monstruo.nombre.toLowerCase().includes(busquedaMinuscula)
+                    monstruo.name.toLowerCase().includes(busquedaMinuscula)
                 );
 
                 if (this.filtroTamaño) {
-                    filtrados = filtrados.filter(monstruo => monstruo.tamaño === this.filtroTamaño);
+                    filtrados = filtrados.filter(monstruo => monstruo.size === this.filtroTamaño);
                 }
 
                 if (this.filtroTipo) {
-                    filtrados = filtrados.filter(monstruo => monstruo.tipo === this.filtroTipo);
+                    filtrados = filtrados.filter(monstruo => monstruo.type === this.filtroTipo);
+                }
+
+                // Ordenar por nombre
+                if (this.ordenNombre === "asc") {
+                    filtrados.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (this.ordenNombre === "desc") {
+                    filtrados.sort((a, b) => b.name.localeCompare(a.name));
                 }
 
                 return filtrados;
@@ -257,6 +226,21 @@
             },
         },
         methods: {
+            addMonster() {
+                console.log("Ir a la zona de añadir monstruos");
+                this.$router.push("/add-monster");
+            },
+            async fetchMonstruos() {
+                try {
+                    const monstruos = await listaMosntruos.getMonsters();
+                    this.monstruos = monstruos.map((monstruo) => ({
+                        ...monstruo,
+                        cantidad: 1, // Inicializa la cantidad en 1
+                    }));
+                } catch (error) {
+                    console.error("Error al obtener los monstruos:", error);
+                }
+            },
             calcularXP(cr) {
                 return this.xp_diccionary[cr] || 0;
             },
@@ -284,22 +268,25 @@
                 this.XP_total;
             },
             aplicarFiltros() {
-                // Este método se llama cuando cambian los filtros de tamaño o tipo.
-                // No es necesario hacer nada aquí, ya que los filtros se aplican directamente
+                /* 
+                 * Este método se llama cuando cambian los filtros de tamaño o tipo.
+                 * No es necesario poner nada aquí, ya que los filtros se aplican directamente
+                 * en la propiedad computada monstruosFiltrados.
+                 */
+            },
+            aplicarOrden() {
+                // Este método se llama cuando cambia el orden de los nombres.
+                // No es necesario poner nada aquí, ya que el orden se aplica directamente
                 // en la propiedad computada monstruosFiltrados.
             }
         },
+        mounted() {
+            this.fetchMonstruos();
+        }
     };
-
-    /* const {
-        abrirModal,
-        nuevoMonstruo,
-        handleImageUpload,
-        guardarMonstruo
-    } = useAddMonster(); */
 </script>
 
 <style scoped>
-    @import "@/assets/css/CalculadoraXPcss/CalcularXPStyle.css";
-    @import "@/assets/css/CalculadoraXPcss/FiltrosClacXP.css";
+    @import "@/assets/css/MonstersStyles/CalcularXPStyle.css";
+    @import "@/assets/css/MonstersStyles/FiltrosClacXP.css";
 </style>

@@ -13,27 +13,22 @@
     margin-top: 10px;
 }
 
-.filtro-tamaño {
+
+.filtro {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
 }
 
-.filtro-tipo {
-    display: flex;
-    flex-direction: column;
-}
 
-.filtro-tamaño label,
-.filtro-tipo label {
+.filtro label {
     margin-bottom: 5px;
     font-weight: bold;
 
     margin-top: -10px;
 }
 
-.filtro-tamaño select,
-.filtro-tipo select {
+.filtro select {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -59,27 +54,27 @@
     min-width: 200px; /* Establece un ancho mínimo para la barra de búsqueda */
 }
 
-.filtro-tamaño {
+.filtro {
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-bottom: 0;
 }
 
-.filtro-tipo {
+.filtro {
     display: flex;
     flex-direction: column;
+    margin-right: 10px;
     margin-bottom: 0;
 }
 
-.filtro-tamaño label,
-.filtro-tipo label {
+.filtro label {
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.filtro-tamaño select,
-.filtro-tipo select {
+.filtro select {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -99,12 +94,14 @@
         flex: none; /* Evita que la barra de búsqueda se expanda demasiado en pantallas pequeñas */
         width: 100%;
     }
-    .filtro-tamaño, .filtro-tipo {
+    .filtro {
         margin-right: 0;
         margin-bottom: 10px;
         width: 100%;
     }
-    .filtro-tamaño select, .filtro-tipo select{
+    .filtro{
         width: 100%;
     }
 }
+
+

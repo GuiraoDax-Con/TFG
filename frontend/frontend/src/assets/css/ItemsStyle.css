@@ -56,60 +56,54 @@
 .items-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #f2f2f2; /* Fondo gris claro */
-    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #404040; /* Fondo gris oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-radius: 8px; /* Bordes redondeados */
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .items-table th,
 .items-table td {
-    padding: 15px;
+    padding: 12px;
     text-align: left;
-    font-size: 14px;
-    color: #333333; /* Letras oscuras para mejor contraste */
+    border-bottom: 1px solid #ddd; /* Línea divisoria */
 }
 
 .items-table th {
-    background-color: #666666; /* Fondo gris oscuro para encabezados */
-    font-weight: bold;
+    background-color: #005f99; /* Fondo azul oscuro */
+    color: white; /* Texto blanco */
     text-transform: uppercase;
-    border-bottom: 2px solid #555555;
-    color: white; /* Letras blancas para encabezados */
+    font-weight: bold;
 }
 
-.items-table td {
-    background-color: #d9d9d9; /* Fondo gris claro para celdas */
-    border-bottom: 1px solid #cccccc;
-    color: #333333; /* Letras oscuras */
+.items-table tbody tr:hover {
+    background-color: #162fe8; /* Fondo azul al pasar el cursor */
 }
 
-.items-table tr:nth-child(even) td {
-    background-color: #e6e6e6; /* Fondo ligeramente más claro para filas pares */
+.items-table tbody tr:nth-child(even) {
+    background-color: #363535; /* Fondo gris oscuro para filas pares */
 }
 
-.items-table tr:hover td {
-    background-color: #cccccc; /* Fondo gris más oscuro al pasar el cursor */
-    color: #333333; /* Letras oscuras */
-    cursor: pointer;
+.items-table tbody tr:nth-child(even):hover {
+    background-color: #162fe8; /* Fondo azul al pasar el cursor en filas pares */
 }
 
 /* Ajustes para bordes redondeados */
 .items-table tr:first-child th:first-child {
-    border-top-left-radius: 10px;
+    border-top-left-radius: 8px;
 }
 
 .items-table tr:first-child th:last-child {
-    border-top-right-radius: 10px;
+    border-top-right-radius: 8px;
 }
 
 .items-table tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 8px;
 }
 
 .items-table tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 8px;
 }
 
 /* Botón para añadir ítems */
@@ -129,5 +123,5 @@
 }
 
 .add-item-button:hover {
-    background-color: #004080;
+    background-color: #004080; /* Azul más oscuro al pasar el cursor */
 }

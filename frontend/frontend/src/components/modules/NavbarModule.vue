@@ -1,11 +1,12 @@
 <template>
   <nav class="nav-bar">
     
-    <router-link to="/" class="logo-container-navbar">
+    <router-link to="/" class="logo-container-navbar left">
       <img :src="logoSrc" alt="Logo de la página" />
     </router-link>
-    <router-link to="/items" class="nav-item right">Items</router-link> <!-- Enlace a Items -->
-    <router-link to="/calcular-xp" class="nav-item right">Calcular XP</router-link> <!-- Enlace a CalcularXP -->
+    <router-link to="/items" class="nav-item left">Items</router-link> <!-- Enlace a Items -->
+    <router-link to="/calcular-xp" class="nav-item left">Calcular XP</router-link> <!-- Enlace a CalcularXP -->
+    <router-link to="/dice" class="tirar-dado-enlace nav-item rigth">Tirar Dado</router-link> <!-- Enlace a Añadir Ítem -->
   </nav>
 </template>
   

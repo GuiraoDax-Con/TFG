@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeComponent from '@/components/HomeComponent.vue';
 import Items from "@/components/items/items.vue";
 import AddItem from "@/components/add/AddItem.vue"; 
-import CalcularXP from '@/components/Calculadora/CalcularXP.vue'; 
+import CalcularXP from '@/components/Monstruos/CalcularXP.vue'; 
+import AddMonsters from '@/components/Monstruos/AddMonsters.vue';
 import Dice from '@/components/dice/dice.vue'; 
 
 const routes = [
@@ -28,6 +29,12 @@ const routes = [
     path: '/calcular-xp',
     name: 'CalcularXP',
     component: CalcularXP,
+  },
+  
+  {
+    path: '/add-monster',
+    name: 'AddMonsters',
+    component: AddMonsters,
   },
   {
     path: '/dice',

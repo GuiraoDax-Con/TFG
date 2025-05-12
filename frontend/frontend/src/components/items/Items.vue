@@ -95,7 +95,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/css/ItemsStyle.css";
-
-
+  @import "../../assets/css/ItemsStyle.css";
 </style>
