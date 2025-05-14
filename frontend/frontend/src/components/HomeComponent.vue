@@ -8,9 +8,9 @@
         <h1 class="logo-text">
           Bienvenido a la
           <br>
-          Guarida del Dungeon
+          Guarida del 
           <br>
-          Master
+          Dungeon Master
         </h1>
       </div>
 

@@ -13,6 +13,7 @@
 .logo-container-calculadoraxp {
     text-align: center; /* Centra la imagen horizontalmente */
     margin-bottom: 20px; /* Espaciado debajo de la imagen */
+    margin-top: -50px;
 }
 .main-logo-calculadoraxp{
     max-width: 20%; /* Reduce el tamaño de la imagen al 50% del contenedor */

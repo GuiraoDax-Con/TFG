@@ -42,7 +42,6 @@
 
 
 
-
 /**
  * Estilo para el formulario de añadir monstruo
  */
@@ -51,42 +50,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0px;
   width: 100%;
+  gap: 0px;
 }
 
-/* Asegura que los labels ocupen menos espacio */
+/* Label a la izquierda */
 .form-group label {
   width: 25%;
   text-align: left;
   font-weight: bold;
 }
 
-/* Ajusta el tamaño de los inputs/selects */
+/* Inputs y selects */
 .form-group input,
 .form-group select {
-  width: 70%;
+  width: 65%;
   padding: 10px;
   border-radius: 8px;
   border: none;
   font-size: 1rem;
-}
-
-/* Ajusta los inputs/selects */
-.form-group input,
-.form-group select {
-  width: 60%;
 }
 
 /* Ajusta el tamaño de los inputs */
 .form-group input {
-  width: 56.5%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  font-size: 1rem;
+  width: 61.5%;
 }
-
 
 
 

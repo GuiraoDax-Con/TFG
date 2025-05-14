@@ -245,11 +245,16 @@
                 return this.xp_diccionary[cr] || 0;
             },
             toggleMonstruo(monstruo) {
+                /*
                 if (this.monstruosSeleccionados.includes(monstruo)) {
                     this.monstruosSeleccionados.splice(
                         this.monstruosSeleccionados.indexOf(monstruo),
                         1
                     );
+                */
+                const index = this.monstruosSeleccionados.findIndex(m => m.id === monstruo.id);
+                if (index !== -1) {
+                    this.monstruosSeleccionados.splice(index, 1);
                 } else {
                     this.monstruosSeleccionados.push(monstruo);
                 }
