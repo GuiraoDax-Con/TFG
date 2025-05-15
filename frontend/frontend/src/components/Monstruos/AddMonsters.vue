@@ -150,6 +150,5 @@
 </script>
 
 <style scoped>
-    /* @import "@/assets/css/MonstersStyles/AddMonsterStyle.css"; */
     @import "@/assets/css/addPageStyle.css";
 </style>
