@@ -1,10 +1,7 @@
 <template>
-  <div class="add-monster-container">
-    <div class="logo-container">
-      <img src="@/assets/images/calculadora-xp_imagenes/addMonster.png" alt="Añadir Monstruo" class="add-monster-logo" />
-    </div>
+  <div class="add-page">
     
-    <h2>Añadir Nuevo Monstruo</h2>
+    <h1>Añadir Nuevo Monstruo</h1>
 
     <form @submit.prevent="guardarMonstruo">
       <div class="form-group">
@@ -153,5 +150,6 @@
 </script>
 
 <style scoped>
-    @import "@/assets/css/MonstersStyles/AddMonsterStyle.css";
+    /* @import "@/assets/css/MonstersStyles/AddMonsterStyle.css"; */
+    @import "@/assets/css/addPageStyle.css";
 </style>

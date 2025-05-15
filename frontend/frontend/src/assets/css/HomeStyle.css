@@ -1,5 +1,7 @@
+
+
 .home-page {  
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Asegura que el contenido principal ocupe todo el ancho */
+    width: 90%; /* Asegura que el contenido principal ocupe todo el ancho */
 }
 
 .logo-container-home {
@@ -23,6 +25,14 @@
     justify-content: center; /* Centramos verticalmente los elementos dentro del contenedor */
     align-items: center; /* Centramos horizontalmente los elementos dentro del contenedor */
     width: 100%;
+    padding: 10px; /* Añadimos un poco de espacio alrededor del contenedor */
+    margin-block-end: 10px;
+}
+
+.logo-container-home img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-block-end: 0px;;
 }
 
 .main-logo-home{
@@ -36,17 +46,18 @@
     line-height: 1.5;
     letter-spacing: 2px; /* Añade espacio entre letras para mayor amplitud */
     font-weight: bold; /* Hace el texto más llamativo */
+    padding: 0px; /* Añade espacio alrededor del texto */
+    margin-top: 10px;
 }
 
 .buttons-container {
     display: flex;
     gap: 40px;
-    margin-top: 40px; /* Añade espacio sobre los botones */
+    padding: 0px 0px 20px 0px; /* Añade espacio sobre los botones */
+    margin-block-end: 10px;;
 }
 
 .button {
-    background-color: #005f99;
-    color: white;
     padding: 15px 30px;
     border: none;
     border-radius: 10px;
@@ -56,5 +67,5 @@
 }
 
 .button:hover {
-    background-color: #0088cc;
+    background-color: #005f99;
 }

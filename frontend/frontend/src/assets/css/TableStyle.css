@@ -1,0 +1,67 @@
+.body-page {
+    padding: 50px 100px 10px 100px; /* Espaciado alrededor del contenido */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Imagen centrada */
+.image-container {
+    text-align: center; /* Centra la imagen horizontalmente */
+    margin-bottom: 20px; /* Espaciado debajo de la imagen */
+    margin-top: -80px;
+}
+.centrar-imagen {
+   max-width: 20%; /* Reduce el tamaño de la imagen al 50% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 15px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto visual */
+}
+
+/* Estilo de Botones */
+.btn-añadir {
+    padding: 10px 15px;
+    background-color: #4caf50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Estilo de las TABLAS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #404040;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #162fe8;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #363535;
+}
+tbody tr:nth-child(even):hover {
+    background-color: #162fe8;
+}

@@ -1,4 +1,4 @@
-.add-monster-page {
+.add-page {
   max-width: 600px;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.2);
@@ -8,25 +8,25 @@
   text-align: center;
 }
 
-.add-monster-page h2 {
+.add-page h2 {
   margin-bottom: 20px;
 }
 
-.add-monster-page form {
+.add-page form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.add-monster-page input,
-.add-monster-page select {
+.add-page input,
+.add-page select {
   padding: 8px;
   border-radius: 8px;
   border: none;
   font-size: 1rem;
 }
 
-.add-monster-page button {
+.add-page button {
   padding: 10px;
   border: none;
   background-color: #007bff;
@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-.add-monster-page button:hover {
+.add-page button:hover {
   background-color: #0056b3;
 }
 

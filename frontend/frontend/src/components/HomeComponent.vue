@@ -15,8 +15,8 @@
       </div>
 
       <div class="buttons-container">
-        <button class="button tienda-button" @click="goToTienda">Tienda</button>
-        <button class="button calcular-xp-button" @click="calcularXP">Calcular XP</button>
+        <button class="button primary-color tienda-button" @click="goToTienda">Tienda</button>
+        <button class="button primary-color calcular-xp-button" @click="calcularXP">Calcular XP</button>
       </div>
     </main>
   </div>

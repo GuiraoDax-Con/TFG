@@ -1,9 +1,9 @@
 /* FiltrosCalcXP.css*/
-.busqueda-monstruos {
+.barra-busqueda {
     margin-bottom: 20px;
 }
 
-.busqueda-input {
+.barra-busqueda-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -47,7 +47,7 @@
     gap: 10px; /* Añade espacio entre los elementos */
 }
 
-.busqueda-monstruos {
+.barra-busqueda {
     margin-right: 20px;
     margin-bottom: 0; /* Elimina el margen inferior para que esté alineado con los otros filtros en pantallas grandes */
     flex: 1; /* Permite que la barra de búsqueda se expanda para ocupar el espacio disponible */
@@ -88,7 +88,7 @@
         flex-direction: column; /* Apila los elementos verticalmente en pantallas pequeñas */
         align-items: flex-start; /* Alinea los elementos a la izquierda en pantallas pequeñas */
     }
-    .busqueda-monstruos {
+    .barra-busqueda {
         margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
         margin-bottom: 10px; /* Añade margen inferior para separar los elementos apilados */
         flex: none; /* Evita que la barra de búsqueda se expanda demasiado en pantallas pequeñas */

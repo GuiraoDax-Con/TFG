@@ -1,0 +1,31 @@
+/* Página de ítems */
+
+
+/* Barra de búsqueda */
+.barra-busqueda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+/* Botón para añadir ítems */
+.add-item-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.add-item-button {
+    padding: 10px 20px;
+    background-color: #005f99;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-item-button:hover {
+    background-color: #004080; /* Azul más oscuro al pasar el cursor */
+}

@@ -1,26 +1,4 @@
 /* CalcularXPStyle.css */
-.calcular-xp {
-    padding: 100px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* 
- * Parte de la imagen/logo del principio de la pagina
- */
-.logo-container-calculadoraxp {
-    text-align: center; /* Centra la imagen horizontalmente */
-    margin-bottom: 20px; /* Espaciado debajo de la imagen */
-    margin-top: -50px;
-}
-.main-logo-calculadoraxp{
-    max-width: 20%; /* Reduce el tamaño de la imagen al 50% del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 15px; /* Esquinas redondeadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto visual */
-}
 
 
 /*
@@ -38,19 +16,12 @@
 }
 
 /* Botón para añadir monstruos */
-.btn-añadir-monstruo {
-    padding: 10px 15px;
-    background-color: #4caf50; /* Verde */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: background-color 0.3s ease;
-}
+
 
 .btn-añadir-monstruo:hover {
     background-color: #388e3c; /* Verde más oscuro al pasar el cursor */
+    transform: scale(1.1); /* Aumenta el tamaño un poco */
+    transition: transform 0.2s ease; /* Suaviza la transición */
 }
 
 .btn-limpiar {
@@ -60,19 +31,21 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
 .btn-limpiar:hover {
     background-color: #c62828;
+    transform: scale(1.1); /* Aumenta el tamaño un poco */
+    transition: transform 0.2s ease; /* Suaviza la transición */
 }
 
 .link-añadir-monstruo {
     color: #2196f3;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -81,48 +54,6 @@
 }
 
 
-
-
-/*
- * Parte de la tabla de monstruos
- */
-.tabla-monstruos {
-    margin-bottom: 20px;
-    overflow-x: auto;
-    flex-grow: 1;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    background-color: #404040;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-th,
-td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #005f99;
-    /* border-radius: 8px 8px 0 0; */
-}
-
-tbody tr:hover {
-    background-color: #162fe8;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #363535;
-}
-tbody tr:nth-child(even):hover {
-    background-color: #162fe8;
-}
 
 
 /*
@@ -153,6 +84,8 @@ tbody tr:nth-child(even):hover {
 
 .xp-total-button:hover {
     background-color: #45a049;
+    transform: scale(1.1); /* Aumenta el tamaño un poco */
+    transition: transform 0.2s ease; /* Suaviza la transición */
 }
 
 
@@ -293,5 +226,3 @@ table th:nth-child(5),  /* XP */
 table td:nth-child(5) {
     width: 20%;
 }
-
-

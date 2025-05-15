@@ -2,8 +2,8 @@
 .footer {
   background-color: #222;
   color: #fff;
-  padding: 20px 0px;
-  margin-top: 0px;
+  padding: 0px 0px 0px 0px;
+  margin-top: 10px;  /* Espacio entre el footer y el contenido superior */
   width: 100%;
   
   display: flex; /* Utilizamos flexbox para la distribución en columnas */
@@ -93,6 +93,13 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
+}
+
+/* Media query para pantallas de 768px o más */
+@media (min-width: 768px) {
+    .social-icons {
+        justify-content: flex-start; /* Alinea a la izquierda en pantallas grandes */
+    }
 }
 
 .social-icons a {

@@ -1,10 +1,10 @@
 .nav-bar {
-    background-color: #005f99;
+    background-color: #042032;
     display: flex;
     align-items: center;
     justify-content: space-between; /* Espaciado entre los elementos de la izquierda y la derecha */
     padding: 7px 0px; /* Espaciado interno */
-    width: 100%; /* Establece el ancho al 100% del contenedor padre */
+    width: 100%; /* Establece el ancho al 100% del contenedor padre */ 
 }
 
 .nav-item {

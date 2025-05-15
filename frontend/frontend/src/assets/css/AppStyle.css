@@ -1,10 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Uncial+Antiqua&display=swap');
+
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'IM Fell English', serif;
     background-image: url('@/assets/images/fondo.png'); /* Ruta de la imagen */
     background-size: cover; /* Asegura que la imagen cubra todo el fondo */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
     color: white; /* Ajusta el color del texto para que contraste con el fondo */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Uncial Antiqua', serif; /* Cambia la fuente de los encabezados */
+    text-align: center; /* Centra los encabezados */
+    color: #fff; /* Color blanco para los encabezados */
+    margin-top: 10px;
+}
+
+button, select {
+    font-family: 'IM Fell English', serif; /* Cambia la fuente de los botones y selects */
+    font-size: 1rem; /* Tamaño de fuente */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.primary-color {
+    background-color: #042032; /* Verde */
+    color: white; /* Texto blanco */
+    border-radius: inherit;;
 }

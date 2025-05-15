@@ -1,20 +1,15 @@
 <template>
-    <div class="calcular-xp">
+    <div class="body-page">
 
-        <div class="logo-container-calculadoraxp">
-            <img :src="calXP_logo" alt="Escudo del Bestiario" 
-            class="main-logo-calculadoraxp" />
-        </div>
-
-        <h1>Calcular XP</h1>
+        <h1>Calcular XP</h1><br>        
 
         <div class="filtros-busqueda">
-            <div class="busqueda-monstruos">
+            <div class="barra-busqueda">
                 <input
                     type="text"
                     v-model="busqueda"
                     placeholder="Buscar monstruo por nombre..."
-                    class="busqueda-input"
+                    class="barra-busqueda-input"
                 />
             </div>
             <div class="filtro">
@@ -55,16 +50,16 @@
             <button @click="monstruosSeleccionados = []" class="btn-limpiar">
                 Limpiar Selección
             </button>
-            <button @click="addMonster" class="btn-añadir-monstruo">
+            <button @click="addMonster" class="btn-añadir">
                 Añadir monstruo
             </button>
         </div>
         
 
-        <div class="tabla-monstruos">
+        <div>
             <table>
                 <thead>
-                    <tr>
+                    <tr class="primary-color">
                         <th>Seleccionar</th>
                         <th>Cantidad</th>
                         <th>Nombre</th>
@@ -136,7 +131,6 @@
 </template>
 
 <script>
-    import calXP_logo from "@/assets/images/calculadora-xp_imagenes/imagen_calculadora-xp.png"; // Importa la imagen
     import listaMosntruos from "@/services/monstersAPI.js"; // Importa la lista de monstruos desde el API
 
     export default {
@@ -181,7 +175,6 @@
                 monstruosSeleccionados: [],
                 numJugadores: 4,
                 mostrarModuloReparto: false,
-                calXP_logo: calXP_logo, // Asigna la ruta importada a la propiedad data
                 busqueda: '', // Agregamos la propiedad para la búsqueda
                 filtroTamaño: '',
                 filtroTipo: '',
@@ -293,5 +286,4 @@
 
 <style scoped>
     @import "@/assets/css/MonstersStyles/CalcularXPStyle.css";
-    @import "@/assets/css/MonstersStyles/FiltrosClacXP.css";
 </style>
