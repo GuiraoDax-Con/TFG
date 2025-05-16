@@ -56,18 +56,24 @@
 
       <div class="form-group"></div>
 
+
+      <Toast ref="toast" />
+      
       
       <button type="submit">Guardar</button>
       <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
     </form>
-    
   </div>
 </template>
 
 <script>
   import axios from "axios";
+  import Toast from "../modules/Toast.vue";
 
   export default {
+    components: {
+      Toast,
+    },
     data() {
       return {
         newItem: {

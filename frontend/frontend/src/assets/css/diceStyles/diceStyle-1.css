@@ -1,0 +1,40 @@
+.scene-container {
+  width: 100%;
+  max-width: 500px; /* Limita el ancho máximo del contenedor */
+  height: 500px;
+  margin: -21px auto; /* Baja el dado un poco más */
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+.result-display {
+  position: absolute;
+  top: 20%; /* Baja el resultado un poco más */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: #005f99; /* Azul como el dado */
+  font-size: 4rem; /* Tamaño más pequeño */
+  font-weight: bold;
+  padding: 5px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 50;
+}
+
+.roll-button {
+  display: block;
+  margin: -130px auto 0; /* Centra el botón debajo del dado */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #005f99; /* Azul como el dado */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.roll-button:hover {
+  background-color: #004080;
+}

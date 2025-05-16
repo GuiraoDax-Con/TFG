@@ -18,15 +18,20 @@
         <button class="button primary-color tienda-button" @click="goToTienda">Tienda</button>
         <button class="button primary-color calcular-xp-button" @click="calcularXP">Calcular XP</button>
       </div>
+
+      <!-- Componente Toast agregado aquí -->
+      <Toast ref="toast" />
     </main>
   </div>
 </template>
   
 <script>
   import logo from '@/assets/images/logo.png'; // Importa la imagen
+  import Toast from './modules/Toast.vue'; // Importa el componente Toast
 
   export default {
     name: 'HomePage',
+    components: { Toast }, // Importart Toast en el componentes
     data() {
       return {
         logoSrc: logo // Asigna la ruta importada a la propiedad data
@@ -35,20 +40,19 @@
     methods: {
       goToTienda() {
         console.log('Ir a la tienda');
-        alert('Ir a la tienda');
-        // Aquí iría la lógica para navegar a la tienda
-        //alert('Ir a la tienda');
-        // Aquí iría la lógica para calcular la XP
-        // Por ejemplo, podrías redirigir a otra página o abrir un modal
-        this.$router.push('/items');
+        this.$refs.toast.show('Ir a la tienda'); // Usar Toast en vez de alert
+        
+        setTimeout(() => {
+          this.$router.push('/calcular-xp');
+        }, 1000);
       },
       calcularXP() {
         console.log('Calcular XP');
-        alert('Calcular XP');
-        //alert('Calcular XP');
-        // Aquí iría la lógica para calcular la XP
-        // Por ejemplo, podrías redirigir a otra página o abrir un modal
-        this.$router.push('/calcular-xp');
+        this.$refs.toast.show('Calcular XP'); // Usar Toast en vez de alert
+
+        setTimeout(() => {
+          this.$router.push('/calcular-xp');
+        }, 1000);
       },
     },
   };
