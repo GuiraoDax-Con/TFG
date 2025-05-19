@@ -172,6 +172,14 @@
                     29: 135000,
                     30: 155000
                 },
+                multiplicadorXP: {
+                    1: 1,
+                    2: 1.5,
+                    3: 2,
+                    7: 2.5,
+                    11: 3,
+                    15: 4
+                },
                 monstruosSeleccionados: [],
                 numJugadores: 4,
                 mostrarModuloReparto: false,
@@ -209,10 +217,14 @@
                 return filtrados;
             },
             XP_total() {
-                return this.monstruosSeleccionados.reduce((total, monstruo) => {
-                    const xp = this.calcularXP(monstruo.cr) * monstruo.cantidad;
-                    return total + xp;
+                const xpSinMultiplicador = this.monstruosSeleccionados.reduce((total, monstruo) => {
+                    return total + this.calcularXP(monstruo.cr) * monstruo.cantidad;
                 }, 0);
+
+                const cantidadTotal = this.monstruosSeleccionados.reduce((suma, m) => suma + m.cantidad, 0);
+                const multiplicador = this.calcularMultiplicadorXP(cantidadTotal);
+
+                return Math.ceil(xpSinMultiplicador * multiplicador);
             },
             XP_repartido() {
                 return Math.ceil(this.XP_total / this.numJugadores);
@@ -260,6 +272,14 @@
                 if (this.numJugadores > 1) {
                     this.numJugadores--;
                 }
+            },
+            calcularMultiplicadorXP(cantidadTotal) {
+                if (cantidadTotal === 1) return 1;
+                if (cantidadTotal === 2) return 1.5;
+                if (cantidadTotal >= 3 && cantidadTotal <= 6) return 2;
+                if (cantidadTotal >= 7 && cantidadTotal <= 10) return 2.5;
+                if (cantidadTotal >= 11 && cantidadTotal <= 14) return 3;
+                return 4; // 15 o más
             },
             calcularTotalXP() {
                 // Método para recalcular el XP total.  Se llama cuando cambia la cantidad de monstruos.
