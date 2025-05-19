@@ -23,7 +23,7 @@
 </template>
   
 <script>
-  import logo from '@/assets/images/logo.png'; // Importa la imagen
+  import logo from '@/assets/images/icono_dragon.png'; // Importa la imagen
 
   export default {
     name: 'HomePage',
