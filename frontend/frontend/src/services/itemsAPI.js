@@ -93,7 +93,7 @@ const deleteItem = async (itemId) => {
         return response.data;
     } catch (error) {
         console.error(`Error al eliminar el item con ID ${itemId}:`, error);
-        throw error;W
+        throw error;
     }
 };
 

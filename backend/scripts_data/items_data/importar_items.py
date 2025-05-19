@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.exc import SQLAlchemyError
 
 # Conexión a la base de datos
-URL_DATABASE = 'mysql+pymysql://dm:1235@localhost:3306/laguarida'
+URL_DATABASE = 'mysql+pymysql://root:root@localhost:3306/laguarida'
 
 try:
     engine = create_engine(URL_DATABASE)

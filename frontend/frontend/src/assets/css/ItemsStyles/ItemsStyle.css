@@ -29,3 +29,137 @@
 .add-item-button:hover {
     background-color: #004080; /* Azul más oscuro al pasar el cursor */
 }
+
+  table th, table td {
+    min-width: 100px;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 4px 8px;
+    margin: 0;
+  }
+
+  .btn-accion,
+.btn-actualizar,
+.btn-eliminar,
+.btn-preview {
+  background:rgb(66, 67, 68);         /* Azul principal */
+  color: #fff;
+  border: none;
+  font-size: 0.75em;           /* Más pequeño */
+  padding: 2px 6px;            /* Más compacto */
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0;
+  margin-bottom: 2px;
+  transition: background 0.2s;
+}
+
+.btn-accion:hover,
+.btn-actualizar:hover,
+.btn-eliminar:hover,
+.btn-preview:hover {
+  background:rgb(20, 21, 22);         /* Azul más oscuro al pasar el ratón */
+}
+
+.btn-guardar {
+    background: #4caf50;
+    color: #fff;
+    border: none;
+  }
+
+  .btn-cancelar {
+    background: #f44336;
+    color: #fff;
+    border: none;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 0;
+  }
+
+  .item-row .btn-actualizar {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.item-row:hover .btn-actualizar {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-preview {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #222;
+  color: #fff;
+  width: 90vw;           /* Permite que el modal sea más ancho */
+  max-width: 900px;      /* Ajusta según tu preferencia */
+  padding: 24px 32px;
+  border-radius: 8px;
+  min-width: 150px;
+  box-shadow: 0 2px 16px #000a;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo el contenido horizontalmente */
+}
+
+.modal-content img {
+  max-width: 600px;
+  max-height: 70vh;
+  width: 100%;         /* Hace que la imagen sea responsiva */
+  height: auto;        /* Mantiene la proporción */
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-content h3 
+.modal-content ul,
+.modal-content p {
+  align-self: flex-start;
+  text-align: center;
+  width: 100%;
+}
+
+
+  /* Oculta todos los botones de acción por defecto */
+  .item-row .btn-accion {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  /* Muestra los botones al pasar el ratón por la fila */
+  .item-row:hover .btn-accion {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .item-row td:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 110px; /* Ajusta según necesidad */
+  align-items: flex-start;
+}

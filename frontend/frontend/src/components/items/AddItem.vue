@@ -54,11 +54,14 @@
           <input type="text" v-model="newItem.Properties" />
       </div>
 
+      <div class="form-group">
+          <label>URL de imagen (opcional):</label>
+          <input type="text" v-model="newItem.img" placeholder="https://..." />
+      </div>
+
       <div class="form-group"></div>
 
-
       <Toast ref="toast" />
-      
       
       <button type="submit">Guardar</button>
       <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
@@ -84,6 +87,7 @@
           Weight: "",
           Type: "",
           Properties: "",
+          img: "", // Campo opcional para la URL de la imagen
         },
         errorMessage: "", // Mensaje de error
       };
@@ -108,6 +112,7 @@
             Weight: "",
             Type: "",
             Properties: "",
+            img: "",
           };
 
           // Limpia el mensaje de error si la solicitud fue exitosa
