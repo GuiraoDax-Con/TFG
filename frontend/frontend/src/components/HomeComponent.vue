@@ -26,7 +26,7 @@
 </template>
   
 <script>
-  import logo from '@/assets/images/logo.png'; // Importa la imagen
+  import logo from '@/assets/images/favicon.png'; // Importa la imagen
   import Toast from './modules/Toast.vue'; // Importa el componente Toast
 
   export default {

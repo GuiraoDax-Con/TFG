@@ -1,7 +1,7 @@
 <template>
   <nav class="nav-bar">
     
-    <router-link to="/" class="logo-container-navbar left">
+    <router-link to="/" class="logo-container-navbar left" title="Pagina de Inicio">
       <img :src="logoSrc" alt="Logo de la página" />
     </router-link>
     <router-link to="/items" class="nav-item left">Items</router-link> <!-- Enlace a Items -->
@@ -11,7 +11,7 @@
 </template>
   
 <script>
-  import logo from '@/assets/images/logo.png';
+  import logo from '@/assets/images/favicon.png';
   
   export default {
     name: 'NavBar',
