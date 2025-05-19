@@ -34,6 +34,7 @@
     <table>
       <thead>
         <tr class="primary-color">
+          <th>Id</th>
           <th>Nombre</th>
           <th>Precio</th>
           <th>Tipo</th>
@@ -44,6 +45,7 @@
       </thead>
       <tbody>
         <tr v-for="item in filteredItems" :key="item.id">
+          <td>{{ item.id }}</td>
           <td>{{ item.Name }}</td>
           <td>{{ item.Price }}</td>
           <td>{{ item.Type }}</td>
@@ -57,7 +59,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import itemsAPI from '../../services/itemsAPI';
 
 export default {
   data() {
@@ -86,14 +88,13 @@ export default {
       this.$router.push("/add-item");
     },
     async fetchItems() {
-      // Obtiene la lista de ítems desde el backend
+      // Obtiene la lista de ítems desde el backend usando itemsAPI
       try {
-        const response = await axios.get("http://127.0.0.1:8000/items");
-        this.items = response.data;
+        this.items = await itemsAPI.getItems();
       } catch (error) {
         console.error("Error al obtener los ítems:", error);
       }
-    },
+    }, 
   },
   mounted() {
     this.fetchItems(); // Carga los ítems al montar el componente

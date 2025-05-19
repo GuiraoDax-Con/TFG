@@ -1,15 +1,12 @@
 <template>
-  <div class="p-6 relative">
+  <div class="dice-page-wrapper">
     <!-- Resultado del dado -->
-    <div
-      v-if="rolledResult !== null"
-      class="result-display"
-    >
-      🎲 {{ rolledResult }}
+    <div v-if="rolledResult !== null" class="result-display">
+      {{ rolledResult }}
     </div>
 
     <!-- Contenedor del dado -->
-    <div ref="sceneContainer" class="scene-container mt-10"></div>
+    <div ref="sceneContainer" class="scene-container"></div>
 
     <!-- Botón para lanzar el dado -->
     <button @click="rollDice" class="roll-button">
@@ -31,7 +28,7 @@ let scene, camera, renderer, icosahedron, controls, faceNormals = []
 
 const initScene = () => {
   scene = new THREE.Scene()
-  scene.background = null // Fondo transparente
+  scene.background = null
 
   const containerWidth = sceneContainer.value.clientWidth
   const containerHeight = sceneContainer.value.clientHeight
@@ -39,7 +36,7 @@ const initScene = () => {
   camera = new THREE.PerspectiveCamera(75, containerWidth / containerHeight, 0.1, 1000)
   camera.position.z = 5
 
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }) // Soporte para fondo transparente
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
   renderer.setSize(containerWidth, containerHeight)
   sceneContainer.value.appendChild(renderer.domElement)
 
@@ -51,6 +48,8 @@ const initScene = () => {
   })
 
   icosahedron = new THREE.Mesh(geometry, material)
+
+  icosahedron.scale.set(2, 2, 2)
 
   const edges = new THREE.EdgesGeometry(geometry)
   const lineMaterial = new THREE.LineBasicMaterial({ color: 0x66ccff })
@@ -172,5 +171,5 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-  @import '@/assets/css/diceStyles/diceStyle-1.css';
+@import '@/assets/css/diceStyles/diceStyle-1.css';
 </style>

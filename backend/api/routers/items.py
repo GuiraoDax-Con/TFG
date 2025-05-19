@@ -36,3 +36,14 @@ def create_item(item: ItemCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_item)
     return db_item
+
+@router.put("/items/{item_id}", response_model=ItemResponse)
+def update_item(item_id: int, item: ItemCreate, db: Session = Depends(get_db)):
+    db_item = db.query(Items).filter(Items.id == item_id).first()
+    if not db_item:
+        raise HTTPException(status_code=404, detail="Item no encontrado")
+    for key, value in item.dict().items():
+        setattr(db_item, key, value)
+    db.commit()
+    db.refresh(db_item)
+    return db_item

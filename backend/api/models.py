@@ -8,7 +8,7 @@ class Items(Base):
     
     id = Column(Integer, primary_key=True, index=True)  # ID del item, clave primaria
     Name = Column(String(100))
-    Price = Column(String(30))
+    Price = Column(String(30)) 
     AC = Column(String(100))
     Damage = Column(String(50))
     Weight = Column(String(10))

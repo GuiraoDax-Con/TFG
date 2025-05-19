@@ -101,11 +101,23 @@ const deleteMonster = async (monsterId) => {
     }
 };
 
+const updateMonster = async (monsterId, monsterData) => {
+    try {
+        const response = await api.put(`/monsters/${monsterId}`, monsterData);
+        return response.data;
+    } catch (error) {
+        console.error(`Error al actualizar el monstruo con ID ${monsterId}:`, error);
+        throw error;
+    }
+};
+
+
 export default{
     Monster,
     getMonsters,
     getMonsterById,
     getMonsterByName,
     createMonster,
-    deleteMonster
+    deleteMonster,
+    updateMonster
 }

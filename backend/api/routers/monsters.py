@@ -46,3 +46,15 @@ def delete_monster(monster_id: int, db: Session = Depends(get_db)):
     db.delete(monster)
     db.commit()
     return {"detail": "Monstruo eliminado"}
+
+
+@router.put("/monsters/{monster_id}", response_model=MonsterResponse)
+def update_monster(monster_id: int, monster: MonsterCreate, db: Session = Depends(get_db)):
+    db_monster = db.query(Monsters).filter(Monsters.id == monster_id).first()
+    if not db_monster:
+        raise HTTPException(status_code=404, detail="Monstruo no encontrado")
+    for key, value in monster.dict().items():
+        setattr(db_monster, key, value)
+    db.commit()
+    db.refresh(db_monster)
+    return db_monster

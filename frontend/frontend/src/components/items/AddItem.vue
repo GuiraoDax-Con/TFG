@@ -67,7 +67,7 @@
 </template>
 
 <script>
-  import axios from "axios";
+  import itemsAPI from "@/services/itemsAPI";
   import Toast from "../modules/Toast.vue";
 
   export default {
@@ -95,9 +95,9 @@
       },
       async addItem() {
         try {
-          // Realiza una solicitud POST al backend
-          const response = await axios.post("http://127.0.0.1:8000/items", this.newItem);
-          console.log("Ítem añadido con éxito:", response.data);
+          // Usa el servicio para crear el ítem
+          await itemsAPI.createItem(this.newItem);
+          console.log("Ítem añadido con éxito");
 
           // Reinicia el formulario después de guardar
           this.newItem = {
