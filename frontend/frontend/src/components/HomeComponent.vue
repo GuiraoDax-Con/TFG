@@ -25,7 +25,7 @@
   </div>
 </template>
   
-<script>
+<script> 
   import logo from '@/assets/images/favicon.png'; // Importa la imagen
   import Toast from './modules/Toast.vue'; // Importa el componente Toast
 
@@ -43,7 +43,7 @@
         this.$refs.toast.show('Ir a la tienda'); // Usar Toast en vez de alert
         
         setTimeout(() => {
-          this.$router.push('/calcular-xp');
+          this.$router.push('/items');
         }, 1000);
       },
       calcularXP() {
