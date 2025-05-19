@@ -1,42 +1,64 @@
-.calcular-xp {
-    padding: 20px;
-    text-align: center;
+/* CalcularXPStyle.css */
+
+
+/*
+ * Parte del boton de añadir monstruo
+ */
+/* Estilo para el contenedor de añadir monstruos */
+.add-monster-container {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    justify-content: space-between; /* Espaciado entre los botones */
+    align-items: center; /* Alineación vertical */
+    margin: 0px -10px; /* Margen superior e inferior */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para un efecto visual */
 }
 
-.tabla-monstruos {
-    margin-bottom: 20px;
-    overflow-x: auto;
-    flex-grow: 1;
+/* Botón para añadir monstruos */
+
+
+.btn-añadir-monstruo:hover {
+    background-color: #388e3c; /* Verde más oscuro al pasar el cursor */
+    transform: scale(1.1); /* Aumenta el tamaño un poco */
+    transition: transform 0.2s ease; /* Suaviza la transición */
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    background-color: #404040;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.btn-limpiar {
+    padding: 10px 15px;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-th,
-td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.btn-limpiar:hover {
+    background-color: #c62828;
+    transform: scale(1.1); /* Aumenta el tamaño un poco */
+    transition: transform 0.2s ease; /* Suaviza la transición */
 }
 
-th {
-    background-color: #005f99;
-    /* border-radius: 8px 8px 0 0; */
+.link-añadir-monstruo {
+    color: #2196f3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-tbody tr:hover {
-    background-color: #162fe8;
+.link-añadir-monstruo:hover {
+    color: #1976d2;
 }
 
+
+
+
+/*
+ * Parte del boton de calcular XP
+ */
 .xp-info {
     display: flex;
     justify-content: center;
@@ -62,8 +84,14 @@ tbody tr:hover {
 
 .xp-total-button:hover {
     background-color: #45a049;
+    transform: scale(1.1); /* Aumenta el tamaño un poco */
+    transition: transform 0.2s ease; /* Suaviza la transición */
 }
 
+
+/*
+ * Parte del modulo de reparto de XP por jugadores
+ */
 .modulo-reparto {
     position: fixed;
     top: 50%;

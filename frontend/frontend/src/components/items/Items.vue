@@ -1,36 +1,39 @@
 <template>
-  <div class="items-page">
-    <!-- Imagen centrada -->
-    <div class="image-container">
-      <img src="@/assets/images/items_image.png" 
-      class="centered-image" />
-    </div>
+  <div class="body-page">
+    
+    <h1>Items</h1>
 
     <!-- Barra de búsqueda -->
-    <div class="search-bar">
-      <input
-        type="text"
-        v-model="searchQuery"
-        placeholder="Buscar por nombre..."
-        class="search-input"
-      />
-      <select v-model="filterType" class="filter-select">
-        <option value="">Todos</option>
-        <option value="arma">Arma</option>
-        <option value="armadura">Armadura</option>
-      </select>
-      
+    <div class="filtros-busqueda">
+        <div class="barra-busqueda">
+          <input
+            type="text"
+            v-model="searchQuery"
+            placeholder="Buscar item por nombre..."
+            class="barra-busqueda-input"
+          />
+          
+        </div>
+        <div class="filtro">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" v-model="filterType">
+            <option value="">Todos</option>
+            <option value="arma">Arma</option>
+            <option value="armadura">Armadura</option>
+          </select>
+        </div>
     </div>
+    
 
     <!-- Botón para añadir ítems -->
     <div class="add-item-container">
-      <router-link to="/add-item" class="add-item-button">Añadir Ítem</router-link>
+      <button @click="addItem" class="btn-añadir">Añadir Ítem</button>
     </div>
 
     <!-- Tabla de ítems -->
-    <table class="items-table">
+    <table>
       <thead>
-        <tr>
+        <tr class="primary-color">
           <th>Nombre</th>
           <th>Precio</th>
           <th>Tipo</th>
@@ -78,6 +81,10 @@ export default {
     },
   },
   methods: {
+    addItem() {
+      console.log("Ir a Añadir ítem");
+      this.$router.push("/add-item");
+    },
     async fetchItems() {
       // Obtiene la lista de ítems desde el backend
       try {
@@ -95,7 +102,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/css/ItemsStyle.css";
-
-
+  @import "../../assets/css/ItemsStyles/ItemsStyle.css";
 </style>

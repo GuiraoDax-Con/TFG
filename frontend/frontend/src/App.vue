@@ -20,5 +20,4 @@ export default {
 </script>
 
 <style>
-  @import './assets/css/AppStyle.css';
 </style>
