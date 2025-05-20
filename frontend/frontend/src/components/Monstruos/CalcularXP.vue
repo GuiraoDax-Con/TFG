@@ -68,6 +68,7 @@
                         <th>Raza</th>
                         <th>CR</th>
                         <th>XP</th>
+                        <th>Acciones</th> <!-- Nueva columna -->
                     </tr>
                 </thead>
                 
@@ -87,14 +88,56 @@
                                 min="1"
                                 @change="calcularTotalXP"
                                 class="cantidad-input"
+                                :disabled="editId === monstruo.id"
                             />
                         </td>
-                        <td>{{ monstruo.name }}</td>
-                        <td>{{ monstruo.size }}</td>
-                        <td>{{ monstruo.type }}</td>
-                        <td>{{ monstruo.tag }}</td>
-                        <td>{{ monstruo.cr }}</td>
+                        <!-- Nombre -->
+                        <td v-if="editId !== monstruo.id">{{ monstruo.name }}</td>
+                        <td v-else><input v-model="editMonstruo.name" /></td>
+                        <!-- Tamaño -->
+                        <td v-if="editId !== monstruo.id">{{ monstruo.size }}</td>
+                        <td v-else><input v-model="editMonstruo.size" /></td>
+                        <!-- Tipo -->
+                        <td v-if="editId !== monstruo.id">{{ monstruo.type }}</td>
+                        <td v-else><input v-model="editMonstruo.type" /></td>
+                        <!-- Raza -->
+                        <td v-if="editId !== monstruo.id">{{ monstruo.tag }}</td>
+                        <td v-else><input v-model="editMonstruo.tag" /></td>
+                        <!-- CR -->
+                        <td v-if="editId !== monstruo.id">{{ monstruo.cr }}</td>
+                        <td v-else><input v-model="editMonstruo.cr" /></td>
+                        <!-- XP -->
                         <td>{{ calcularXP(monstruo.cr) * monstruo.cantidad }}</td>
+                        <!-- Acciones -->
+                        <td>
+                            <div class="acciones-btns">
+                                <button
+                                    v-if="editId !== monstruo.id"
+                                    @click="startEdit(monstruo)"
+                                    class="btn-accion btn-actualizar"
+                                >Actualizar</button>
+                                <button
+                                    v-else
+                                    @click="saveEdit(monstruo.id)"
+                                    class="btn-accion btn-guardar"
+                                >Guardar</button>
+                                <button
+                                    v-if="editId === monstruo.id"
+                                    @click="cancelEdit"
+                                    class="btn-accion btn-cancelar"
+                                >Cancelar</button>
+                                <button
+                                    v-if="editId !== monstruo.id"
+                                    @click="askDelete(monstruo)"
+                                    class="btn-accion btn-eliminar"
+                                >Eliminar</button>
+                                <button
+                                    v-if="editId !== monstruo.id"
+                                    @click="showPreview(monstruo)"
+                                    class="btn-accion btn-preview"
+                                >Vista Previa</button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -125,6 +168,31 @@
                     </div>
                     <button @click="mostrarModuloReparto = false" class="cerrar-modulo">Cerrar</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Modal de Vista Previa -->
+        <div v-if="previewMonstruo" class="modal-preview" @click.self="closePreview">
+            <div class="modal-content">
+                <h3>{{ previewMonstruo.name }}</h3>
+                <ul>
+                    <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>
+                    <li><b>Tipo:</b> {{ previewMonstruo.type }}</li>
+                    <li><b>Raza:</b> {{ previewMonstruo.tag }}</li>
+                    <li><b>CR:</b> {{ previewMonstruo.cr }}</li>
+                    <li><b>XP:</b> {{ calcularXP(previewMonstruo.cr) }}</li>
+                </ul>
+                <button @click="closePreview" class="btn-accion btn-cancelar">Cerrar</button>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmación Eliminar -->
+        <div v-if="deleteConfirmMonstruo" class="modal-preview" @click.self="closeDeleteConfirm">
+            <div class="modal-content">
+                <h3>¿Seguro que quieres eliminar este monstruo?</h3>
+                <p><b>{{ deleteConfirmMonstruo.name }}</b></p>
+                <button @click="confirmDelete" class="btn-accion btn-guardar">Sí</button>
+                <button @click="closeDeleteConfirm" class="btn-accion btn-cancelar">No</button>
             </div>
         </div>
     </div>
@@ -187,6 +255,10 @@
                 filtroTamaño: '',
                 filtroTipo: '',
                 ordenNombre: "asc", // Nuevo: Controla el orden de los nombres
+                editId: null,
+                editMonstruo: {},
+                previewMonstruo: null,
+                deleteConfirmMonstruo: null,
             };
         },
         computed: {
@@ -296,7 +368,48 @@
                 // Este método se llama cuando cambia el orden de los nombres.
                 // No es necesario poner nada aquí, ya que el orden se aplica directamente
                 // en la propiedad computada monstruosFiltrados.
-            }
+            },
+            startEdit(monstruo) {
+                this.editId = monstruo.id;
+                this.editMonstruo = { ...monstruo };
+            },
+            async saveEdit(id) {
+                try {
+                    const monstruoToUpdate = { ...this.editMonstruo };
+                    delete monstruoToUpdate.id;
+                    await listaMosntruos.updateMonster(id, monstruoToUpdate);
+                    await this.fetchMonstruos();
+                    this.editId = null;
+                    this.editMonstruo = {};
+                } catch (error) {
+                    alert("Error al actualizar el monstruo");
+                }
+            },
+            cancelEdit() {
+                this.editId = null;
+                this.editMonstruo = {};
+            },
+            askDelete(monstruo) {
+                this.deleteConfirmMonstruo = monstruo;
+            },
+            closeDeleteConfirm() {
+                this.deleteConfirmMonstruo = null;
+            },
+            async confirmDelete() {
+                try {
+                    await listaMosntruos.deleteMonster(this.deleteConfirmMonstruo.id);
+                    await this.fetchMonstruos();
+                    this.deleteConfirmMonstruo = null;
+                } catch (error) {
+                    alert("Error al eliminar el monstruo");
+                }
+            },
+            showPreview(monstruo) {
+                this.previewMonstruo = monstruo;
+            },
+            closePreview() {
+                this.previewMonstruo = null;
+            },
         },
         mounted() {
             this.fetchMonstruos();
@@ -304,6 +417,6 @@
     };
 </script>
 
-<style scoped>
+<style>
     @import "@/assets/css/MonstersStyles/CalcularXPStyle.css";
 </style>
