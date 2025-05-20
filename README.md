@@ -81,6 +81,14 @@ flowchart TD
     Usuario -- Usa --> CU7
 ```
 
+### 🛠️ Backend - La Guarida del Dungeon Master
+
+El backend está desarrollado con FastAPI y Python, proporcionando una API REST robusta y eficiente para gestionar todos los recursos de la aplicación. Su objetivo es ofrecer una lógica de negocio clara, segura y fácilmente ampliable, permitiendo la gestión de monstruos, ítems y otras funcionalidades clave para el juego.
+
+El backend se conecta a una base de datos MySQL mediante SQLAlchemy, y utiliza Pydantic para la validación y serialización de datos. Además, está preparado para ser consumido por cualquier frontend moderno gracias a la configuración de CORS.
+
+El proyecto está organizado en módulos y routers, facilitando la escalabilidad y el mantenimiento del código.
+
 ### 🧰 Frontend - La Guarida del Dungeon Master
 
 El frontend está construido con Vue 3 y Vite, lo que hace que la aplicación cargue rápido y sea muy cómoda de desarrollar. La idea es ofrecer una interfaz clara, moderna y que funcione bien en cualquier dispositivo, para que sea fácil gestionar monstruos, ítems y herramientas roleras.
@@ -88,3 +96,5 @@ El frontend está construido con Vue 3 y Vite, lo que hace que la aplicación ca
 El proyecto está organizado en componentes reutilizables, con servicios que se encargan de comunicarse con la API y estilos modulares para mantener el código ordenado y fácil de ampliar.
 
 A continuación, te explico cómo están distribuidas las carpetas, qué tecnologías se han usado y los puntos clave del desarrollo del frontend.
+
+### 🤖 ChatBot
