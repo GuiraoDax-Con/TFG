@@ -22,8 +22,11 @@
   </div>
 </template>
   
-<script>
-  import logo from '@/assets/images/icono_dragon.png'; // Importa la imagen
+
+<script> 
+  import logo from '@/assets/images/favicon.png'; // Importa la imagen
+  import Toast from './modules/Toast.vue'; // Importa el componente Toast
+
 
   export default {
     name: 'HomePage',
@@ -35,19 +38,18 @@
     methods: {
       goToTienda() {
         console.log('Ir a la tienda');
-        alert('Ir a la tienda');
-        // Aquí iría la lógica para navegar a la tienda
-        //alert('Ir a la tienda');
-        // Aquí iría la lógica para calcular la XP
-        // Por ejemplo, podrías redirigir a otra página o abrir un modal
-        this.$router.push('/items');
+
+        this.$refs.toast.show('Ir a la tienda'); // Usar Toast en vez de alert
+        
+        setTimeout(() => {
+          this.$router.push('/items');
+        }, 1000);
       },
       calcularXP() {
         console.log('Calcular XP');
-        alert('Calcular XP');
-        //alert('Calcular XP');
-        // Aquí iría la lógica para calcular la XP
-        // Por ejemplo, podrías redirigir a otra página o abrir un modal
+        
+        this.$refs.toast.show('Ir al bestiario'); // Usar Toast en vez de alert
+
         this.$router.push('/calcular-xp');
       },
     },

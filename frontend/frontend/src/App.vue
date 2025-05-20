@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavbarModule /> <!-- Navbar global -->
-    <router-view /> <!-- Aquí se renderizarán tus componentes de ruta -->
+    <router-view /> <!-- Aquí se renderizarán los componentes de ruta -->
     <FooterModule /> <!-- Footer global -->
   </div>
 </template>
