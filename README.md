@@ -76,3 +76,11 @@ flowchart TD
     Usuario -- Usa --> CU4
     Usuario -- Usa --> CU5
 ```
+
+### 🧰 Frontend - La Guarida del Dungeon Master
+
+El frontend está construido con Vue 3 y Vite, lo que hace que la aplicación cargue rápido y sea muy cómoda de desarrollar. La idea es ofrecer una interfaz clara, moderna y que funcione bien en cualquier dispositivo, para que sea fácil gestionar monstruos, ítems y herramientas roleras.
+
+El proyecto está organizado en componentes reutilizables, con servicios que se encargan de comunicarse con la API y estilos modulares para mantener el código ordenado y fácil de ampliar.
+
+A continuación, te explico cómo están distribuidas las carpetas, qué tecnologías se han usado y los puntos clave del desarrollo del frontend.
