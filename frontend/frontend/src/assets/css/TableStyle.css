@@ -65,3 +65,30 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(even):hover {
     background-color: #162fe8;
 }
+
+/* Responsive tables */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+/* Ajusta celdas en pantallas pequeñas */
+@media (max-width: 700px) {
+  .table-responsive table {
+    min-width: 400px;
+    font-size: 0.9em;
+  }
+  th, td {
+    min-width: 60px;
+    max-width: 120px;
+    white-space: normal !important;
+    word-break: break-word;
+    padding: 4px 6px;
+  }
+}

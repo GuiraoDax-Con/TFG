@@ -30,17 +30,24 @@
     background-color: #004080; /* Azul más oscuro al pasar el cursor */
 }
 
-  table th, table td {
-    min-width: 100px;
-    max-width: 180px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.table-responsive table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  table-layout: auto;
+}
 
-  input[type="text"],
-  input[type="number"],
-  select {
+table th, table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+input[type="text"],
+input[type="number"],
+select {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
@@ -49,7 +56,7 @@
     margin: 0;
   }
 
-  .btn-accion,
+.btn-accion,
 .btn-actualizar,
 .btn-eliminar,
 .btn-preview {
@@ -88,16 +95,8 @@
     margin-right: 0;
   }
 
-  .item-row .btn-actualizar {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
 
-.item-row:hover .btn-actualizar {
-  opacity: 1;
-  pointer-events: auto;
-}
+
 
 .modal-preview {
   position: fixed;
@@ -142,24 +141,20 @@
   width: 100%;
 }
 
+th:last-child,
+td:last-child {
+  text-align: left;
+  /* min-width: 140px; Si quieres un mínimo */
+  /* NO display: flex aquí */
+}
 
-  /* Oculta todos los botones de acción por defecto */
-  .item-row .btn-accion {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-
-  /* Muestra los botones al pasar el ratón por la fila */
-  .item-row:hover .btn-accion {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .item-row td:last-child {
+/* Nuevo contenedor para los botones de acciones */
+.acciones-btns {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 4px;
-  min-width: 110px; /* Ajusta según necesidad */
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  /* Sin min-height ni padding aquí */
 }
