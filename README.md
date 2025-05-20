@@ -5,7 +5,7 @@ Proyecto de TFG para DAM
 ## Colaboradores
 
 - [Daniel Guirao Coronado](https://github.com/GuiraoDax-Con)
-- [Jose Manual](https://github.com/jballesta2001)
+- [Jose Manual Ballesta](https://github.com/jballesta2001)
 
 ## Requisitos
 
@@ -69,12 +69,16 @@ flowchart TD
         CU4[Consultar Items]
         CU5[Añadir Items]
     end
+    CU6[Tirada de dado]
+    CU7[Chatbot Asistente Virtual]
 
     Usuario -- Usa --> CU1
     Usuario -- Usa --> CU2
     Usuario -- Usa --> CU3
     Usuario -- Usa --> CU4
     Usuario -- Usa --> CU5
+    Usuario -- Usa --> CU6
+    Usuario -- Usa --> CU7
 ```
 
 ### 🧰 Frontend - La Guarida del Dungeon Master
