@@ -116,7 +116,7 @@
                   v-if="editId !== item.id"
                   @click="showPreview(item)"
                   class="btn-accion btn-preview"
-                >Vista Previa</button>
+                >Detalles</button>
               </div>
             </td>
           </tr>
@@ -147,7 +147,7 @@
       <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Siguiente</button>
     </div>
 
-    <!-- Modal de Vista Previa -->
+    <!-- Modal de Detalles -->
     <div v-if="previewItem" class="modal-preview" @click.self="closePreview">
       <div class="modal-content">
         <h3>{{ previewItem.Name }}</h3>

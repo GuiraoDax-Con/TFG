@@ -60,7 +60,7 @@
             <table>
                 <thead>
                     <tr class="primary-color">
-                        <th>Seleccionar</th>
+                        <th>Select</th>
                         <th>Cantidad</th>
                         <th>Nombre</th>
                         <th>Tamaño</th>
@@ -135,7 +135,7 @@
                                     v-if="editId !== monstruo.id"
                                     @click="showPreview(monstruo)"
                                     class="btn-accion btn-preview"
-                                >Vista Previa</button>
+                                >Detalles</button>
                             </div>
                         </td>
                     </tr>
@@ -171,16 +171,18 @@
             </div>
         </div>
 
-        <!-- Modal de Vista Previa -->
+        <!-- Modal de Detalles -->
         <div v-if="previewMonstruo" class="modal-preview" @click.self="closePreview">
             <div class="modal-content">
                 <h3>{{ previewMonstruo.name }}</h3>
+                <img v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" style="max-width: 120px; max-height: 120px; margin-bottom: 10px;">
                 <ul>
                     <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>
                     <li><b>Tipo:</b> {{ previewMonstruo.type }}</li>
                     <li><b>Raza:</b> {{ previewMonstruo.tag }}</li>
                     <li><b>CR:</b> {{ previewMonstruo.cr }}</li>
                     <li><b>XP:</b> {{ calcularXP(previewMonstruo.cr) }}</li>
+                    <li v-if="previewMonstruo.descripcion"><b>Descripción:</b> {{ previewMonstruo.descripcion }}</li>
                 </ul>
                 <button @click="closePreview" class="btn-accion btn-cancelar">Cerrar</button>
             </div>
@@ -322,13 +324,7 @@
                 return this.xp_diccionary[cr] || 0;
             },
             toggleMonstruo(monstruo) {
-                /*
-                if (this.monstruosSeleccionados.includes(monstruo)) {
-                    this.monstruosSeleccionados.splice(
-                        this.monstruosSeleccionados.indexOf(monstruo),
-                        1
-                    );
-                */
+                º   
                 const index = this.monstruosSeleccionados.findIndex(m => m.id === monstruo.id);
                 if (index !== -1) {
                     this.monstruosSeleccionados.splice(index, 1);
@@ -419,4 +415,14 @@
 
 <style>
     @import "@/assets/css/MonstersStyles/CalcularXPStyle.css";
+
+    /* Poner el checkbox en el centro */
+    td:first-child {
+        text-align: center;
+        vertical-align: middle;
+    }
+    td:first-child input[type="checkbox"] {
+        margin: 0 auto;
+        display: block;
+    }
 </style>
