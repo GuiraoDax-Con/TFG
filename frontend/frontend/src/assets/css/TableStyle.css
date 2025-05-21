@@ -200,3 +200,50 @@ td:last-child {
   width: 100%;
   /* Sin min-height ni padding aquí */
 }
+
+/*
+ * Estilo de los botones de paginación 
+ */
+.pagination-controls {
+  margin: 16px 0; 
+  display: flex; 
+  justify-content: center; 
+  gap: 4px;
+  align-items: center;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 4px;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+/* .pagination-controls button.activo {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+} */
+
+
+.pagination-controls button {
+  min-width: 28px;
+  padding: 2px 8px;
+  font-size: 0.95em;
+}
+.pagination-controls button:hover {
+  background: #005f99;
+  color: #fff;
+  font-weight: bold;
+}
+.pagination-controls button:disabled {
+  background: #7a7a7a;
+  color: #5a5a5a;
+  cursor: not-allowed;
+}
+.pagination-controls span {
+  padding: 0 4px
+}
+.pagination-controls .button-ellipsis { /* 'ellipsis' == 'puntos suspensivos' == '...'*/
+  background-color: transparent !important;
+  color: #fff !important;
+}

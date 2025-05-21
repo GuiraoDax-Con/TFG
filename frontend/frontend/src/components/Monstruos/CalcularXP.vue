@@ -73,7 +73,7 @@
                 </thead>
                 
                 <tbody>
-                    <tr v-for="monstruo in monstruosFiltrados" :key="monstruo.id">
+                    <tr v-for="monstruo in monstruosPaginados" :key="monstruo.id">
                         <td>
                             <input
                                 type="checkbox"
@@ -177,12 +177,12 @@
                 <h3>{{ previewMonstruo.name }}</h3>
                 <img v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" style="max-width: 120px; max-height: 120px; margin-bottom: 10px;">
                 <ul>
-                    <li><b>Nombre:</b> {{ previewMonstruo.name }}</li>
                     <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>
                     <li><b>Tipo:</b> {{ previewMonstruo.type }}</li>
                     <li><b>Raza:</b> {{ previewMonstruo.tag }}</li>
                     <li><b>CR:</b> {{ previewMonstruo.cr }}</li>
                     <li><b>XP:</b> {{ calcularXP(previewMonstruo.cr) }}</li>
+                    <li><b>Libro:</b> {{ previewMonstruo.sourceBook }}</li>
                     <li v-if="previewMonstruo.descripcion"><b>Descripción:</b> {{ previewMonstruo.descripcion }}</li>
                 </ul>
                 <button @click="closePreview" class="btn-accion btn-cancelar">Cerrar</button>
@@ -199,9 +199,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Controles de paginación -->
+    <div class="pagination-controls">
+        <button @click="prevPage" :disabled="paginaActual === 1">Anterior</button>
+        
+        <!-- <span>Página {{ paginaActual }} de {{ totalPages }}</span> -->
+
+        <button
+            v-for="pagina in paginasVisibles"
+            :key="pagina"
+            @click="pagina !== '...' && (paginaActual = pagina)"
+            :class="[{ activo: pagina === paginaActual }, { 'button-ellipsis': pagina === '...' }]"
+            v-if="pagina !== 1 && pagina !== totalPages"
+            :disabled="pagina === paginaActual"
+        >
+            {{ pagina }}
+        </button>
+
+        <button @click="nextPage" :disabled="paginaActual === totalPages">Siguiente</button>
+    </div>
 </template>
 
 <script>
+    import {ref, computed } from 'vue';
+    import { useRouter } from 'vue-router';
     import listaMosntruos from "@/services/monstersAPI.js"; // Importa la lista de monstruos desde el API
 
     export default {
@@ -262,6 +284,8 @@
                 editMonstruo: {},
                 previewMonstruo: null,
                 deleteConfirmMonstruo: null,
+                paginaActual: 1,
+                monstruosPorPagina: 10,
             };
         },
         computed: {
@@ -303,6 +327,46 @@
             },
             XP_repartido() {
                 return Math.ceil(this.XP_total / this.numJugadores);
+            },
+            totalPages() {
+                return Math.ceil(this.monstruosFiltrados.length / this.monstruosPorPagina);
+            },
+            monstruosPaginados() {
+                const inicio = (this.paginaActual - 1) * this.monstruosPorPagina;
+                const fin = inicio + this.monstruosPorPagina;
+                return this.monstruosFiltrados.slice(inicio, fin);
+            },
+            watch: {
+                busqueda() { this.paginaActual = 1; },
+                filtroTamaño() { this.paginaActual = 1; },
+                filtroTipo() { this.paginaActual = 1; },
+                ordenNombre() { this.paginaActual = 1; },
+            },
+            paginasVisibles() {
+                const total = this.totalPages;
+                const actual = this.paginaActual;
+                const rango = 2; // páginas a la izquierda y derecha
+
+                let inicio = Math.max(1, actual - rango);
+                let fin = Math.min(total, actual + rango);
+
+                const paginas = [];
+
+                if (inicio > 1) {
+                    paginas.push(1);
+                    if (inicio > 2) paginas.push('...');
+                }
+
+                for (let i = inicio; i <= fin; i++) {
+                    paginas.push(i);
+                }
+
+                if (fin < total) {
+                    if (fin < total - 1) paginas.push('...');
+                    paginas.push(total);
+                }
+
+                return paginas;
             },
         },
         methods: {
@@ -400,6 +464,13 @@
             closePreview() {
                 this.previewMonstruo = null;
             },
+            prevPage() {
+                if (this.paginaActual > 1) this.paginaActual--;
+            },
+            nextPage() {
+                if (this.paginaActual < this.totalPages) this.paginaActual++;
+            },
+
         },
         mounted() {
             this.fetchMonstruos();
@@ -409,14 +480,4 @@
 
 <style>
     @import "@/assets/css/MonstersStyles/CalcularXPStyle.css";
-
-    /* Poner el checkbox en el centro */
-    td:first-child {
-        text-align: center;
-        vertical-align: middle;
-    }
-    td:first-child input[type="checkbox"] {
-        margin: 0 auto;
-        display: block;
-    }
 </style>

@@ -129,20 +129,20 @@
       <button
         v-if="currentPage > 3"
         @click="goToPage(1)"
-        :class="{ active: currentPage === 1 }"
+        :class="{ activo: currentPage === 1 }"
       >1</button>
-      <span v-if="currentPage > 4" style="padding: 0 4px;">...</span>
+      <span v-if="currentPage > 4" aria-disabled="true">...</span>
       <button
         v-for="page in pageNumbers"
         :key="page"
         @click="goToPage(page)"
-        :class="{ active: page === currentPage }"
+        :class="{ activo: page === currentPage }"
       >{{ page }}</button>
-      <span v-if="currentPage < totalPages - 3" style="padding: 0 4px;">...</span>
+      <span v-if="currentPage < totalPages - 3" aria-disabled="true">...</span>
       <button
         v-if="currentPage < totalPages - 2"
         @click="goToPage(totalPages)"
-        :class="{ active: currentPage === totalPages }"
+        :class="{ activo: currentPage === totalPages }"
       >{{ totalPages }}</button>
       <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Siguiente</button>
     </div>
@@ -303,14 +303,4 @@ export default {
 
 <style scoped>
   @import "../../assets/css/ItemsStyles/ItemsStyle.css";
-  .pagination-controls button.active {
-    background: #005f99;
-    color: #fff;
-    font-weight: bold;
-  }
-  .pagination-controls button {
-    min-width: 28px;
-    padding: 2px 8px;
-    font-size: 0.95em;
-  }
 </style>

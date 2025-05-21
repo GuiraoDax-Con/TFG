@@ -226,3 +226,13 @@ table th:nth-child(5),  /* XP */
 table td:nth-child(5) {
     width: 20%;
 }
+
+/* Poner el checkbox en el centro */
+td:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+td:first-child input[type="checkbox"] {
+    margin: 0 auto;
+    display: block;
+}
