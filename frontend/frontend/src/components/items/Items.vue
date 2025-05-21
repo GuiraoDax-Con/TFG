@@ -18,6 +18,8 @@
           <option value="">Todos</option>
           <option value="arma">Arma</option>
           <option value="armadura">Armadura</option>
+          <option value="magia">Magia</option>
+          <option value="aventuras">Aventuras</option>
         </select>
       </div>
     </div>
@@ -200,8 +202,28 @@ export default {
         const matchesName = item.Name.toLowerCase().includes(
           this.searchQuery.toLowerCase()
         );
-        const matchesType =
-          this.filterType === "" || item.Type.toLowerCase() === this.filterType;
+        let matchesType = true;
+        if (this.filterType !== "") {
+          const type = item.Type ? item.Type.toLowerCase() : "";
+          const filter = this.filterType.toLowerCase();
+
+          if (filter === "arma") {
+            // "arma" o "armas" pero NO "armadura"
+            matchesType = /\barma(s)?\b/.test(type);
+          } else if (filter === "armadura") {
+            matchesType = /\barmadura(s)?\b/.test(type);
+          } else if (filter === "magia") {
+            // magia, mágico, magico, magic
+            matchesType = /\bmagia\b|\bmágico\b|\bmagico\b|\bmagic\b/.test(type);
+          } else if (filter === "aventuras") {
+            // aventuras, adventuring
+            matchesType = /\baventura(s)?\b|\badventuring\b/.test(type);
+          } else {
+            // Por si agregas más tipos en el futuro
+            const regex = new RegExp(`\\b${filter}\\b`, "i");
+            matchesType = regex.test(type);
+          }
+        }
         return matchesName && matchesType;
       });
     },
@@ -303,14 +325,5 @@ export default {
 
 <style scoped>
   @import "../../assets/css/ItemsStyles/ItemsStyle.css";
-  .pagination-controls button.active {
-    background: #005f99;
-    color: #fff;
-    font-weight: bold;
-  }
-  .pagination-controls button {
-    min-width: 28px;
-    padding: 2px 8px;
-    font-size: 0.95em;
-  }
+
 </style>

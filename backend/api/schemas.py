@@ -10,7 +10,7 @@ class ItemBase(BaseModel):
     Weight: Optional[str] = None
     Type: Optional[str] = None
     Properties: Optional[str] = None
-    img: Optional[str] = None  # Nueva columna para la URL o ruta de la imagen
+    img: Optional[str] = None  
 
 class ItemCreate(ItemBase):
     pass
@@ -19,7 +19,7 @@ class ItemResponse(ItemBase):
     id: int
 
     class Config:
-        orm_mode = True  # Esto permite que Pydantic trabaje con objetos de SQLAlchemy
+        orm_mode = True  
 
 # Modelo de Pydantic para Monsters
 class MonsterBase(BaseModel):
@@ -39,4 +39,4 @@ class MonsterResponse(MonsterBase):
     id: int
 
     class Config:
-        orm_mode = True 
+        orm_mode = True
