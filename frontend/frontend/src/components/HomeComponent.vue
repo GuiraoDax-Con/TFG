@@ -18,6 +18,9 @@
         <button class="button tienda-button" @click="goToTienda">Tienda</button>
         <button class="button calcular-xp-button" @click="calcularXP">Calcular XP</button>
       </div>
+
+      <!-- Componente Toast agregado aquí -->
+      <Toast ref="toast" />
     </main>
   </div>
 </template>
@@ -30,6 +33,7 @@
 
   export default {
     name: 'HomePage',
+    components: { Toast }, // Importart Toast en el 
     data() {
       return {
         logoSrc: logo // Asigna la ruta importada a la propiedad data
@@ -46,11 +50,13 @@
         }, 1000);
       },
       calcularXP() {
-        console.log('Calcular XP');
+        console.log('Ir a Calcular XP');
         
         this.$refs.toast.show('Ir al bestiario'); // Usar Toast en vez de alert
 
-        this.$router.push('/calcular-xp');
+        setTimeout(() => {
+          this.$router.push('/calcular-xp');
+        }, 1000);
       },
     },
   };

@@ -14,7 +14,7 @@
             </div>
             <div class="filtro">
                 <label for="tamaño">Tamaño:</label>
-                <select id="tamaño" v-model="filtroTamaño" @change="aplicarFiltros">
+                <select id="tamaño" v-model="filtroTamaño" >
                     <option value="">Todos</option>
                     <option value="Pequeño">Pequeño</option>
                     <option value="Mediano">Mediano</option>
@@ -25,7 +25,7 @@
             </div>
             <div class="filtro">
                 <label for="tipo">Tipo:</label>
-                <select id="tipo" v-model="filtroTipo" @change="aplicarFiltros">
+                <select id="tipo" v-model="filtroTipo" >
                     <option value="">Todos</option>
                     <option value="Humanoide">Humanoide</option>
                     <option value="Gigante">Gigante</option>
@@ -128,12 +128,12 @@
                                 >Cancelar</button>
                                 <button
                                     v-if="editId !== monstruo.id"
-                                    @click="askDelete(monstruo)"
+                                    @click="() => { console.log('Click eliminar'); askDelete(monstruo); }"
                                     class="btn-accion btn-eliminar"
                                 >Eliminar</button>
                                 <button
                                     v-if="editId !== monstruo.id"
-                                    @click="showPreview(monstruo)"
+                                    @click="() => { console.log('Click detalles'); showPreview(monstruo); }"
                                     class="btn-accion btn-preview"
                                 >Detalles</button>
                             </div>
@@ -177,6 +177,7 @@
                 <h3>{{ previewMonstruo.name }}</h3>
                 <img v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" style="max-width: 120px; max-height: 120px; margin-bottom: 10px;">
                 <ul>
+                    <li><b>Nombre:</b> {{ previewMonstruo.name }}</li>
                     <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>
                     <li><b>Tipo:</b> {{ previewMonstruo.type }}</li>
                     <li><b>Raza:</b> {{ previewMonstruo.tag }}</li>
@@ -312,8 +313,9 @@
             async fetchMonstruos() {
                 try {
                     const monstruos = await listaMosntruos.getMonsters();
-                    this.monstruos = monstruos.map((monstruo) => ({
+                    this.monstruos = monstruos.map((monstruo, index) => ({
                         ...monstruo,
+                        id: monstruo.id || index, // Asegura que siempre haya un id
                         cantidad: 1, // Inicializa la cantidad en 1
                     }));
                 } catch (error) {
@@ -324,7 +326,6 @@
                 return this.xp_diccionary[cr] || 0;
             },
             toggleMonstruo(monstruo) {
-                º   
                 const index = this.monstruosSeleccionados.findIndex(m => m.id === monstruo.id);
                 if (index !== -1) {
                     this.monstruosSeleccionados.splice(index, 1);
@@ -347,23 +348,11 @@
                 if (cantidadTotal >= 3 && cantidadTotal <= 6) return 2;
                 if (cantidadTotal >= 7 && cantidadTotal <= 10) return 2.5;
                 if (cantidadTotal >= 11 && cantidadTotal <= 14) return 3;
-                return 4; // 15 o más
+                return 4; // 15 o más jugadores
             },
             calcularTotalXP() {
                 // Método para recalcular el XP total.  Se llama cuando cambia la cantidad de monstruos.
                 this.XP_total;
-            },
-            aplicarFiltros() {
-                /* 
-                 * Este método se llama cuando cambian los filtros de tamaño o tipo.
-                 * No es necesario poner nada aquí, ya que los filtros se aplican directamente
-                 * en la propiedad computada monstruosFiltrados.
-                 */
-            },
-            aplicarOrden() {
-                // Este método se llama cuando cambia el orden de los nombres.
-                // No es necesario poner nada aquí, ya que el orden se aplica directamente
-                // en la propiedad computada monstruosFiltrados.
             },
             startEdit(monstruo) {
                 this.editId = monstruo.id;
@@ -386,12 +375,16 @@
                 this.editMonstruo = {};
             },
             askDelete(monstruo) {
+                console.log("Eliminar monstruo:", monstruo); // DEBUG
                 this.deleteConfirmMonstruo = monstruo;
+                console.log("Monstruo a eliminar:", this.deleteConfirmMonstruo); // DEBUG
             },
             closeDeleteConfirm() {
+                console.log("Cerrar confirmación de eliminación"); // DEBUG
                 this.deleteConfirmMonstruo = null;
             },
             async confirmDelete() {
+                console.log("Confirmar eliminación de monstruo:", this.deleteConfirmMonstruo); // DEBUG
                 try {
                     await listaMosntruos.deleteMonster(this.deleteConfirmMonstruo.id);
                     await this.fetchMonstruos();
@@ -401,6 +394,7 @@
                 }
             },
             showPreview(monstruo) {
+                console.log("Mostrar detalles del monstruo:", monstruo); // DEBUG
                 this.previewMonstruo = monstruo;
             },
             closePreview() {

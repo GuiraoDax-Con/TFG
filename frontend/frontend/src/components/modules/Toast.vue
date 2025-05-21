@@ -7,23 +7,23 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      visible: false,
-      message: ''
-    };
-  },
-  methods: {
-    show(msg, duration = 3000) {
-      this.message = msg;
-      this.visible = true;
-      setTimeout(() => {
-        this.visible = false;
-      }, duration);
+  export default {
+    data() {
+      return {
+        visible: false,
+        message: ''
+      };
+    },
+    methods: {
+      show(msg, duration = 3000) {
+        this.message = msg;
+        this.visible = true;
+        setTimeout(() => {
+          this.visible = false;
+        }, duration);
+      }
     }
-  }
-};
+  };
 </script>
 
 <style scoped>

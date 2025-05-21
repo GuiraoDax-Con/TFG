@@ -12,26 +12,31 @@ const routes = [
     name: 'Home',
     component: HomeComponent,
   },
+
   {
     path: "/items",
     name: "Items",
     component: Items,
   },
+
   {
     path: "/add-item",
     name: "AddItem",
     component: AddItem,
   },
+
   {
     path: '/calcular-xp',
     name: 'CalcularXP',
     component: CalcularXP,
   },
+
   {
     path: '/add-monster',
     name: 'AddMonsters',
     component: AddMonsters,
   },
+  
   {
     path: '/dice',
     name: 'Dice',
