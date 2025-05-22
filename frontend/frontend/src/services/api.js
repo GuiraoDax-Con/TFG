@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000', // ajusta según tu configuración
+  baseURL: 'https://tfg-aqbe.onrender.com/', // ajusta según tu configuración
   headers: {
       'Content-Type': 'application/json'
   }
