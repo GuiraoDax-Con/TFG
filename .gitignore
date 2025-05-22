@@ -2,5 +2,7 @@ __pycache__
 venv
 La_guaridad_del_DM
 La_guarida_del_DM
+.vscode
 node_modules
+CREATE_venv.ps1
 #package-lock.json
