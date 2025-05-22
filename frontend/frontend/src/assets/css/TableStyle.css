@@ -6,19 +6,6 @@
     min-height: 100vh;
 }
 
-/* Imagen centrada */
-.image-container {
-    text-align: center; /* Centra la imagen horizontalmente */
-    margin-bottom: 20px; /* Espaciado debajo de la imagen */
-    margin-top: -80px;
-}
-.centrar-imagen {
-   max-width: 20%; /* Reduce el tamaño de la imagen al 50% del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 15px; /* Esquinas redondeadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto visual */
-}
-
 /* Estilo de Botones */
 .btn-añadir {
     padding: 10px 15px;

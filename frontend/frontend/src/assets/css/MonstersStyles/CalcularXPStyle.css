@@ -236,3 +236,9 @@ td:first-child input[type="checkbox"] {
     margin: 0 auto;
     display: block;
 }
+
+/* Color del checbox */
+input[type="checkbox"] {
+    accent-color: #042032; /* Cambia el color del checkbox */
+    /* accent-color: #0d1a80; /* Cambia el color del checkbox * */
+}
