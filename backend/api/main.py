@@ -13,6 +13,7 @@ app.add_middleware(
     allow_origins=[
             "http://localhost:5173", # frontend Vue por defecto
             "http://127.0.0.1:5173",
+            "https://tfg-frontend-pf5q.onrender.com" # frontend Vue en render.com (producción)
         ],  
     allow_credentials=True,
     allow_methods=["*"],
