@@ -34,6 +34,7 @@
       <table>
         <thead>
           <tr class="primary-color">
+            <th>Seleccionar</th>
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Precio</th>
@@ -47,8 +48,14 @@
         <tbody>
           <tr v-for="item in paginatedItems" :key="item.id" class="item-row">
             <td>
+              <input
+                type="checkbox"
+                :value="item.id"
+                v-model="selectedItems"
+              />
+            </td>
+            <td>
               <img v-if="item.img && editId !== item.id" :src="item.img" alt="Imagen" style="max-width: 50px; max-height: 50px;" />
-              <!-- Input para editar la URL de la imagen -->
               <input
                 v-if="editId === item.id"
                 v-model="editItem.img"
@@ -125,6 +132,27 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Botón Deseleccionar -->
+    <div style="margin-top: 12px; text-align: right;">
+      <button
+        @click="deseleccionar"
+        :disabled="selectedItems.length === 0"
+        class="btn-accion btn-cancelar deseleccionar-btn"
+      >
+        Deseleccionar
+      </button>
+    </div>
+
+    <!-- Botón calcular factura flotante -->
+    <button
+      :disabled="selectedItems.length === 0"
+      @click="showInvoice = true"
+      class="btn-factura-flotante"
+    >
+      Calcular factura
+    </button>
+
     <!-- CONTROLES DE PAGINACIÓN -->
     <div v-if="totalPages > 1" class="pagination-controls" style="margin: 16px 0; display: flex; justify-content: center; gap: 4px;">
       <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Anterior</button>
@@ -175,6 +203,20 @@
         <button @click="closeDeleteConfirm" class="btn-accion btn-cancelar">No</button>
       </div>
     </div>
+
+    <!-- Modal de Factura -->
+    <div v-if="showInvoice" class="modal-preview" @click.self="showInvoice = false">
+      <div class="modal-content">
+        <h3>Factura</h3>
+        <ul>
+          <li v-for="item in selectedInvoiceItems" :key="item.id">
+            {{ item.Name }} - {{ item.Price }} monedas
+          </li>
+        </ul>
+        <p><b>Total:</b> {{ facturaTotalMonedas }}</p>
+        <button @click="showInvoice = false" class="btn-accion btn-cancelar">Cerrar</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -194,6 +236,9 @@ export default {
       // PAGINACIÓN
       currentPage: 1,
       itemsPerPage: 10,
+      // Selección para factura
+      selectedItems: [],
+      showInvoice: false,
     };
   },
   computed: {
@@ -246,6 +291,15 @@ export default {
         pages.push(i);
       }
       return pages;
+    },
+    selectedInvoiceItems() {
+      return this.items.filter(item => this.selectedItems.includes(item.id));
+    },
+    invoiceTotal() {
+      return this.selectedInvoiceItems.reduce((sum, item) => sum + Number(item.Price), 0);
+    },
+    facturaTotalMonedas() {
+      return this.sumarPreciosPorMoneda(this.selectedInvoiceItems);
     },
   },
   methods: {
@@ -307,6 +361,33 @@ export default {
         this.currentPage = page;
       }
     },
+    deseleccionar() {
+      this.selectedItems = [];
+    },
+    sumarPreciosPorMoneda(items) {
+      // Soporta pl, po, gp, pp, pc
+      const monedas = { pl: 0, po: 0, gp: 0, pp: 0, pc: 0 };
+      items.forEach(item => {
+        if (!item.Price) return;
+        // Busca todos los patrones como 3pl, 4po, etc.
+        const matches = item.Price.toLowerCase().match(/(\d+)\s*(pl|po|gp|pp|pc)/g);
+        if (!matches) return;
+        matches.forEach(match => {
+          const parts = match.match(/(\d+)\s*(pl|po|gp|pp|pc)/);
+          if (!parts) return;
+          const value = parseInt(parts[1]);
+          const moneda = parts[2];
+          if (monedas[moneda] !== undefined) {
+            monedas[moneda] += value;
+          }
+        });
+      });
+      // Devuelve solo las monedas que tengan valor, en orden típico
+      return Object.entries(monedas)
+        .filter(([_, v]) => v > 0)
+        .map(([k, v]) => `${v}${k}`)
+        .join(" y ");
+    },
   },
   watch: {
     // Reinicia a la página 1 si cambian los filtros o búsqueda
@@ -325,4 +406,9 @@ export default {
 
 <style scoped>
   @import "../../assets/css/ItemsStyles/ItemsStyle.css";
+
+.deseleccionar-btn {
+  padding: 12px 28px;
+  font-size: 1.1em;
+}
 </style>
