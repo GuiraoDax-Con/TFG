@@ -201,6 +201,13 @@ td:last-child {
   /* Sin min-height ni padding aquí */
 }
 
+/* Estilo para la imagen de detalles */
+.img-detalles {
+  max-width: 120px; 
+  max-height: 120px; 
+  margin-bottom: 10px;
+}
+
 /*
  * Estilo de los botones de paginación 
  */

@@ -175,8 +175,9 @@
         <div v-if="previewMonstruo" class="modal-preview" @click.self="closePreview">
             <div class="modal-content">
                 <h3>{{ previewMonstruo.name }}</h3>
-                <img v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" style="max-width: 120px; max-height: 120px; margin-bottom: 10px;">
+                <iframe v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" class="img-detalles"  scrolling="no" allowfullscreen :title="previewMonstruo.name" ></iframe>
                 <ul>
+                    <!-- <li><b>URL:</b> {{ previewMonstruo.img }}</li> -->
                     <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>
                     <li><b>Tipo:</b> {{ previewMonstruo.type }}</li>
                     <li><b>Raza:</b> {{ previewMonstruo.tag }}</li>
