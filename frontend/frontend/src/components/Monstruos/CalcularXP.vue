@@ -14,7 +14,7 @@
             </div>
             <div class="filtro">
                 <label for="tamaño">Tamaño:</label>
-                <select id="tamaño" v-model="filtroTamaño" @change="aplicarFiltros">
+                <select id="tamaño" v-model="filtroTamaño" >
                     <option value="">Todos</option>
                     <option value="Pequeño">Pequeño</option>
                     <option value="Mediano">Mediano</option>
@@ -25,7 +25,7 @@
             </div>
             <div class="filtro">
                 <label for="tipo">Tipo:</label>
-                <select id="tipo" v-model="filtroTipo" @change="aplicarFiltros">
+                <select id="tipo" v-model="filtroTipo" >
                     <option value="">Todos</option>
                     <option value="Humanoide">Humanoide</option>
                     <option value="Gigante">Gigante</option>
@@ -73,7 +73,7 @@
                 </thead>
                 
                 <tbody>
-                    <tr v-for="monstruo in monstruosFiltrados" :key="monstruo.id">
+                    <tr v-for="monstruo in monstruosPaginados" :key="monstruo.id">
                         <td>
                             <input
                                 type="checkbox"
@@ -128,12 +128,12 @@
                                 >Cancelar</button>
                                 <button
                                     v-if="editId !== monstruo.id"
-                                    @click="askDelete(monstruo)"
+                                    @click="() => { console.log('Click eliminar'); askDelete(monstruo); }"
                                     class="btn-accion btn-eliminar"
                                 >Eliminar</button>
                                 <button
                                     v-if="editId !== monstruo.id"
-                                    @click="showPreview(monstruo)"
+                                    @click="() => { console.log('Click detalles'); showPreview(monstruo); }"
                                     class="btn-accion btn-preview"
                                 >Detalles</button>
                             </div>
@@ -175,13 +175,15 @@
         <div v-if="previewMonstruo" class="modal-preview" @click.self="closePreview">
             <div class="modal-content">
                 <h3>{{ previewMonstruo.name }}</h3>
-                <img v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" style="max-width: 120px; max-height: 120px; margin-bottom: 10px;">
+                <iframe v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" class="img-detalles"  scrolling="no" allowfullscreen :title="previewMonstruo.name" ></iframe>
                 <ul>
+                    <!-- <li><b>URL:</b> {{ previewMonstruo.img }}</li> -->
                     <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>
                     <li><b>Tipo:</b> {{ previewMonstruo.type }}</li>
                     <li><b>Raza:</b> {{ previewMonstruo.tag }}</li>
                     <li><b>CR:</b> {{ previewMonstruo.cr }}</li>
                     <li><b>XP:</b> {{ calcularXP(previewMonstruo.cr) }}</li>
+                    <li><b>Libro:</b> {{ previewMonstruo.sourceBook }}</li>
                     <li v-if="previewMonstruo.descripcion"><b>Descripción:</b> {{ previewMonstruo.descripcion }}</li>
                 </ul>
                 <button @click="closePreview" class="btn-accion btn-cancelar">Cerrar</button>
@@ -198,9 +200,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Controles de paginación -->
+    <div class="pagination-controls">
+        <button @click="prevPage" :disabled="paginaActual === 1">Anterior</button>
+        
+        <!-- <span>Página {{ paginaActual }} de {{ totalPages }}</span> -->
+
+        <button
+            v-for="pagina in paginasVisibles"
+            :key="pagina"
+            @click="pagina !== '...' && (paginaActual = pagina)"
+            :class="[{ activo: pagina === paginaActual }, { 'button-ellipsis': pagina === '...' }]"
+            v-if="pagina !== 1 && pagina !== totalPages"
+            :disabled="pagina === paginaActual"
+        >
+            {{ pagina }}
+        </button>
+
+        <button @click="nextPage" :disabled="paginaActual === totalPages">Siguiente</button>
+    </div>
 </template>
 
 <script>
+    import {ref, computed } from 'vue';
+    import { useRouter } from 'vue-router';
     import listaMosntruos from "@/services/monstersAPI.js"; // Importa la lista de monstruos desde el API
 
     export default {
@@ -261,6 +285,8 @@
                 editMonstruo: {},
                 previewMonstruo: null,
                 deleteConfirmMonstruo: null,
+                paginaActual: 1,
+                monstruosPorPagina: 10,
             };
         },
         computed: {
@@ -303,6 +329,46 @@
             XP_repartido() {
                 return Math.ceil(this.XP_total / this.numJugadores);
             },
+            totalPages() {
+                return Math.ceil(this.monstruosFiltrados.length / this.monstruosPorPagina);
+            },
+            monstruosPaginados() {
+                const inicio = (this.paginaActual - 1) * this.monstruosPorPagina;
+                const fin = inicio + this.monstruosPorPagina;
+                return this.monstruosFiltrados.slice(inicio, fin);
+            },
+            watch: {
+                busqueda() { this.paginaActual = 1; },
+                filtroTamaño() { this.paginaActual = 1; },
+                filtroTipo() { this.paginaActual = 1; },
+                ordenNombre() { this.paginaActual = 1; },
+            },
+            paginasVisibles() {
+                const total = this.totalPages;
+                const actual = this.paginaActual;
+                const rango = 2; // páginas a la izquierda y derecha
+
+                let inicio = Math.max(1, actual - rango);
+                let fin = Math.min(total, actual + rango);
+
+                const paginas = [];
+
+                if (inicio > 1) {
+                    paginas.push(1);
+                    if (inicio > 2) paginas.push('...');
+                }
+
+                for (let i = inicio; i <= fin; i++) {
+                    paginas.push(i);
+                }
+
+                if (fin < total) {
+                    if (fin < total - 1) paginas.push('...');
+                    paginas.push(total);
+                }
+
+                return paginas;
+            },
         },
         methods: {
             addMonster() {
@@ -312,8 +378,9 @@
             async fetchMonstruos() {
                 try {
                     const monstruos = await listaMosntruos.getMonsters();
-                    this.monstruos = monstruos.map((monstruo) => ({
+                    this.monstruos = monstruos.map((monstruo, index) => ({
                         ...monstruo,
+                        id: monstruo.id || index, // Asegura que siempre haya un id
                         cantidad: 1, // Inicializa la cantidad en 1
                     }));
                 } catch (error) {
@@ -324,7 +391,6 @@
                 return this.xp_diccionary[cr] || 0;
             },
             toggleMonstruo(monstruo) {
-                º   
                 const index = this.monstruosSeleccionados.findIndex(m => m.id === monstruo.id);
                 if (index !== -1) {
                     this.monstruosSeleccionados.splice(index, 1);
@@ -347,23 +413,11 @@
                 if (cantidadTotal >= 3 && cantidadTotal <= 6) return 2;
                 if (cantidadTotal >= 7 && cantidadTotal <= 10) return 2.5;
                 if (cantidadTotal >= 11 && cantidadTotal <= 14) return 3;
-                return 4; // 15 o más
+                return 4; // 15 o más jugadores
             },
             calcularTotalXP() {
                 // Método para recalcular el XP total.  Se llama cuando cambia la cantidad de monstruos.
                 this.XP_total;
-            },
-            aplicarFiltros() {
-                /* 
-                 * Este método se llama cuando cambian los filtros de tamaño o tipo.
-                 * No es necesario poner nada aquí, ya que los filtros se aplican directamente
-                 * en la propiedad computada monstruosFiltrados.
-                 */
-            },
-            aplicarOrden() {
-                // Este método se llama cuando cambia el orden de los nombres.
-                // No es necesario poner nada aquí, ya que el orden se aplica directamente
-                // en la propiedad computada monstruosFiltrados.
             },
             startEdit(monstruo) {
                 this.editId = monstruo.id;
@@ -386,12 +440,16 @@
                 this.editMonstruo = {};
             },
             askDelete(monstruo) {
+                console.log("Eliminar monstruo:", monstruo); // DEBUG
                 this.deleteConfirmMonstruo = monstruo;
+                console.log("Monstruo a eliminar:", this.deleteConfirmMonstruo); // DEBUG
             },
             closeDeleteConfirm() {
+                console.log("Cerrar confirmación de eliminación"); // DEBUG
                 this.deleteConfirmMonstruo = null;
             },
             async confirmDelete() {
+                console.log("Confirmar eliminación de monstruo:", this.deleteConfirmMonstruo); // DEBUG
                 try {
                     await listaMosntruos.deleteMonster(this.deleteConfirmMonstruo.id);
                     await this.fetchMonstruos();
@@ -401,11 +459,19 @@
                 }
             },
             showPreview(monstruo) {
+                console.log("Mostrar detalles del monstruo:", monstruo); // DEBUG
                 this.previewMonstruo = monstruo;
             },
             closePreview() {
                 this.previewMonstruo = null;
             },
+            prevPage() {
+                if (this.paginaActual > 1) this.paginaActual--;
+            },
+            nextPage() {
+                if (this.paginaActual < this.totalPages) this.paginaActual++;
+            },
+
         },
         mounted() {
             this.fetchMonstruos();
@@ -415,14 +481,4 @@
 
 <style>
     @import "@/assets/css/MonstersStyles/CalcularXPStyle.css";
-
-    /* Poner el checkbox en el centro */
-    td:first-child {
-        text-align: center;
-        vertical-align: middle;
-    }
-    td:first-child input[type="checkbox"] {
-        margin: 0 auto;
-        display: block;
-    }
 </style>

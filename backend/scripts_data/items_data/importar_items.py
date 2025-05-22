@@ -530,7 +530,63 @@ dnd_items_part_9 = [
     {"Name":"Cuerno", "Price":"3 po", "AC":"null", "Damage":"null", "Weight":"2 lb.", "Type":"Instrumento musical", "Properties":"null"},
     {"Name":"Flauta de Pan", "Price":"12 po", "AC":"null", "Damage":"null", "Weight":"2 lb.", "Type":"Instrumento musical", "Properties":"null"},
     {"Name":"Chirimía", "Price":"2 po", "AC":"null", "Damage":"null", "Weight":"1 lb.", "Type":"Instrumento musical", "Properties":"null"},
-    {"Name":"Viola", "Price":"30 po", "AC":"null", "Damage":"null", "Weight":"1 lb.", "Type":"Instrumento musical", "Properties":"null"}
+    {"Name":"Viola", "Price":"30 po", "AC":"null", "Damage":"null", "Weight":"1 lb.", "Type":"Instrumento musical", "Properties":"null"},
+]
+# Pociones
+pociones_1 = [
+    {"Name": "Poción de Curación", "Price": "50 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Restaura 2d4+2 HP"},
+    {"Name": "Poción de Curación Mayor", "Price": "150 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Restaura 4d4+4 HP"},
+    {"Name": "Poción de Curación Superior", "Price": "450 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Restaura 8d4+8 HP"},
+    {"Name": "Poción de Curación Suprema", "Price": "1350 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Restaura 10d4+20 HP"},
+    {"Name": "Poción de Escalada", "Price": "180 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Ventaja en pruebas de Atletismo, velocidad de escalada igual a caminata por 1h"},
+    {"Name": "Poción de Invisibilidad", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Invisibilidad por 1 hora o hasta atacar o lanzar hechizo"},
+    {"Name": "Poción de Velocidad", "Price": "400 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Efecto del conjuro Celeridad por 1 minuto"},
+    {"Name": "Poción de Vuelo", "Price": "500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Vuelo por 1h, velocidad 60 pies"},
+    {"Name": "Poción de Resistencia al Fuego", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño de fuego por 1 hora"},
+    {"Name": "Poción de Resistencia al Frío", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño de frío por 1 hora"},
+    {"Name": "Poción de Resistencia al Rayo", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño eléctrico por 1 hora"},
+    {"Name": "Poción de Resistencia al Ácido", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño de ácido por 1 hora"},
+    {"Name": "Poción de Resistencia al Veneno", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño por veneno por 1 hora"},
+    {"Name": "Poción de Resistencia Psíquica", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño psíquico por 1 hora"},
+    {"Name": "Poción de Resistencia Necrótica", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño necrótico por 1 hora"},
+    {"Name": "Poción de Resistencia Radiante", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño radiante por 1 hora"},
+    {"Name": "Poción de Resistencia Tónica", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia al daño sónico por 1 hora"},
+    {"Name": "Poción de Respirar Bajo el Agua", "Price": "180 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Respirar bajo el agua por 1 hora"},
+    {"Name": "Poción de Heroísmo", "Price": "400 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "10 HP temporales y efecto de Bendecir por 1h"},
+    {"Name": "Poción de Vitalidad", "Price": "800 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Cura enfermedades y venenos, restaura todos los dados de golpe"},
+    {"Name": "Poción de Amistad con los Animales", "Price": "125 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Efecto del conjuro Amistad con los Animales por 1 hora"},
+    {"Name": "Poción de Disminución", "Price": "270 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Reduce tamaño a la mitad por 1 minuto"},
+    {"Name": "Poción de Agrandamiento", "Price": "270 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Duplica tamaño y fuerza, ventaja en pruebas de FU por 1 minuto"},
+    {"Name": "Poción de Forma Gaseosa", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Transforma al usuario en forma gaseosa por 1 hora"},
+    {"Name": "Poción de Lectura Mental", "Price": "400 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Detecta pensamientos (como el conjuro) por 1 minuto"},
+    {"Name": "Poción de Invulnerabilidad", "Price": "500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Resistencia a todo daño por 1 minuto"},
+    {"Name": "Poción de Fuerza de Gigante de Tormenta", "Price": "5000 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "FU se convierte en 29 por 1 hora"},
+    {"Name": "Poción de Fuerza de Gigante de la Colina", "Price": "250 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "FU se convierte en 21 por 1 hora"},
+    {"Name": "Poción de Fuerza de Gigante de Escarcha", "Price": "500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "FU se convierte en 23 por 1 hora"},
+    {"Name": "Poción de Fuerza de Gigante de Fuego", "Price": "1000 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "FU se convierte en 25 por 1 hora"},
+    {"Name": "Poción de Fuerza de Gigante de Nubes", "Price": "3000 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "FU se convierte en 27 por 1 hora"},
+    {"Name": "Poción de Fuerza de Gigante de Piedra", "Price": "1500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "FU se convierte en 23 por 1 hora"},
+    {"Name": "Aceite de Resbaladicidad", "Price": "250 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Efecto de Libertad de Movimiento por 8 horas"},
+    {"Name": "Elixir de Salud", "Price": "500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Cura ceguera, sordera, enfermedades, venenos y restaura HP"},
+    {"Name": "Elixir de Resiliencia", "Price": "350 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Ventaja en tiradas de salvación de Constitución por 1 hora"},
+    {"Name": "Elixir de Visión en la Oscuridad", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Otorga visión en la oscuridad 60 pies por 1h"},
+    {"Name": "Elixir de Rapidez", "Price": "350 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Velocidad +10 pies por 1h"},
+    {"Name": "Elixir de Valentía", "Price": "300 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "+1d4 a tiradas de ataque y salvaciones por 1 minuto"},
+    {"Name": "Elixir de Vida", "Price": "1200 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Cura 2d4+2 y elimina enfermedades y venenos"},
+    {"Name": "Poción de Claridad", "Price": "150 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Ventaja en salvaciones de INT, SAB y CAR por 1h"},
+    {"Name": "Poción de Perspicacia", "Price": "200 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Ventaja en pruebas de Sabiduría (Perspicacia) por 1 hora"},
+    {"Name": "Poción de Suerte", "Price": "600 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Permite repetir una tirada de ataque, habilidad o salvación"},
+    {"Name": "Poción de Visión Verdadera", "Price": "2500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Efecto del conjuro Visión Verdadera por 1 hora"},
+    {"Name": "Poción de Eterealidad", "Price": "3000 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Accede al Plano Etéreo por 1 hora"},
+    {"Name": "Poción de Comprensión", "Price": "150 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Efecto de Comprender Idiomas por 1 hora"},
+    {"Name": "Poción de Lenguas", "Price": "500 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Entiende y habla cualquier idioma por 1 hora"},
+    {"Name": "Poción de Ceguera", "Price": "150 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Induce ceguera durante 1 minuto (uso ofensivo)"},
+    {"Name": "Poción de Sueño", "Price": "100 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Actúa como el conjuro Sueño en un área cercana"},
+    {"Name": "Poción de Aliento de Fuego", "Price": "150 po", "AC": "", "Damage": "4d6", "Weight": "0.5", "Type": "Poción", "Properties": "Permite exhalar fuego 3 veces por 1h (cono de 15 pies)"},
+    {"Name": "Poción de Veneno", "Price": "100 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Parece curativa, pero causa 3d6 veneno, salvación CON la reduce a la mitad"},
+    {"Name": "Filtro de Amor", "Price": "90 po", "AC": "", "Damage": "", "Weight": "0.5", "Type": "Poción", "Properties": "Provoca enamoramiento mágico bajo efecto de encantamiento"},
+
+    {"Name": "Fuego Alquímico", "Price": "50 po", "AC": "", "Damage": "1d4 por turno", "Weight": "0.5", "Type": "Consumible, Arrojadizo", "Properties": "Sufre daño de fuego al inicio de cada turno hasta gastar una acción para apagarlo"},
 ]
 
 
@@ -566,6 +622,7 @@ try:
     # Insertar todos los items de todas las listas
     for i in range(1, 10):
         insert_items(eval(f"dnd_items_part_{i}"))
+        insert_items(eval(f"pociones_{i}"))
         session.commit()
         print(f"\n\033[92m✅ Todos los items de la parte {i} han sido insertados correctamente.\033[0m\n")
 

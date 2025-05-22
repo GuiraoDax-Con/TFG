@@ -27,4 +27,4 @@ class Monsters(Base):
     alignment = Column(String(70)) 
     cr= Column(String(70)) # CR (Challenge Rating) del monstruo
     sourceBook = Column(String(200))
-    img = Column(String(255), nullable=True)   # Nueva columna para la URL o ruta de la imagen
+    img = Column(String(1000), nullable=True)   # Nueva columna para la URL o ruta de la imagen
