@@ -84,3 +84,7 @@ input[type="text"] {
   background: #388e3c;
   transform: scale(1.05);
 }
+.deseleccionar-btn {
+  padding: 12px 28px;
+  font-size: 1.1em;
+}
