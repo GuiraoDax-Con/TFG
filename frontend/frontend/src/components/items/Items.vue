@@ -144,14 +144,61 @@
       </button>
     </div>
 
-    <!-- Botón calcular factura flotante -->
-    <button
-      :disabled="selectedItems.length === 0"
-      @click="showInvoice = true"
-      class="btn-factura-flotante"
-    >
-      Calcular factura
-    </button>
+    
+
+    <!-- Modal de Factura -->
+    <div class="factura-contenedor">
+        <!-- Botón calcular factura flotante -->
+        <button
+          :disabled="selectedItems.length === 0"
+          @click="mostrarFactura = true"
+          class="btn-factura-flotante"
+        >
+          Calcular factura
+        </button>
+
+        <div v-if="mostrarFactura" class="factura-contenedor" @click.self="mostrarFactura = false">
+          <div class="modal-content">
+            <h3>Factura</h3>
+            <ul>
+              <li v-for="item in selectedInvoiceItems" :key="item.id">
+                {{ item.Name }} - {{ item.Price }} monedas
+              </li>
+            </ul>
+            <p><b>Total:</b> {{ facturaTotalMonedas }}</p>
+            <button @click="mostrarFactura = false" class="btn-accion btn-cancelar">Cerrar</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- Modal que muestra el total de XP calculado -->
+    <!-- <div class="xp-info">
+        <button @click="mostrarModuloReparto = true" class="xp-total-button">
+            Total: {{ XP_total }} XP
+        </button>
+
+        <div v-if="mostrarModuloReparto" class="modulo-reparto">
+            <div class="modulo-contenido">
+                <div class="jugadores-input">
+                    <label for="num-jugadores">Jugadores:</label>
+                    <button @click="decrementarJugadores">-</button>
+                    <input
+                        id="num-jugadores"
+                        type="number"
+                        v-model.number="numJugadores"
+                        min="1"
+                    />
+                    <button @click="incrementarJugadores">+</button>
+                </div>
+                <hr />
+                <div class="xp-repartido">
+                    XP Repartido: {{ XP_repartido }} XP
+                </div>
+                <button @click="mostrarModuloReparto = false" class="cerrar-modulo">Cerrar</button>
+            </div>
+        </div>
+      </div>
+     -->
 
     <!-- CONTROLES DE PAGINACIÓN -->
     <div v-if="totalPages > 1" class="pagination-controls" style="margin: 16px 0; display: flex; justify-content: center; gap: 4px;">
@@ -203,20 +250,7 @@
         <button @click="closeDeleteConfirm" class="btn-accion btn-cancelar">No</button>
       </div>
     </div>
-
-    <!-- Modal de Factura -->
-    <div v-if="showInvoice" class="modal-preview" @click.self="showInvoice = false">
-      <div class="modal-content">
-        <h3>Factura</h3>
-        <ul>
-          <li v-for="item in selectedInvoiceItems" :key="item.id">
-            {{ item.Name }} - {{ item.Price }} monedas
-          </li>
-        </ul>
-        <p><b>Total:</b> {{ facturaTotalMonedas }}</p>
-        <button @click="showInvoice = false" class="btn-accion btn-cancelar">Cerrar</button>
-      </div>
-    </div>
+    
   </div>
 </template>
 
@@ -238,7 +272,7 @@ export default {
       itemsPerPage: 10,
       // Selección para factura
       selectedItems: [],
-      showInvoice: false,
+      mostrarFactura: false,
     };
   },
   computed: {

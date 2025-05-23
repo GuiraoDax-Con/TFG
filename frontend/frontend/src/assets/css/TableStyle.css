@@ -139,8 +139,8 @@ tbody tr:nth-child(even):hover {
 .modal-content {
   background: #222;
   color: #fff;
-  width: 90vw;           /* Permite que el modal sea más ancho */
-  max-width: 900px;      /* Ajusta según tu preferencia */
+  width: 90vw;  /* Permite que el modal sea más ancho */
+  max-width: 900px;
   padding: 24px 32px;
   border-radius: 8px;
   min-width: 150px;
@@ -148,7 +148,7 @@ tbody tr:nth-child(even):hover {
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra todo el contenido horizontalmente */
+  align-items: center;
 }
 
 .modal-content img {
