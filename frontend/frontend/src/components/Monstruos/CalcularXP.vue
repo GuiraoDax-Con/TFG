@@ -86,7 +86,7 @@
                                 type="number"
                                 v-model.number="monstruo.cantidad"
                                 min="1"
-                                @change="if (monstruo.cantidad < 1) monstruo.cantidad = 1; calcularTotalXP()"
+                                @change="monstruo.cantidad = Math.max(1, Math.round(monstruo.cantidad)); calcularTotalXP()"
                                 class="cantidad-input"
                                 :disabled="editId === monstruo.id"
                             />
@@ -157,7 +157,7 @@
                         <input
                             id="num-jugadores"
                             type="number"
-                            @change="if (numJugadores < 1) numJugadores = 1;"
+                            @change="numJugadores = Math.max(1, Math.round(numJugadores))"
                             v-model.number="numJugadores"
                             min="1"
                         />
