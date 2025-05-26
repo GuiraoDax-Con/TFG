@@ -144,8 +144,8 @@
         </div>
 
         <!-- Modal que muestra el total de XP calculado -->
-        <div class="xp-info">
-            <button @click="mostrarModuloReparto = true" class="xp-total-button">
+        <div class="contenedor-calculadora">
+            <button @click="mostrarModuloReparto = true" class="btn-calculadora-flotante">
                 Total: {{ XP_total }} XP
             </button>
 
@@ -472,7 +472,6 @@
             nextPage() {
                 if (this.paginaActual < this.totalPages) this.paginaActual++;
             },
-
         },
         mounted() {
             this.fetchMonstruos();

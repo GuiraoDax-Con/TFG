@@ -51,7 +51,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in paginatedItems" :key="item.id" class="item-row">
+          <tr v-for="item in itemsPaginados" :key="item.id" class="item-row">
             <td>
               <input
                 type="checkbox"
@@ -141,25 +141,28 @@
     
 
     <!-- Modal de Factura -->
-    <div class="factura-contenedor">
+    <div class="contenedor-calculadora">
         <!-- Botón calcular factura flotante -->
         <button
           :disabled="selectedItems.length === 0"
           @click="mostrarFactura = true"
-          class="btn-factura-flotante"
+          class="btn-calculadora-flotante"
         >
           Calcular factura
         </button>
 
-        <div v-if="mostrarFactura" class="factura-contenedor" @click.self="mostrarFactura = false">
+        <div v-if="mostrarFactura" class="contenedor-calculadora" @click.self="mostrarFactura = false">
           <div class="modulo-calculo">
             <h3>Factura</h3>
+
             <ul>
               <li v-for="item in selectedInvoiceItems" :key="item.id">
                 {{ item.Name }} - {{ item.Price }} monedas
               </li>
             </ul>
+
             <p><b>Total:</b> {{ facturaTotalMonedas }}</p>
+
             <button @click="mostrarFactura = false" class="btn-accion btn-cancelar">Cerrar</button>
           </div>
         </div>
@@ -167,28 +170,24 @@
 
     
 
-    <!-- CONTROLES DE PAGINACIÓN -->
-    <div v-if="totalPages > 1" class="pagination-controls" style="margin: 16px 0; display: flex; justify-content: center; gap: 4px;">
-      <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Anterior</button>
-      <button
-        v-if="currentPage > 3"
-        @click="goToPage(1)"
-        :class="{ activo: currentPage === 1 }"
-      >1</button>
-      <span v-if="currentPage > 4" aria-disabled="true">...</span>
-      <button
-        v-for="page in pageNumbers"
-        :key="page"
-        @click="goToPage(page)"
-        :class="{ activo: page === currentPage }"
-      >{{ page }}</button>
-      <span v-if="currentPage < totalPages - 3" aria-disabled="true">...</span>
-      <button
-        v-if="currentPage < totalPages - 2"
-        @click="goToPage(totalPages)"
-        :class="{ activo: currentPage === totalPages }"
-      >{{ totalPages }}</button>
-      <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Siguiente</button>
+    <!-- Controles de paginación -->
+    <div class="pagination-controls">
+        <button @click="prevPage" :disabled="paginaActual === 1">Anterior</button>
+        
+        <!-- <span>Página {{ paginaActual }} de {{ totalPages }}</span> -->
+
+        <button
+            v-for="pagina in paginasVisibles"
+            :key="pagina"
+            @click="pagina !== '...' && (paginaActual = pagina)"
+            :class="[{ activo: pagina === paginaActual }, { 'button-ellipsis': pagina === '...' }]"
+            v-if="pagina !== 1 && pagina !== totalPages"
+            :disabled="pagina === paginaActual"
+        >
+            {{ pagina }}
+        </button>
+
+        <button @click="nextPage" :disabled="paginaActual === totalPages">Siguiente</button>
     </div>
 
     <!-- Modal de Detalles -->
@@ -235,8 +234,8 @@ export default {
       previewItem: null,
       deleteConfirmItem: null,
       // PAGINACIÓN
-      currentPage: 1,
-      itemsPerPage: 10,
+      paginaActual: 1,
+      itemsPorPagina: 10,
       // Selección para factura
       selectedItems: [],
       mostrarFactura: false,
@@ -273,25 +272,13 @@ export default {
         return matchesName && matchesType;
       });
     },
-    paginatedItems() {
-      const start = (this.currentPage - 1) * this.itemsPerPage;
-      const end = start + this.itemsPerPage;
-      return this.filteredItems.slice(start, end);
+    itemsPaginados() {
+        const inicio = (this.paginaActual - 1) * this.itemsPorPagina;
+        const fin = inicio + this.itemsPorPagina;
+        return this.filteredItems.slice(inicio, fin);
     },
     totalPages() {
-      return Math.ceil(this.filteredItems.length / this.itemsPerPage);
-    },
-    pageNumbers() {
-      // Muestra la página currentPage, dos antes y dos después
-      const pages = [];
-      for (
-        let i = Math.max(2, this.currentPage - 2);
-        i <= Math.min(this.totalPages - 1, this.currentPage + 2);
-        i++
-      ) {
-        pages.push(i);
-      }
-      return pages;
+        return Math.ceil(this.filteredItems.length / this.itemsPorPagina);
     },
     selectedInvoiceItems() {
       return this.items.filter(item => this.selectedItems.includes(item.id));
@@ -301,6 +288,32 @@ export default {
     },
     facturaTotalMonedas() {
       return this.sumarPreciosPorMoneda(this.selectedInvoiceItems);
+    },
+    paginasVisibles() {
+        const total = this.totalPages;
+        const actual = this.paginaActual;
+        const rango = 2; // páginas a la izquierda y derecha
+
+        let inicio = Math.max(1, actual - rango);
+        let fin = Math.min(total, actual + rango);
+
+        const paginas = [];
+
+        if (inicio > 1) {
+            paginas.push(1);
+            if (inicio > 2) paginas.push('...');
+        }
+
+        for (let i = inicio; i <= fin; i++) {
+            paginas.push(i);
+        }
+
+        if (fin < total) {
+            if (fin < total - 1) paginas.push('...');
+            paginas.push(total);
+        }
+
+        return paginas;
     },
   },
   methods: {
@@ -357,10 +370,11 @@ export default {
     closePreview() {
       this.previewItem = null;
     },
-    goToPage(page) {
-      if (page >= 1 && page <= this.totalPages) {
-        this.currentPage = page;
-      }
+    prevPage() {
+        if (this.paginaActual > 1) this.paginaActual--;
+    },
+    nextPage() {
+        if (this.paginaActual < this.totalPages) this.paginaActual++;
     },
     deseleccionar() {
       this.selectedItems = [];
@@ -407,9 +421,4 @@ export default {
 
 <style scoped>
   @import "../../assets/css/ItemsStyles/ItemsStyle.css";
-
-.deseleccionar-btn {
-  padding: 12px 28px;
-  font-size: 1.1em;
-}
 </style>
