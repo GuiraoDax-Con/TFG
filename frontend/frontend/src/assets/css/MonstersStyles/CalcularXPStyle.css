@@ -16,8 +16,6 @@
 }
 
 /* Botón para añadir monstruos */
-
-
 .btn-añadir-monstruo:hover {
     background-color: #388e3c; /* Verde más oscuro al pasar el cursor */
     transform: scale(1.1); /* Aumenta el tamaño un poco */
@@ -39,18 +37,6 @@
     background-color: #c62828;
     transform: scale(1.1); /* Aumenta el tamaño un poco */
     transition: transform 0.2s ease; /* Suaviza la transición */
-}
-
-.link-añadir-monstruo {
-    color: #2196f3;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.link-añadir-monstruo:hover {
-    color: #1976d2;
 }
 
 
@@ -92,21 +78,6 @@
 /*
  * Parte del modulo de reparto de XP por jugadores
  */
-.modulo-reparto {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-}
 
 .modulo-contenido {
     display: flex;

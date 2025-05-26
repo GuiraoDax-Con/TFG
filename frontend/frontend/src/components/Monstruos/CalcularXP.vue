@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="add-monster-container">
+        <div class="add-container">
             <button @click="monstruosSeleccionados = []" class="btn-limpiar">
                 Limpiar Selección
             </button>
@@ -86,7 +86,7 @@
                                 type="number"
                                 v-model.number="monstruo.cantidad"
                                 min="1"
-                                @change="calcularTotalXP"
+                                @change="if (monstruo.cantidad < 1) monstruo.cantidad = 1; calcularTotalXP()"
                                 class="cantidad-input"
                                 :disabled="editId === monstruo.id"
                             />
@@ -149,7 +149,7 @@
                 Total: {{ XP_total }} XP
             </button>
 
-            <div v-if="mostrarModuloReparto" class="modulo-reparto">
+            <div v-if="mostrarModuloReparto" class="modulo-calculo">
                 <div class="modulo-contenido">
                     <div class="jugadores-input">
                         <label for="num-jugadores">Jugadores:</label>
@@ -157,6 +157,7 @@
                         <input
                             id="num-jugadores"
                             type="number"
+                            @change="if (numJugadores < 1) numJugadores = 1;"
                             v-model.number="numJugadores"
                             min="1"
                         />

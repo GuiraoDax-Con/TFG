@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.exc import SQLAlchemyError
 
 # Conexión a la base de datos
-URL_DATABASE = 'mysql+pymysql://root:WTZkbrdMGDhBOEjeEFILRWmzfZMvxQUW@centerbeam.proxy.rlwy.net:28820/railway'
+URL_DATABASE = 'mysql+pymysql://root:WTZkbrdMGDhBOEjeEFILRWmzfZMvxQUW@centerbeam.proxy.rlwy.net:28820/railway?charset=utf8mb4'
 
 try:
     engine = create_engine(URL_DATABASE)
@@ -42,6 +42,11 @@ try:
     session.query(Items).delete()
     session.commit()
     print("🗑️ Todos los registros de la tabla 'monsters' han sido eliminados.")
+
+    # Reinicia el autoincremental
+    session.execute('ALTER TABLE items AUTO_INCREMENT = 1')
+    session.commit()
+    print("🔄 Autoincremental reiniciado a 1.")
 except Exception as e:
     print(f"❌ Error al eliminar los datos existentes: {e}")
     session.rollback()
@@ -50,19 +55,19 @@ except Exception as e:
 # Diccionarios de Items
 dnd_items_part_1 = [
     {"Name": "Garrote", "Price": "1 pl", "CA": "", "Damage": "1d4 Contundente", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera"},
-    {"Name": "Daga", "Price": "2 po", "CA": "", "Damage": "1d4 Perforante", "Peso": "0,45 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera, Finura, Arrojadiza (6/18 m)"},
+    {"Name": "Daga", "Price": "2 po", "CA": "", "Damage": "1d4 Perforante", "Peso": "0,45 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera, Finura, Arrojadiza (20/60 pies)"},
     {"Name": "Gran garrote", "Price": "2 pl", "CA": "", "Damage": "1d8 Contundente", "Peso": "4,5 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "A dos manos"},
-    {"Name": "Hacha de mano", "Price": "5 po", "CA": "", "Damage": "1d6 Cortante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera, Arrojadiza (6/18 m)"},
-    {"Name": "Jabalina", "Price": "5 pl", "CA": "", "Damage": "1d6 Perforante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Arrojadiza (9/36 m)"},
-    {"Name": "Martillo ligero", "Price": "2 po", "CA": "", "Damage": "1d4 Contundente", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera, Arrojadiza (6/18 m)"},
+    {"Name": "Hacha de mano", "Price": "5 po", "CA": "", "Damage": "1d6 Cortante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera, Arrojadiza (20/60 pies)"},
+    {"Name": "Jabalina", "Price": "5 pl", "CA": "", "Damage": "1d6 Perforante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Arrojadiza (30/120 pies)"},
+    {"Name": "Martillo ligero", "Price": "2 po", "CA": "", "Damage": "1d4 Contundente", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera, Arrojadiza (20/60 pies)"},
     {"Name": "Maza", "Price": "5 po", "CA": "", "Damage": "1d6 Contundente", "Peso": "2,25 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "-"},
     {"Name": "Bastón", "Price": "2 pl", "CA": "", "Damage": "1d6 Contundente", "Peso": "2,25 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Versátil (1d8)"},
     {"Name": "Hoz", "Price": "1 po", "CA": "", "Damage": "1d4 Cortante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Ligera"},
-    {"Name": "Lanza", "Price": "1 po", "CA": "", "Damage": "1d4 Perforante", "Peso": "1,35 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Arrojadiza (6/18 m), Versátil (1d8)"},
-    {"Name": "Ballesta ligera", "Price": "25 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "2,25 kg", "Type": "Armas a Distancia Simples", "Properties": "Munición (24/96 m), Recarga, A dos manos"},
-    {"Name": "Dardo", "Price": "5 pc", "CA": "", "Damage": "1d4 Perforante", "Peso": "0,11 kg", "Type": "Armas a Distancia Simples", "Properties": "Finura, Arrojadiza (6/18 m)"},
-    {"Name": "Arco corto", "Price": "25 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "0,9 kg", "Type": "Armas a Distancia Simples", "Properties": "Munición (24/96 m), A dos manos"},
-    {"Name": "Honda", "Price": "1 pl", "CA": "", "Damage": "1d4 Contundente", "Peso": "-", "Type": "Armas a Distancia Simples", "Properties": "Munición (9/36 m)"},
+    {"Name": "Lanza", "Price": "1 po", "CA": "", "Damage": "1d4 Perforante", "Peso": "1,35 kg", "Type": "Armas Cuerpo a Cuerpo Simples", "Properties": "Arrojadiza (20/60 pies), Versátil (1d8)"},
+    {"Name": "Ballesta ligera", "Price": "25 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "2,25 kg", "Type": "Armas a Distancia Simples", "Properties": "Munición (80/320 pies), Recarga, A dos manos"},
+    {"Name": "Dardo", "Price": "5 pc", "CA": "", "Damage": "1d4 Perforante", "Peso": "0,11 kg", "Type": "Armas a Distancia Simples", "Properties": "Finura, Arrojadiza (20/60 pies)"},
+    {"Name": "Arco corto", "Price": "25 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "0,9 kg", "Type": "Armas a Distancia Simples", "Properties": "Munición (80/320 pies), A dos manos"},
+    {"Name": "Honda", "Price": "1 pl", "CA": "", "Damage": "1d4 Contundente", "Peso": "-", "Type": "Armas a Distancia Simples", "Properties": "Munición (30/120 pies)"},
     {"Name": "Hacha de batalla", "Price": "10 po", "CA": "", "Damage": "1d8 Cortante", "Peso": "1,8 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Versátil (1d10)"},
     {"Name": "Mangual", "Price": "10 po", "CA": "", "Damage": "1d8 Contundente", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "-"},
     {"Name": "Guja", "Price": "20 po", "CA": "", "Damage": "1d10 Cortante", "Peso": "2,7 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Pesada, Alcance, A dos manos"},
@@ -77,17 +82,17 @@ dnd_items_part_1 = [
     {"Name": "Estoque", "Price": "25 po", "CA": "", "Damage": "1d8 Perforante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Finura"},
     {"Name": "Cimitarra", "Price": "25 po", "CA": "", "Damage": "1d6 Cortante", "Peso": "1,35 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Finura, Ligera"},
     {"Name": "Espada corta", "Price": "10 po", "CA": "", "Damage": "1d6 Cortante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Finura, Ligera"},
-    {"Name": "Tridente", "Price": "5 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "2,25 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Arrojadiza (6/18 m), Versátil (1d8)"},
+    {"Name": "Tridente", "Price": "5 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "2,25 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Arrojadiza (20/60 pies), Versátil (1d8)"},
     {"Name": "Pico de guerra", "Price": "5 po", "CA": "", "Damage": "1d8 Perforante", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "-"},
     {"Name": "Martillo de guerra", "Price": "15 po", "CA": "", "Damage": "1d8 Contundente", "Peso": "0,9 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Versátil (1d10)"},
     {"Name": "Látigo", "Price": "2 po", "CA": "", "Damage": "1d4 Cortante", "Peso": "1,35 kg", "Type": "Armas Cuerpo a Cuerpo Marciales", "Properties": "Finura, Alcance"},
 ]
 dnd_items_part_2 = [
-    {"Name": "Cerbatana", "Price": "10 po", "CA": "", "Damage": "1 Perforante", "Peso": "0,45 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (7,5/30 m), Recarga"},
-    {"Name": "Ballesta de mano", "Price": "75 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "1,35 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (9/36 m), Recarga, Ligera"},
-    {"Name": "Ballesta pesada", "Price": "50 po", "CA": "", "Damage": "1d10 Perforante", "Peso": "8,1 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (30/120 m), Recarga, A dos manos, Pesada"},
-    {"Name": "Arco largo", "Price": "50 po", "CA": "", "Damage": "1d8 Perforante", "Peso": "0,9 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (45/180 m), Pesada, A dos manos"},
-    {"Name": "Red", "Price": "1 po", "CA": "", "Damage": "", "Peso": "1,35 kg", "Type": "Armas Marciales a Distancia", "Properties": "Especial, Arrojadiza (1,5/4,5 m)"},
+    {"Name": "Cerbatana", "Price": "10 po", "CA": "", "Damage": "1 Perforante", "Peso": "0,45 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (25/100 pies), Recarga"},
+    {"Name": "Ballesta de mano", "Price": "75 po", "CA": "", "Damage": "1d6 Perforante", "Peso": "1,35 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (30/120 pies), Recarga, Ligera"},
+    {"Name": "Ballesta pesada", "Price": "50 po", "CA": "", "Damage": "1d10 Perforante", "Peso": "8,1 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (100/400 pies), Recarga, A dos manos, Pesada"},
+    {"Name": "Arco largo", "Price": "50 po", "CA": "", "Damage": "1d8 Perforante", "Peso": "0,9 kg", "Type": "Armas Marciales a Distancia", "Properties": "Munición (150/600 pies), Pesada, A dos manos"},
+    {"Name": "Red", "Price": "1 po", "CA": "", "Damage": "", "Peso": "1,35 kg", "Type": "Armas Marciales a Distancia", "Properties": "Especial, Arrojadiza (5/15 pies)"},
     
     {"Name": "Acolchada", "Price": "5 po", "CA": "11 + DES", "Damage": "", "Peso": "3,6 kg", "Type": "Armadura Ligera", "Properties": "Desventaja en Sigilo"},
     {"Name": "Cuero", "Price": "10 po", "CA": "11 + DES", "Damage": "", "Peso": "4,5 kg", "Type": "Armadura Ligera", "Properties": ""},
@@ -134,7 +139,7 @@ dnd_items_part_2 = [
     {"Name": "Vela", "Price": "1 pc", "CA": "", "Damage": "", "Peso": "-", "Type": "Equipo de Aventura", "Properties": ""},
     {"Name": "Estuche para virotes", "Price": "1 po", "CA": "", "Damage": "", "Peso": "0,45 kg", "Type": "Equipo de Aventura", "Properties": ""},
     {"Name": "Estuche para mapas y pergaminos", "Price": "1 po", "CA": "", "Damage": "", "Peso": "0,45 kg", "Type": "Equipo de Aventura", "Properties": ""},
-    {"Name": "Cadena (3 m)", "Price": "5 po", "CA": "", "Damage": "", "Peso": "4,5 kg", "Type": "Equipo de Aventura", "Properties": ""},
+    {"Name": "Cadena (10 pies)", "Price": "5 po", "CA": "", "Damage": "", "Peso": "4,5 kg", "Type": "Equipo de Aventura", "Properties": ""},
 ]
 dnd_items_part_3 = [
   {"Name":"Tiza (1 pieza)", "Price":"1 pc", "CA":"null", "Damage":"null", "weight":"-", "Type":"Adventuring Gear", "Properties":"null"},
@@ -165,7 +170,7 @@ dnd_items_part_3 = [
   {"Name":"Tinta (frasco de 1 onza)", "Price":"10 po", "CA":"null", "Damage":"null", "weight":"-", "Type":"Adventuring Gear", "Properties":"null"},
   {"Name":"Pluma", "Price":"2 pc", "CA":"null", "Damage":"null", "weight":"null", "Type":"Adventuring Gear", "Properties":"null"},
   {"Name":"Jarra o cántaro", "Price":"2 pc", "CA":"null", "Damage":"null", "weight":"4 lb.", "Type":"Adventuring Gear", "Properties":"null"},
-  {"Name":"Escalera (3 metros)", "Price":"1 pl", "CA":"null", "Damage":"null", "weight":"25 lb.", "Type":"Adventuring Gear", "Properties":"null"},
+  {"Name":"Escalera (10 pies)", "Price":"1 pl", "CA":"null", "Damage":"null", "weight":"25 lb.", "Type":"Adventuring Gear", "Properties":"null"},
   {"Name":"Lámpara", "Price":"5 pl", "CA":"null", "Damage":"null", "weight":"1 lb.", "Type":"Adventuring Gear", "Properties":"null"},
   {"Name":"Linterna de foco", "Price":"10 po", "CA":"null", "Damage":"null", "weight":"2 lb.", "Type":"Adventuring Gear", "Properties":"null"},
   {"Name":"Linterna cubierta", "Price":"5 po", "CA":"null", "Damage":"null", "weight":"2 lb.", "Type":"Adventuring Gear", "Properties":"null"},
@@ -281,7 +286,7 @@ dnd_items_part_6 = [
     {"Name": "Barco Plegable", "Price": "5,000 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Maravilloso", "Properties": "Raro"},
     {"Name": "Yelmo de Telepatía", "Price": "1,000 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Maravilloso", "Properties": "Poco común - Requiere vinculación"},
     {"Name": "Cubo de Fuerza", "Price": "5,000 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Maravilloso", "Properties": "Raro - Requiere vinculación"},
-    {"Name": "Vara de Dominio", "Price": "4,500 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Vara", "Properties": "Raro - Requiere vinculación"},
+    {"Name": "Vara de Dominio", "Price": "4,500 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Varita", "Properties": "Raro - Requiere vinculación"},
     {"Name": "Espejo de Trampa Vital", "Price": "18,000 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Maravilloso", "Properties": "Muy raro"},
     {"Name": "Amuleto de Prueba contra Detección y Localización", "Price": "1,000 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Maravilloso", "Properties": "Poco común - Requiere vinculación"},
     {"Name": "Medallón de Pensamientos", "Price": "700 po", "AC": "", "Damage": "", "Weight": "", "Type": "Magia - No Combate - Maravilloso", "Properties": "Poco común - Requiere vinculación"},
@@ -618,16 +623,23 @@ def insert_items(items_list):
         print(f"✅ Insertado: {name}")
 
 try:
-
     # Insertar todos los items de todas las listas
     for i in range(1, 10):
         insert_items(eval(f"dnd_items_part_{i}"))
-        insert_items(eval(f"pociones_{i}"))
         session.commit()
         print(f"\n\033[92m✅ Todos los items de la parte {i} han sido insertados correctamente.\033[0m\n")
 
     # session.commit()
     print("✅ Todos los items han sido insertados correctamente.")
+
+    # Insertar todas las pociones de todas las listas
+    for i in range(1, 1):
+        insert_items(eval(f"pociones_{i}"))
+        session.commit()
+        print(f"\n\033[92m✅ Todas las pociones de la parte {i} han sido insertados correctamente.\033[0m\n")
+
+    # session.commit()
+    print("✅ Todas las pociones han sido insertados correctamente.")
 
 except Exception as e:
     print("❌ Ocurrió un error durante el procesamiento:")

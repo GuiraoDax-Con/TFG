@@ -25,7 +25,12 @@
     </div>
 
     <!-- Botón para añadir ítems -->
-    <div class="add-item-container">
+    <div class="add-container">
+      <!-- Botón Deseleccionar -->
+      <button class="btn-limpiar" @click="deseleccionar" :disabled="selectedItems.length === 0">
+        Deseleccionar
+      </button>
+      
       <button @click="addItem" class="btn-añadir">Añadir Ítem</button>
     </div>
 
@@ -34,7 +39,7 @@
       <table>
         <thead>
           <tr class="primary-color">
-            <th>Seleccionar</th>
+            <th>Selec</th>
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Precio</th>
@@ -133,17 +138,6 @@
       </table>
     </div>
 
-    <!-- Botón Deseleccionar -->
-    <div style="margin-top: 12px; text-align: right;">
-      <button
-        @click="deseleccionar"
-        :disabled="selectedItems.length === 0"
-        class="btn-accion btn-cancelar deseleccionar-btn"
-      >
-        Deseleccionar
-      </button>
-    </div>
-
     
 
     <!-- Modal de Factura -->
@@ -158,7 +152,7 @@
         </button>
 
         <div v-if="mostrarFactura" class="factura-contenedor" @click.self="mostrarFactura = false">
-          <div class="modal-content">
+          <div class="modulo-calculo">
             <h3>Factura</h3>
             <ul>
               <li v-for="item in selectedInvoiceItems" :key="item.id">
@@ -171,34 +165,7 @@
         </div>
     </div>
 
-    <!-- Modal que muestra el total de XP calculado -->
-    <!-- <div class="xp-info">
-        <button @click="mostrarModuloReparto = true" class="xp-total-button">
-            Total: {{ XP_total }} XP
-        </button>
-
-        <div v-if="mostrarModuloReparto" class="modulo-reparto">
-            <div class="modulo-contenido">
-                <div class="jugadores-input">
-                    <label for="num-jugadores">Jugadores:</label>
-                    <button @click="decrementarJugadores">-</button>
-                    <input
-                        id="num-jugadores"
-                        type="number"
-                        v-model.number="numJugadores"
-                        min="1"
-                    />
-                    <button @click="incrementarJugadores">+</button>
-                </div>
-                <hr />
-                <div class="xp-repartido">
-                    XP Repartido: {{ XP_repartido }} XP
-                </div>
-                <button @click="mostrarModuloReparto = false" class="cerrar-modulo">Cerrar</button>
-            </div>
-        </div>
-      </div>
-     -->
+    
 
     <!-- CONTROLES DE PAGINACIÓN -->
     <div v-if="totalPages > 1" class="pagination-controls" style="margin: 16px 0; display: flex; justify-content: center; gap: 4px;">
