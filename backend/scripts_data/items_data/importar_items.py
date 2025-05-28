@@ -402,7 +402,6 @@ dnd_items_part_7 = [
     {"Name":"Piedra de Ioun - Fortaleza", "Price":"3000 po", "AC":"null", "Damage":"null", "Weight":"null", "Type":"Magico - Combate - Maravilloso", "Properties":"Muy Rara - Requiere Vinculación"},
     {"Name":"Piedra de Ioun - Perspicacia", "Price":"3000 po", "AC":"null", "Damage":"null", "Weight":"null", "Type":"Magico - Combate - Maravilloso", "Properties":"Muy Rara - Requiere Vinculación"},
     {"Name":"Piedra de Ioun - Intelecto", "Price":"3000 po", "AC":"null", "Damage":"null", "Weight":"null", "Type":"Magico - Combate - Maravilloso", "Properties":"Muy Rara - Requiere Vinculación"}
-
 ]
 dnd_items_part_8 = [
     {"Name":"Piedra Ioun de Liderazgo", "Price":"3,000 po", "AC":"null", "Damage":"null", "Weight":"-", "Type":"Objeto Mágico - Combate - Maravilloso", "Properties":"Muy Raro - Requiere Afinidad"},
