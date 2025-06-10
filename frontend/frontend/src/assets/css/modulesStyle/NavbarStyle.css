@@ -44,6 +44,11 @@
 }
 
 .tirar-dado-enlace {
-    /* margin-left: auto; Empuja este enlace hacia la derecha */
-    margin-right: 190px;
+    margin-right: 220px;
+}
+
+@media (max-width: 768px) {
+    .tirar-dado-enlace {
+        margin-right: 300px !important;
+    }
 }
