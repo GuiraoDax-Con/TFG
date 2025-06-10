@@ -34,7 +34,7 @@
 .logo-container-navbar img {
     height: 50px;
     max-width: 100%;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .nav-links {
@@ -44,6 +44,6 @@
 }
 
 .tirar-dado-enlace {
-    margin-left: auto; /* Empuja este enlace hacia la derecha */
-    margin-right: 10px;;
+    /* margin-left: auto; Empuja este enlace hacia la derecha */
+    margin-right: 190px;
 }
