@@ -151,4 +151,15 @@
 
 <style scoped>
     @import "@/assets/css/addPageStyle.css";
+
+    /* Agrega esto al CSS global o al CSS de las páginas AddMonsters y AddItems */
+  .body-page, .add-page {
+    min-height: 70.6vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .body-page > *, .add-page > *:not(footer) {
+    flex: 1 0 auto;
+  }
 </style>
