@@ -3,7 +3,7 @@
   background-color: #222;
   color: #fff;
   padding: 0px 0px 0px 0px;
-  margin-top: 10px;  /* Espacio entre el footer y el contenido superior */
+  margin-top: auto;  /* Espacio entre el footer y el contenido superior */
   width: 100%;
   
   display: flex; /* Utilizamos flexbox para la distribución en columnas */
