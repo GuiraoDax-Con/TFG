@@ -194,7 +194,15 @@
     <div v-if="previewItem" class="modal-preview" @click.self="closePreview">
       <div class="modal-content">
         <h3>{{ previewItem.Name }}</h3>
-        <img v-if="previewItem.img" :src="previewItem.img" alt="Imagen">
+        <img
+          v-if="previewItem.img"
+          :src="previewItem.img"
+          alt="Imagen"
+          class="img-detalles"
+          scrolling="no"
+          allowfullscreen
+          :title="previewItem.Name"
+        />
         <ul>
           <li><b>Precio:</b> {{ previewItem.Price }}</li>
           <li><b>Tipo:</b> {{ previewItem.Type }}</li>

@@ -5,6 +5,7 @@
     justify-content: space-between; /* Espaciado entre los elementos de la izquierda y la derecha */
     padding: 7px 0px; /* Espaciado interno */
     width: 100%; /* Establece el ancho al 100% del contenedor padre */ 
+    
 }
 
 .nav-item {
@@ -44,7 +45,7 @@
 }
 
 .tirar-dado-enlace {
-    margin-right: 220px;
+    margin-right: 250px;
 }
 
 @media (max-width: 768px) {
