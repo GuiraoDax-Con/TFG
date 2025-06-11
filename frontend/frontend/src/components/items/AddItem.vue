@@ -55,9 +55,16 @@
       </div>
 
       <div class="form-group">
-          <label>URL de imagen (opcional):</label>
-          <input type="text" v-model="newItem.img" placeholder="https://..." />
+        <label>Imagen (JPG, JPEG o PNG):</label>
+        <input type="file" accept="image/png, image/jpeg, image/jpg" @change="handleImageUpload" />
       </div>
+
+      <img 
+        class="add-img-preview"
+        v-if="newItem.img"
+        :src="newItem.img"
+        alt="Imagen del monstruo"
+      />
 
       <div class="form-group"></div>
 
@@ -94,16 +101,24 @@
     },
     methods: {
       validateNumberInput(field) {
-        // Permite solo números en el campo especificado
         this.newItem[field] = this.newItem[field].replace(/[^0-9]/g, "");
+      },
+      handleImageUpload(event) {
+        const file = event.target.files[0];
+        if (file && (file.type === "image/png" || file.type === "image/jpeg" || file.type === "image/jpg")) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.newItem.img = reader.result;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          this.errorMessage = "Formato de imagen inválido. Solo se permite PNG o JPG.";
+        }
       },
       async addItem() {
         try {
-          // Usa el servicio para crear el ítem
           await itemsAPI.createItem(this.newItem);
           console.log("Ítem añadido con éxito");
-
-          // Reinicia el formulario después de guardar
           this.newItem = {
             Name: "",
             Price: "",
@@ -114,21 +129,15 @@
             Properties: "",
             img: "",
           };
-
-          // Limpia el mensaje de error si la solicitud fue exitosa
           this.errorMessage = "";
-
-          // Opcional: Redirige a la página de ítems
           this.$router.push("/items");
         } catch (error) {
           console.error("Error al añadir el ítem:", error);
-          // Muestra un mensaje de error al usuario
           this.errorMessage = "No se pudo crear el ítem. Por favor, verifica los datos e inténtalo de nuevo.";
         }
       },
     },
   };
-
 </script>
 
 <style scoped>

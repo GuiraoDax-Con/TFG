@@ -176,7 +176,15 @@
         <div v-if="previewMonstruo" class="modal-preview" @click.self="closePreview">
             <div class="modal-content">
                 <h3>{{ previewMonstruo.name }}</h3>
-                <img v-if="previewMonstruo.img" :src="previewMonstruo.img" alt="Imagen" class="img-detalles"  scrolling="no" allowfullscreen :title="previewMonstruo.name" />
+                <img 
+                    v-if="previewMonstruo.img" 
+                    :src="previewMonstruo.img" 
+                    alt="Imagen" 
+                    class="img-detalles" 
+                    scrolling="no" 
+                    allowfullscreen 
+                    :title="previewMonstruo.name" 
+                />
                 <ul>
                     <!-- <li><b>URL:</b> {{ previewMonstruo.img }}</li> -->
                     <li><b>Tamaño:</b> {{ previewMonstruo.size }}</li>

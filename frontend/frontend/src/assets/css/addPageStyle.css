@@ -87,7 +87,7 @@ h1 {
 /**
  * Estilo para la previsualización de la imagen del monstruo
  */
-.monster-img-preview {
+.add-img-preview {
   /* width: 150px;
   height: 150px; */
   object-fit: cover;

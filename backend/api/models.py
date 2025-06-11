@@ -1,5 +1,6 @@
 # Importamos las clases necesarias de SQLAlchemy para definir modelos y relaciones
 from sqlalchemy import Column, Integer, String, ForeignKey, Table, Text
+from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -14,7 +15,7 @@ class Items(Base):
     Weight = Column(String(10))
     Type = Column(String(50))
     Properties = Column(String(100))
-    img = Column(Text, nullable=True)  # Nueva columna para la URL o ruta de la imagen
+    img = Column(LONGTEXT, nullable=True)  # Nueva columna para la URL o ruta de la imagen
 
 class Monsters(Base):
     __tablename__ = "monsters"  # Nombre de la tabla en la base de datos
@@ -27,4 +28,4 @@ class Monsters(Base):
     alignment = Column(String(70)) 
     cr= Column(String(70)) # CR (Challenge Rating) del monstruo
     sourceBook = Column(String(200))
-    img = Column(String(1000), nullable=True)   # Nueva columna para la URL o ruta de la imagen
+    img = Column(LONGTEXT, nullable=True)   # Nueva columna para la URL o ruta de la imagen

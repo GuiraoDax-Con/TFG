@@ -78,12 +78,12 @@
         <input v-model="monster.sourceBook" type="text" />
       </div>
 
-      <img class="monster-img-preview" v-if="monster.img" :src="monster.img" alt="Imagen del monstruo" />
-
       <div class="form-group">
-        <label>Imagen (JPG o PNG):</label>
-        <input type="file" accept="image/png, image/jpeg" @change="handleImageUpload" />
+        <label>Imagen (JPG, JPEG o PNG):</label>
+        <input type="file" accept="image/png, image/jpeg, image/jpg" @change="handleImageUpload" />
       </div>
+
+      <img class="add-img-preview" v-if="monster.img" :src="monster.img" alt="Imagen del monstruo" />
 
       <button type="submit">Guardar</button>
       <p class="error-msg" v-if="error">{{ error }}</p>
@@ -119,7 +119,7 @@
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    if (file && (file.type === "image/png" || file.type === "image/jpeg")) {
+    if (file && (file.type === "image/png" || file.type === "image/jpeg" || file.type === "image/jpg")) {
       const reader = new FileReader();
       reader.onload = () => {
         monster.value.img = reader.result;

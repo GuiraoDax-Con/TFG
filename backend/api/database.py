@@ -2,9 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 
-
-
 URL_DATABASE = 'mysql+pymysql://root:WTZkbrdMGDhBOEjeEFILRWmzfZMvxQUW@centerbeam.proxy.rlwy.net:28820/railway'
+
+# URL_DATABASE = 'mysql+pymysql://dm:1235@localhost:3306/laguarida'
 
 engine= create_engine(URL_DATABASE)
 
