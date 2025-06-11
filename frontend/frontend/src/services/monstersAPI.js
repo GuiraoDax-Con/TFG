@@ -11,10 +11,10 @@ class Monster {
         this.alignment = alignment; // Alineación del monstruo
         this.cr = cr; // Challenge Rating (CR) del monstruo
         this.sourceBook = sourceBook || null; // Libro de origen del monstruo
-        this.img = img || null; // URL o ruta de la imagen del monstruo, puede ser 'null'
+        this.img = img || null; // URL o ruta de la imagen
     }
 
-    // Método para convertir la instancia a JSON
+
     toJSON() {
         return {
             id: this.id,
