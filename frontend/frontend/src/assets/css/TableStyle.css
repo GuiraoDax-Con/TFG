@@ -172,8 +172,8 @@ tbody tr:nth-child(even):hover {
 }
 
 .modal-content img {
-  max-width: 600px;
-  max-height: 70vh;
+  max-width: 300px;
+  max-height: 30vh;
   width: 100%;         /* Hace que la imagen sea responsiva */
   height: auto;        /* Mantiene la proporción */
   margin-bottom: 16px;
